@@ -1,0 +1,10 @@
+# Unwanted files
+*.pyc
+*.swp
+
+# Ignore logged data
+html/sensor_logs
+sensor_logs/
+
+# Ignore tmp dir
+tmp*
