@@ -1,0 +1,1 @@
+uart_port = "/dev/serial0"	# Your UART port

@@ -1,0 +1,20 @@
+#!/bin/bash
+if [[ $EUID -ne 0 ]]; then
+	echo "The start_fligth script should be run as root" 
+	exit 1
+fi
+
+if [[ -z "$(cat /etc/rc.local | grep start_flight)" ]]; then
+	sed -ri '/exit 0/i\/home\/pi/\balloonS\/start_flight' /etc/rc.local
+fi
+
+echo 'ds1307 0x68' > /sys/class/i2c-adapter/i2c-1/new_device
+/home/pi/balloonS/set_time_gps.py
+
+if [[ $? == "0" ]]; then
+	echo "from GPS" >> /home/pi/rtc_log
+	hwclock -w
+else
+	echo "from RTC" >> /home/pi/rtc_log
+	hwclock -s
+fi

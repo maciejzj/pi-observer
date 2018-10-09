@@ -1,0 +1,128 @@
+#!/bin/bash
+
+# Dowlonad git
+if [[ $(which gpio) ]]; then
+	echo "Git already installed"
+else
+	sudo apt install git
+fi
+
+# Create necessary directories
+if [ $PWD != "$HOME/balloonS"]
+then
+	cp -r . $HOME/balloonS
+fi
+
+mkdir $HOME/balloonS/sensor_logs
+
+if [[ $(which motion) ]]; then
+	echo "Motion already installed"
+else
+	sudo apt install motion
+fi
+
+# Download and configure apache server
+sudo apt install apache2
+# Link server files to apache html storage
+sudo rm -r /var/www/html
+sudo ln -s $HOME/balloonS/html /var/www
+# Sever permissions
+sudo chown -R pi:www-data /var/www/html/
+sudo chmod -R 770 /var/www/html/
+# Install php and mariaDB
+sudo apt install php php-mbstring
+sudo apt-get -y install mysql-server php7.0-cgi php7.0-mysql
+# TODO: write sql user database sctipt
+
+# Enable i2c
+sudo echo "i2c-dev" >> /etc/modueles
+sudo echo "i2c-bcm2708" >> /etc/modueles
+
+# Install i2ctools
+sudo apt-get install i2c-tools
+
+# Configure data folder for apache server
+sudo ln -s $HOME/balloonS/sensor_logs $HOME/balloonS/html/sensor_logs
+
+# Install wiring pi
+if [[ $(which gpio) ]]; then
+	echo "Wiring pi already installed"
+else
+	git clone git://git.drogon.net/wiringPi
+	cd ~/wiringPi
+	git pull origin
+	cd ~/wiringPi
+	./build
+	cd ~
+fi
+
+sudo echo $"dtoverlay=w1-gpio,gpiopin=4\ndtoverlay=w1-gpio,gpiopin=17\ndtoverlay=w1-gpio,gpiopin=27" >> /boot/config.txt
+# TODO: NOT WORKING - Change motion snapshopts target directory 
+sudo sed -i '/target_dir \//c\target_dir /home/pi/balloonS/camera_snapshots' /etc/motion/motion.conf
+
+# Install python module for pressure sensor
+git clone https://github.com/adafruit/Adafruit_Python_GPIO.git
+cd Adafruit_Python_GPIO
+sudo ./python setup.py install
+git clone https://github.com/adafruit/Adafruit_Python_BME280.git
+sudo cp ./Adafruit_Python_BME280/Adafruit_BME280.py /usr/lib/python2.7
+# Zostaje zmiana adresu w sterowniku Adafruit_Python_BME280
+
+# Install python module for humidity sensor
+git clone https://github.com/Gozem/am2320.git
+sudo bash -c "head -n -5 am2320/am2320.py > /usr/lib/python2.7/am2320.py"
+
+# Install python modules for UART communication (with GPS module)
+sudo apt-get install python-serial
+
+# Enable manual time setting
+timedatectl set-ntp false
+
+# Create crone jobs for gathering data
+therm_dev_name=28-000005945f57
+temp_log_dest=$HOME/balloonS/sensor_logs/temp_log
+therm_addr=/sys/bus/w1/devices/$therm_dev_name/w1_slave
+temp_job="cat $therm_addr | grep -o 't=[0-9]*' | sed -r 's/(.*)(.{3})$/ \1.\2C/' | ts '[\%Y-\%m-\%d \%H:\%M:\%S]' >> $temp_log_dest"
+
+int_therm_dev_name=28-00000a418b77
+int_temp_log_dest=$HOME/balloonS/sensor_logs/int_temp_log
+int_therm_addr=/sys/bus/w1/devices/$int_therm_dev_name/w1_slave
+int_temp_job="cat $int_therm_addr | grep -o 't=[0-9]*' | sed -r 's/(.*)(.{3})$/ \1.\2C/' | ts '[\%Y-\%m-\%d \%H:\%M:\%S]' >> $int_temp_log_dest"
+
+crontab -l | echo "* * * * * $temp_job" | crontab -
+echo "$(echo "* * * * * $int_temp_job"; crontab -l)" | crontab -
+echo "$(echo '* * * * * $HOME/balloonS/press_alt_logger.py'; crontab -l)" | crontab -
+echo "$(echo '* * * * * $HOME/balloonS/hum_logger.py'; crontab -l)" | crontab -
+echo "$(echo '* * * * * $HOME/balloonS/location_logger.py'; crontab -l)" | crontab -
+echo "$(echo '*/5 * * * * $HOME/balloonS/google_maps_logger.py'; crontab -l)" | crontab -
+echo "$(echo '*/5 * * * * $HOME/balloonS/chart_drawer.py'; crontab -l)" | crontab -
+
+# Web connection install and configuration
+sudo apt-get install ppp
+wget "http://raspberry-at-home.com/files/sakis3g.tar.gz"
+
+sudo mkdir /usr/bin/modem3g
+sudo chmod 777 /usr/bin/modem3g
+sudo cp sakis3g.tar.gz /usr/bin/modem3g
+cd /usr/bin/modem3g
+sudo tar -zxvf sakis3g.tar.gz
+sudo chmod +x sakis3g
+cd ~/ballonS
+./gsm_connect
+
+sudo apt-get install weavedconnectd
+sudo weavedinstaller
+
+# Install pip modules for apache web server
+sudo mkdir /var/www/.local
+sudo mkdir /var/www/.cache
+sudo chown www-data.www-data /var/www/.local
+sudo chown www-data.www-data /var/www/.cache
+sudo -H -u www-data pip install httplib2
+
+# Prepare for rtc usage
+sudo bash -c "echo 'rtc-ds1307' >> /etc/modules"
+sudo sed -ie '/if \[ -e \/run\/systemd\/system \] ; then/,+2 s/^/#/' /lib/udev/hwclock-set
+
+# Prepare placing start_flight script in rc.local
+sudo bash -c "sed -ri '/exit 0/i\/home\/pi/\balloonS\/start_flight' /etc/rc.local"

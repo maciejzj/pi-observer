@@ -1,0 +1,274 @@
+body
+{
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background: url(data/img/background.png);
+	background-color: #fafafa;
+	/* from: https://www.toptal.com/designers/subtlepatterns/ */
+	font-size: 20px;
+	font-family: sans-serif;
+}
+
+#topbar
+{
+	width: 100%;
+	height: 30px;
+	padding: 12px 0px;
+	margin: 0px;
+	background-color: #303030;
+	font-size: 25px;
+	color: white;
+}
+
+.status
+{
+	float: left;
+	margin-left: 15px;
+	font-weight: bolder;
+}
+
+#footer
+{
+	bottom: 0;
+	margin: 20px;
+	text-align: center;
+	font-size: 20px;
+	color: #808080;	
+}
+
+#login_container
+{
+	width: 300px;
+	padding: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+	background-color: white;
+	-webkit-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+	-moz-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+	box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+	font-weight: bold;
+	font-size: 30px;
+}
+
+#panel_container
+{
+	width: 70%;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 25px;
+	background-color: white;
+	-webkit-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+	-moz-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+	box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+	font-size: 20px;
+}
+
+.infosection
+{
+	margin-bottom: 15px;
+}
+
+.infosection_title
+{
+	margin-bottom: 7px;
+	font-size: 25px;
+	font-weight: bolder;
+}
+
+#map
+{
+	height: 480px;
+	width: 640px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px; 
+	margin-top: 20px;
+}
+
+.chart
+{
+	width: 75%;
+	max-height: 100%;
+	max-width: 100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.textlog
+{
+	height:120px;
+	width: 800px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 2px solid #ddd;
+	border-radius: 5px;
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;     
+	overflow: scroll;
+}
+
+#temp_log
+{
+	width: 390px;
+}
+
+#int_temp_log
+{
+	width: 390px;
+}
+
+#press_log
+{
+	width: 500px;
+}
+
+#alt_log
+{
+	width: 470px;
+}
+
+#hum_log
+{
+	width: 365px;
+}
+
+#loc_log
+{
+	width: 700px;
+}
+
+.gpio_button {
+	width: 64px;
+	height: 64px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+}
+
+a.button, a.button:visited {
+	padding: 0px 7px;
+	background-color: #428bca;
+	border: 2px solid transparent;
+	border-radius: 4px;
+	border-color: #3071a9;
+	cursor: pointer;
+	outline: none;
+	font-weight: normal;
+	font-size: 22px;
+	color: white;
+	text-decoration: none;
+}
+
+a.button:hover {
+	background-color: #3071a9;
+}
+
+a.button#logout {
+	position: absolute;
+	right: 0;
+	margin: 0;
+	margin-right: 15px;
+}
+
+input[type=text],
+input[type=password]
+{
+	width: 300px;
+	margin-top: 10px;
+	padding: 10px;
+	background-color: #efefef;
+	color: #666;
+	border: 2px solid #ddd;
+	border-radius: 5px;
+	font-size: 20px;
+	box-sizing: border-box;
+	outline: none;
+	-webkit-appearance: none;
+}
+
+input[type=text]:focus,
+input[type=password]:focus
+{
+	border: 2px solid #a5cda5;
+	background-color: #bad3fc;
+	border-color: #3071a9;
+	-webkit-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	-moz-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	color: #000000;
+	-webkit-appearance: none;
+}
+
+input[type=submit]
+{
+	width: 300px;
+	background-color: #428bca;
+	margin-top: 20px;
+	padding: 12px 10px;
+	border: 2px solid transparent;
+	border-radius: 4px;
+	border-color: #3071a9;
+	font-size: 20px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	color: white;
+	cursor: pointer;
+	outline: none;
+	-webkit-appearance: none;
+}
+
+input[type=submit]:focus
+{
+	background-color: #3071a9;
+	-webkit-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	-moz-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	-webkit-appearance: none;
+}
+
+input[type=submit]:hover
+{
+	background-color: #3071a9;
+	-webkit-appearance: none;
+}
+
+input::-webkit-input-placeholder
+{
+	-webkit-appearance: none;
+	color: #999;
+}
+input:focus::-webkit-input-placeholder
+{
+	-webkit-appearance: none;
+	color: #428C42;
+}
+/* Firefox < 19 */
+input:-moz-placeholder
+{
+	color: #999;
+}
+input:focus:-moz-placeholder
+{
+	color: #428C42;
+}
+/* Firefox > 19 */
+input::-moz-placeholder
+{
+	color: #999;
+}
+input:focus::-moz-placeholder
+{
+	color: #428C42;
+}
+/* Internet Explorer 10 */
+input:-ms-input-placeholder
+{
+	color: #999;
+}
+input:focus:-ms-input-placeholder
+{
+	color: #428C42;
+}
