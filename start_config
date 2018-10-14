@@ -82,18 +82,7 @@ sudo apt-get install python-serial
 timedatectl set-ntp false
 
 # Create crone jobs for gathering data
-therm_dev_name=28-000005945f57
-temp_log_dest=$HOME/balloonS/sensor_logs/temp_log
-therm_addr=/sys/bus/w1/devices/$therm_dev_name/w1_slave
-temp_job="cat $therm_addr | grep -o 't=[0-9]*' | sed -r 's/(.*)(.{3})$/ \1.\2C/' | ts '[\%Y-\%m-\%d \%H:\%M:\%S]' >> $temp_log_dest"
-
-int_therm_dev_name=28-00000a418b77
-int_temp_log_dest=$HOME/balloonS/sensor_logs/int_temp_log
-int_therm_addr=/sys/bus/w1/devices/$int_therm_dev_name/w1_slave
-int_temp_job="cat $int_therm_addr | grep -o 't=[0-9]*' | sed -r 's/(.*)(.{3})$/ \1.\2C/' | ts '[\%Y-\%m-\%d \%H:\%M:\%S]' >> $int_temp_log_dest"
-
-crontab -l | echo "* * * * * $temp_job" | crontab -
-echo "$(echo "* * * * * $int_temp_job"; crontab -l)" | crontab -
+echo "$(echo '* * * * * $HOME/balloonS/temp_logger.py'; crontab -l)" | crontab -
 echo "$(echo '* * * * * $HOME/balloonS/press_alt_logger.py'; crontab -l)" | crontab -
 echo "$(echo '* * * * * $HOME/balloonS/hum_logger.py'; crontab -l)" | crontab -
 echo "$(echo '* * * * * $HOME/balloonS/location_logger.py'; crontab -l)" | crontab -
