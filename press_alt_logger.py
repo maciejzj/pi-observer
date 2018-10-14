@@ -44,5 +44,11 @@ with open("/home/pi/balloonS/sensor_logs/temp_log", mode = "r") as temp_log:
 alt = - (R * (float(temp) + 273) * log(hectopascals / PRESS0) / (u * g))
 
 with open("/home/pi/balloonS/sensor_logs/alt_log", mode = "a+") as alt_log:	
-	time_stamp = dt.datetime.now().strftime('[%Y-%m-%d %H:%M:%S]')
+	time_stamp = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 	alt_log.write(time_stamp + " a=" + str(alt) + "m\n")
+
+mycursor = mydb.cursor()
+sql = "INSERT INTO alt_log(log_time, log_val, unit) VALUES (%s, %s, %s)"
+val = (time_stamp, str(alt), "m")
+mycursor.execute(sql, val)
+mydb.commit()
