@@ -21,6 +21,8 @@ else
 	sudo apt install motion
 fi
 
+pip install --user mysql-connector
+
 # Download and configure apache server
 sudo apt install apache2
 # Link server files to apache html storage
@@ -32,6 +34,7 @@ sudo chmod -R 770 /var/www/html/
 # Install php and mariaDB
 sudo apt install php php-mbstring
 sudo apt-get -y install mysql-server php7.0-cgi php7.0-mysql
+sudo apt install default-libmysqlclient-dev
 # TODO: write sql user database sctipt
 
 # Enable i2c
