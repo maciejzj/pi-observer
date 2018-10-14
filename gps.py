@@ -9,9 +9,9 @@ class gps:
 	
 	def __init__(self, port = "/dev/serial0"):
 		try:
-			self.__ser = serial.Serial(port, timeout = 0.2)
-		except:
-			sys.exit("Can not connect with GPS using uart");
+			self.__ser = serial.Serial(port)
+		except Exception, e:
+			sys.exit("Can not connect with GPS using uart" + str(e));
 		
 	def get_record(self):		
 		got_record = False
@@ -53,7 +53,7 @@ class gps:
 			self._course = "GPS error"		# True course
 			self._date = dt.datetime.now().strftime('%Y-%m-%d')
 			return 1
-				
+		
 	def _decode(self, coord):
 		#Converts DDDMM.MMMMM to DD deg MM.MMMMM min
 		tmp = coord.split(".")
@@ -66,6 +66,32 @@ class gps:
 			return 1
 		else:
 			return self._date + " " + self._time
+	
+	def get_decimal_degrees_record(self):	
+		self.get_record()	
+		hemi_NE_sign = "+" if self._hemisphere_NS == "N" else "-"
+		hemi_WE_sign = "+" if self._hemisphere_WE == "E" else "-"
+		
+		pos = self._latitude.find('.')
+		lat_deg = self._latitude[:pos-2]
+		lat_mins = self._latitude[pos-2:pos] + self._latitude[pos+1:]
+		lat_mins = str(float(lat_mins) / 60.0)
+		
+		pos = self._longitude.find('.')
+		pos = self._longitude.find('.')
+		lng_deg = self._longitude[:pos-2]
+		lng_mins = self._longitude[pos-2:pos] + self._longitude[pos+1:]
+		lng_mins = str(float(lng_mins) / 60.0)
+		
+		record = {
+			'timestamp' : self.get_gps_time(),
+			'latitude' : hemi_NE_sign + lat_deg + "." + lat_mins,
+			'longitude' : hemi_WE_sign + lng_deg + "." + lng_mins,
+			'velocity' : self._velocity,
+			'course' : self._course
+		}
+		
+		return record
 		
 	def make_gps_log_entry(self):
 		self.get_record()
