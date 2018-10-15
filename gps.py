@@ -4,16 +4,16 @@ import var
 import datetime as dt
 import sys
 
-class gps:	
-	__ser = None
-	
+class gps:
 	def __init__(self, port = "/dev/serial0"):
+		# Initializes serial connection for gps communication
 		try:
 			self.__ser = serial.Serial(port)
 		except Exception, e:
 			sys.exit("Can not connect with GPS using uart" + str(e));
 		
-	def get_record(self):		
+	def get_record(self):
+		# For 50 times tries to read GPRMC record from gps	
 		got_record = False
 		for _ in range(50):
 			gps_record = self.__ser.readline()
@@ -29,28 +29,28 @@ class gps:
 				self._hemisphere_NS = data[4]	# Latitude direction N/S
 				self._longitude = data[5]
 				self._hemisphere_WE = data[6]	# Longitude direction W/E
-				self._velocity = data[7]
-				self._course = data[8]		# True course
+				self._velocity = data[7]		# Velocity in knots
+				self._course = data[8]			# True course
 				self._date = data[9][4:6] + "-" + data[9][2:4] + "-" + data[9][0:2]
 				return 0
 			else:
 				self._time = dt.datetime.now().strftime('%H:%M:%S')
 				self._latitude = "GPS signal lost"
-				self._hemisphere_NS = "GPS signal lost"	# Latitude direction N/S
+				self._hemisphere_NS = "GPS signal lost"
 				self._longitude = "GPS signal lost"
-				self._hemisphere_WE = "GPS signal lost"	# Longitude direction W/E
-				self._velocity = "GPS signal lost"		# Velocity in knots
-				self._course = "GPS signal lost"		# True course
+				self._hemisphere_WE = "GPS signal lost"
+				self._velocity = "GPS signal lost"
+				self._course = "GPS signal lost"
 				self._date = dt.datetime.now().strftime('%Y-%m-%d')
 				return 1
 		else:
 			self._time = dt.datetime.now().strftime('%H:%M:%S')
 			self._latitude = "GPS"
-			self._hemisphere_NS = "GPS error"	# Latitude direction N/S
+			self._hemisphere_NS = "GPS error"
 			self._longitude = "GPS error"
-			self._hemisphere_WE = "GPS error"	# Longitude direction W/E
-			self._velocity = "GPS error"		# Velocity in knots
-			self._course = "GPS error"		# True course
+			self._hemisphere_WE = "GPS error"
+			self._velocity = "GPS error"
+			self._course = "GPS error"
 			self._date = dt.datetime.now().strftime('%Y-%m-%d')
 			return 1
 		
@@ -62,13 +62,16 @@ class gps:
 		return deg + " deg " + mins + "." + tmp[1] + " min"
 		
 	def get_gps_time(self):
+		# Returns date and time or 1 if fails to obtain them
 		if (self.get_record()):
 			return 1
 		else:
 			return self._date + " " + self._time
 	
 	def get_decimal_degrees_record(self):	
-		self.get_record()	
+		# Read from GPS and get current location parameters dictionary in decimal_degrees
+		self.get_record()
+
 		hemi_NE_sign = "+" if self._hemisphere_NS == "N" else "-"
 		hemi_WE_sign = "+" if self._hemisphere_WE == "E" else "-"
 		
@@ -76,24 +79,21 @@ class gps:
 		lat_deg = self._latitude[:pos-2]
 		lat_mins = self._latitude[pos-2:pos] + self._latitude[pos+1:]
 		lat_mins = str(float(lat_mins) / 60.0)
-		
-		pos = self._longitude.find('.')
+
 		pos = self._longitude.find('.')
 		lng_deg = self._longitude[:pos-2]
 		lng_mins = self._longitude[pos-2:pos] + self._longitude[pos+1:]
 		lng_mins = str(float(lng_mins) / 60.0)
 		
-		record = {
+		return {
 			'timestamp' : self.get_gps_time(),
 			'latitude' : hemi_NE_sign + lat_deg + "." + lat_mins,
 			'longitude' : hemi_WE_sign + lng_deg + "." + lng_mins,
 			'velocity' : self._velocity,
-			'course' : self._course
-		}
-		
-		return record
-		
-	def make_gps_log_entry(self):
+			'course' : self._course }
+	
+	def get_location_message(self):
+		# Read from GPS and get current location in a easily readible string
 		self.get_record()
 		time_stamp = dt.datetime.now().strftime('[%Y-%m-%d %H:%M:%S]')
 		
@@ -105,22 +105,3 @@ class gps:
 			self._hemisphere_NS,
 			self._velocity,
 			self._course)
-		
-	def make_gogole_maps_marker_entry(self):
-		self.get_record()
-		time_stamp = dt.datetime.now().strftime('[%Y-%m-%d %H:%M:%S]')
-		
-		hemi_NE_sign = "+" if self._hemisphere_NS == "N" else "-"
-		hemi_WE_sign = "+" if self._hemisphere_WE == "E" else "-"
-		
-		pos = self._latitude.find('.')
-		latitude = self._latitude[:pos-2] + "." + self._latitude[pos-2:pos] + self._latitude[pos+1:]
-		pos = self._longitude.find('.')
-		longitude = self._longitude[:pos-2] + "." + self._longitude[pos-2:pos] + self._longitude[pos+1:]
-
-		return "%s,%s%s,%s%s" % (
-			time_stamp,
-			hemi_NE_sign, 
-			latitude, 
-			hemi_WE_sign, 
-			longitude) 
