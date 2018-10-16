@@ -29,11 +29,17 @@ header("Pragma: no-cache");
 			BalloonS!
 		</div>
 	</div>
+
+	<div id="register_hyperlink">
+			<br /><a href="register.php">Sign up!</a>
+	</div>
+
+
 	<div id="login_container">
 	Control panel login:<br />
 		<form action="login.php" method="post">
 			<input type="text" name="login" placeholder="login" onfocus="this.placeholder=''" onblur="this.placeholder='login'"/>
-			<input type="password" name="passwd" placeholder="password" onfocus="this.placeholder=''" onblur="this.placeholder='passwd'"/> <br />
+			<input type="password" name="passwd" placeholder="password" onfocus="this.placeholder=''" onblur="this.placeholder='password'"/> <br />
 			<?php
 				if(isset($_SESSION['error']))	echo $_SESSION['error'];
 			?>
@@ -44,6 +50,6 @@ header("Pragma: no-cache");
 	<div id="footer">
 		Maciej Ziaja 2018, maciejzj@icloud.com <br/>
 		Maciej Cholewa 2018, maciej.cholewa@interia.pl
-	</div>	
+	</div>
 </body>
 </html>
