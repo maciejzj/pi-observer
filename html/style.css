@@ -99,6 +99,12 @@ body
 	margin-right: auto;
 }
 
+.log_table
+{
+	height:400px;
+	overflow: scroll;
+}
+
 .textlog
 {
 	height:120px;

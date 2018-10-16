@@ -87,36 +87,38 @@ $connection = @new mysqli($host, $db_user, $db_password, $db_name_logs);
 							fclose($myfile);
 						?>
 					</div>
-					<?php
-						if ($connection->connect_errno != 0) {
-								echo "Error: ".$connection->connect_errno;
-						} else {
-							try {
-								$query = "SELECT * FROM temp_log";
-								print "<table>";
-								$result = $connection->query($query);
-								// We want the first row for col names
-								$row = $result->fetch_assoc();
-								print " <tr>";
-								foreach ($row as $field => $value){
-									print " <th>$field</th>";
-								}
-								print " </tr>";
-
-								// Print actual data
-								foreach($result as $row){
+					<div class="log_table">
+						<?php
+							if ($connection->connect_errno != 0) {
+									echo "Error: ".$connection->connect_errno;
+							} else {
+								try {
+									$query = "SELECT * FROM temp_log";
+									print "<table>";
+									$result = $connection->query($query);
+									// We want the first row for col names
+									$row = $result->fetch_assoc();
 									print " <tr>";
-									foreach ($row as $name=>$value){
-										print " <td>$value</td>";
+									foreach ($row as $field => $value){
+										print " <th>$field</th>";
 									}
 									print " </tr>";
+
+									// Print actual data
+									foreach($result as $row){
+										print " <tr>";
+										foreach ($row as $name=>$value){
+											print " <td>$value</td>";
+										}
+										print " </tr>";
+									}
+									print "</table>";
+								} catch(PDOException $e) {
+								 echo 'ERROR: ' . $e->getMessage();
 								}
-								print "</table>";
-							} catch(PDOException $e) {
-							 echo 'ERROR: ' . $e->getMessage();
 							}
-						}
-					?>
+						?>
+					</div>
 				</div>
 			</div>
 			
