@@ -9,6 +9,9 @@
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
+
+require_once "connect.php";
+$connection = @new mysqli($host, $db_user, $db_password, $db_name_logs);
 ?>
 
 <!DOCTYPE html>
@@ -82,8 +85,39 @@ header("Pragma: no-cache");
 								echo fgets($myfile) . "<br>";
 							}
 							fclose($myfile);
-							?>
+						?>
 					</div>
+					<?php
+						if ($connection->connect_errno != 0) {
+								echo "Error: ".$connection->connect_errno;
+						} else {
+							try {
+								$query = "SELECT * FROM temp_log";
+								print "<table>";
+								$result = $connection->query($query);
+								//return only the first row (we only need field names)
+								$row = $result->fetch_assoc();
+								print " <tr>";
+								foreach ($row as $field => $value){
+								 print " <th>$field</th>";
+								} // end foreach
+								print " </tr>";
+								//second query gets the data
+								$data = $connection->query($query);
+								//$data->setFetchMode(PDO::FETCH_ASSOC);
+								foreach($data as $row){
+								 print " <tr>";
+								 foreach ($row as $name=>$value){
+								 print " <td>$value</td>";
+								 } // end field loop
+								 print " </tr>";
+								} // end record loop
+								print "</table>";
+							} catch(PDOException $e) {
+							 echo 'ERROR: ' . $e->getMessage();
+							}
+						}
+					?>
 				</div>
 			</div>
 			
