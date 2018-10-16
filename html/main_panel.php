@@ -95,23 +95,22 @@ $connection = @new mysqli($host, $db_user, $db_password, $db_name_logs);
 								$query = "SELECT * FROM temp_log";
 								print "<table>";
 								$result = $connection->query($query);
-								//return only the first row (we only need field names)
+								// We want the first row for col names
 								$row = $result->fetch_assoc();
 								print " <tr>";
 								foreach ($row as $field => $value){
-								 print " <th>$field</th>";
-								} // end foreach
+									print " <th>$field</th>";
+								}
 								print " </tr>";
-								//second query gets the data
-								$data = $connection->query($query);
-								//$data->setFetchMode(PDO::FETCH_ASSOC);
-								foreach($data as $row){
-								 print " <tr>";
-								 foreach ($row as $name=>$value){
-								 print " <td>$value</td>";
-								 } // end field loop
-								 print " </tr>";
-								} // end record loop
+
+								// Print actual data
+								foreach($result as $row){
+									print " <tr>";
+									foreach ($row as $name=>$value){
+										print " <td>$value</td>";
+									}
+									print " </tr>";
+								}
 								print "</table>";
 							} catch(PDOException $e) {
 							 echo 'ERROR: ' . $e->getMessage();
