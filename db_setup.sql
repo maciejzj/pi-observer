@@ -6,7 +6,11 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost'
 CREATE DATABASE balloonS_users;
 USE balloonS_users;
 
+<<<<<<< HEAD
 CREATE TABLE users(id int NOT NULL AUTO_INCREMENT, login varchar(25) NOT NULL, pass varchar(255) NOT NULL, email varchar(255) NOT NULL, PRIMARY KEY(id));
+=======
+CREATE TABLE users(id int NOT NULL AUTO_INCREMENT, login varchar(25) NOT NULL, pass varchar(255) NOT NULL, email varchar(255) NOT NULL);
+>>>>>>> 6591b1b4e7f4dc510ba37b2658b53217b7f961ac
 
 CREATE DATABASE balloonS;
 USE balloonS;
