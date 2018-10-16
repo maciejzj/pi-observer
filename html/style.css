@@ -76,7 +76,7 @@ body
 #register_hyperlink
 {
 	width: 300px;
-	padding: 0px 50px 20px 50px;
+	padding: 0px 50px 50px 50px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: auto;
@@ -85,7 +85,7 @@ body
 	-moz-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
 	box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 15px;
 	text-align: left;
 }
 

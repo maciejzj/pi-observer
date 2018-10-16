@@ -25,6 +25,7 @@ pip install --user mysql-connector
 
 # Download and configure apache server
 sudo apt install apache2
+sudo apt-get install sendmail
 # Link server files to apache html storage
 sudo rm -r /var/www/html
 sudo ln -s $HOME/balloonS/html /var/www
@@ -60,7 +61,7 @@ else
 fi
 
 sudo echo $"dtoverlay=w1-gpio,gpiopin=4\ndtoverlay=w1-gpio,gpiopin=17\ndtoverlay=w1-gpio,gpiopin=27" >> /boot/config.txt
-# TODO: NOT WORKING - Change motion snapshopts target directory 
+# TODO: NOT WORKING - Change motion snapshopts target directory
 sudo sed -i '/target_dir \//c\target_dir /home/pi/balloonS/camera_snapshots' /etc/motion/motion.conf
 
 # Install python module for pressure sensor
