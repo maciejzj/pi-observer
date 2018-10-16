@@ -11,7 +11,17 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
 require_once "connect.php";
+require_once "make_log_table.php";
 $connection = @new mysqli($host, $db_user, $db_password, $db_name_logs);
+$tableLogNames = array(
+	"temperature" => "temp_log",
+	"internal_temperature" => "int_temp_log",
+	"pressure" => "press_log",
+	"altitude" => "alt_log",
+	"humidity" => "hum_log",
+	"location" => "loc_log",
+);
+
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +52,7 @@ $connection = @new mysqli($host, $db_user, $db_password, $db_name_logs);
 					require_once('make_gpio_buttons.php');
 					make_gpio_buttons();
 				?>
-				</br>
+				<br>
 				<a class="button" href='http://192.168.1.110:8081/0/'>Camera control</a>
 				<a class="button" href='http://192.168.1.110:8080/0/action/snapshot'>Camera snapshot</a>
 			</div>
@@ -69,6 +79,11 @@ $connection = @new mysqli($host, $db_user, $db_password, $db_name_logs);
 							fclose($myfile);
 							?>
 					</div>
+					<div class="log_table">
+						<?php
+							makeTable($connection, $tableLogNames["location"]);
+						?>
+					</div>
 				</div>
 			</div>
 			
@@ -89,34 +104,7 @@ $connection = @new mysqli($host, $db_user, $db_password, $db_name_logs);
 					</div>
 					<div class="log_table">
 						<?php
-							if ($connection->connect_errno != 0) {
-									echo "Error: ".$connection->connect_errno;
-							} else {
-								try {
-									$query = "SELECT * FROM temp_log";
-									print "<table>";
-									$result = $connection->query($query);
-									// We want the first row for col names
-									$row = $result->fetch_assoc();
-									print " <tr>";
-									foreach ($row as $field => $value){
-										print " <th>$field</th>";
-									}
-									print " </tr>";
-
-									// Print actual data
-									foreach($result as $row){
-										print " <tr>";
-										foreach ($row as $name=>$value){
-											print " <td>$value</td>";
-										}
-										print " </tr>";
-									}
-									print "</table>";
-								} catch(PDOException $e) {
-								 echo 'ERROR: ' . $e->getMessage();
-								}
-							}
+							makeTable($connection, $tableLogNames["temperature"]);
 						?>
 					</div>
 				</div>
@@ -137,6 +125,11 @@ $connection = @new mysqli($host, $db_user, $db_password, $db_name_logs);
 							fclose($myfile);
 							?>
 					</div>
+					<div class="log_table">
+						<?php
+							makeTable($connection, $tableLogNames["internal_temperature"]);
+						?>
+					</div>
 				</div>
 			</div>
 			
@@ -156,6 +149,11 @@ $connection = @new mysqli($host, $db_user, $db_password, $db_name_logs);
 							?>
 					</div>
 				</div>
+				<div class="log_table">
+					<?php
+						makeTable($connection, $tableLogNames["pressure"]);
+					?>
+				</div>
 			</div>
 			
 			<div class="infosection">
@@ -174,6 +172,11 @@ $connection = @new mysqli($host, $db_user, $db_password, $db_name_logs);
 							?>
 					</div>
 				</div>
+				<div class="log_table">
+					<?php
+						makeTable($connection, $tableLogNames["altitude"]);
+					?>
+				</div>
 			</div>
 			
 			<div class="infosection">
@@ -191,6 +194,11 @@ $connection = @new mysqli($host, $db_user, $db_password, $db_name_logs);
 							fclose($myfile);
 							?>
 					</div>
+				</div>
+				<div class="log_table">
+					<?php
+						makeTable($connection, $tableLogNames["humidity"]);
+					?>
 				</div>
 			</div>
 			
