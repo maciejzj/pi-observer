@@ -6,7 +6,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost'
 CREATE DATABASE balloonS_users;
 USE balloonS_users;
 
-CREATE TABLE users(id int, login varchar(25), pass varchar(25));
+CREATE TABLE users(id int NOT NULL AUTO_INCREMENT, login varchar(25) NOT NULL, pass varchar(255) NOT NULL, email varchar(255) NOT NULL);
 
 CREATE DATABASE balloonS;
 USE balloonS;
