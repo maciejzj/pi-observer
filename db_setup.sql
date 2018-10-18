@@ -6,10 +6,10 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost'
 CREATE DATABASE balloonS_users;
 USE balloonS_users;
 
-CREATE TABLE users(id int, login varchar(25), pass varchar(25));
+CREATE TABLE users(id int NOT NULL AUTO_INCREMENT, login varchar(25) NOT NULL, pass varchar(255) NOT NULL, email varchar(255) NOT NULL, confirmed int(11), confirm_code int(11), PRIMARY KEY(id));
 
 CREATE DATABASE balloonS;
-USE balloonS
+USE balloonS;
 
 CREATE TABLE press_log(num int NOT NULL AUTO_INCREMENT, log_time timestamp, log_val real, unit varchar(6), PRIMARY KEY (num));
 

@@ -16,33 +16,40 @@ error_reporting( E_ALL );
 		$login = $_POST['login'];
 		$passwd = $_POST['passwd'];
 		$login = htmlentities($login, ENT_QUOTES, "UTF-8");
-	
+
 		if ($rezultat = @$connection->query(
 		sprintf("SELECT * FROM users WHERE login='%s'",
 		mysqli_real_escape_string($connection, $login)))) {
 			$usr_count = $rezultat->num_rows;
 			if($usr_count > 0) {
 				$row = $rezultat->fetch_assoc();
-				if ($passwd == $row['pass']) {
-					$_SESSION['logged'] = true;
-					$_SESSION['id'] = $row['id'];
-					$_SESSION['login'] = $row['login'];
-					
-					unset($_SESSION['error']);
-					$rezultat->free_result();
-					
-					header('Location: main_panel.php');
-				}
-				else {
-					$_SESSION['error'] = '<span style="color:red;font-size:25px;">Invalid credentials!</span>';
+
+				$confirmed = $row['confirmed'];
+				if($confirmed=='0') {
+					$_SESSION['error'] = '<div class="error">Wait for confirmation!</div>';
 					header('Location: index.php');
+				} else {
+
+					if (password_verify($passwd, $row['pass'])) {
+						$_SESSION['logged'] = true;
+						$_SESSION['id'] = $row['id'];
+						$_SESSION['login'] = $row['login'];
+
+						unset($_SESSION['error']);
+						$rezultat->free_result();
+
+						header('Location: main_panel.php');
+					}
+					else {
+						$_SESSION['error'] = '<div class="error">Invalid credentials!</div>';
+						header('Location: index.php');
+					}
 				}
-				
 			} else {
-				$_SESSION['error'] = '<span style="color:red;font-size:25px;">Invalid credentials!</span>';
-				header('Location: index.php');	
+				$_SESSION['error'] = '<div class="error">Invalid credentials!</div>';
+				header('Location: index.php');
 			}
 		}
 		$connection->close();
-	}	
+	}
 ?>
