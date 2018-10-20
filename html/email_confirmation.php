@@ -74,7 +74,7 @@ header("Pragma: no-cache");
 		<div class="status">
 			BalloonS!
 		</div>
-		<a class="button" id="logout" href="register.php">Go back to main page!</a>
+		<a class="button" id="logout" href="index.php">Go back to main page!</a>
 	</div>
 
 	<div id="register_container">
