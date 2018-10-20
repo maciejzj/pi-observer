@@ -30,8 +30,15 @@ foreach ($db_table_names as $log_name => $db_table_name){
 	$html_table_logs[$log_name] = $html_table_log;
 	$array_table_logs[$log_name] = $array_table_log;
 }
-
 ?>
+
+<script type="text/javascript">
+	var temp_log = <?php echo json_encode($array_table_logs["temperature"], JSON_PRETTY_PRINT) ?>;
+	var int_temp_log = <?php echo json_encode($array_table_logs["internal_temperature"], JSON_PRETTY_PRINT) ?>;
+	var loc_log = <?php echo json_encode($array_table_logs["location"], JSON_PRETTY_PRINT) ?>;
+	var press_log = <?php echo json_encode($array_table_logs["pressure"], JSON_PRETTY_PRINT) ?>;
+	var alt_log = <?php echo json_encode($array_table_logs["altitude"], JSON_PRETTY_PRINT) ?>;
+</script>
 
 <!DOCTYPE html>
 <html>
@@ -115,10 +122,6 @@ foreach ($db_table_names as $log_name => $db_table_name){
 						<?php
 							print($html_table_logs["temperature"]);
 						?>
-						<script type="text/javascript">
-							var temp_log = <?php echo json_encode($temp_log, JSON_PRETTY_PRINT) ?>;
-							temp_log = JSON.stringify(temp_log[1].num);
-						</script>
 					</div>
 				</div>
 			</div>
