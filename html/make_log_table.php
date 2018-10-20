@@ -5,27 +5,27 @@ function makeTable($connection, $tableName) {
 	} else {
 		try {
 			$query = "SELECT * FROM " . $tableName;
-			print "<table>";
+			$html_table_log = "<table>";
 			$result = $connection->query($query);
 			// We want the first row for col names
 			$row = $result->fetch_assoc();
-			print " <tr>";
+			$html_table_log .= " <tr>";
 			foreach ($row as $field => $value){
-				print " <th>$field</th>";
+				$html_table_log .= " <th>$field</th>";
 			}
-			print " </tr>";
+			$html_table_log .= " </tr>";
 
 			// Print actual data
 			foreach($result as $row){
-				print " <tr>";
-				$returnArray[] = $row;
+				$html_table_log .= " <tr>";
+				$array_table_log[] = $row;
 				foreach ($row as $name=>$value){
-					print " <td>$value</td>";
+					$html_table_log .= " <td>$value</td>";
 				}
-				print " </tr>";
+				$html_table_log .= " </tr>";
 			}
-			print "</table>";
-			return $returnArray;
+			$html_table_log .= "</table>";
+			return array($html_table_log, $array_table_log);
 		} catch(PDOException $e) {
 		 echo 'ERROR: ' . $e->getMessage();
 		}

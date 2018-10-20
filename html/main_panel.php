@@ -12,8 +12,10 @@ header("Pragma: no-cache");
 
 require_once "connect.php";
 require_once "make_log_table.php";
+
 $connection = @new mysqli($host, $db_user, $db_password, $db_name_logs);
-$tableLogNames = array(
+
+$db_table_names = array(
 	"temperature" => "temp_log",
 	"internal_temperature" => "int_temp_log",
 	"pressure" => "press_log",
@@ -21,6 +23,13 @@ $tableLogNames = array(
 	"humidity" => "hum_log",
 	"location" => "loc_log",
 );
+
+foreach ($db_table_names as $log_name => $db_table_name){
+	list($html_table_log, $array_table_log) = makeTable($connection, $db_table_name);
+	
+	$html_table_logs[$log_name] = $html_table_log;
+	$array_table_logs[$log_name] = $array_table_log;
+}
 
 ?>
 
@@ -81,7 +90,7 @@ $tableLogNames = array(
 					</div>
 					<div class="log_table">
 						<?php
-							makeTable($connection, $tableLogNames["location"]);
+							print($html_table_logs["location"]);
 						?>
 					</div>
 				</div>
@@ -104,11 +113,11 @@ $tableLogNames = array(
 					</div>
 					<div class="log_table">
 						<?php
-							$temp_log = makeTable($connection, $tableLogNames["temperature"]);		
+							print($html_table_logs["temperature"]);
 						?>
 						<script type="text/javascript">
-						var temp_log = <?php echo json_encode($temp_log, JSON_PRETTY_PRINT) ?>;
-						temp_log = JSON.stringify(temp_log[1].num);
+							var temp_log = <?php echo json_encode($temp_log, JSON_PRETTY_PRINT) ?>;
+							temp_log = JSON.stringify(temp_log[1].num);
 						</script>
 					</div>
 				</div>
@@ -131,7 +140,7 @@ $tableLogNames = array(
 					</div>
 					<div class="log_table">
 						<?php
-							makeTable($connection, $tableLogNames["internal_temperature"]);
+							print($html_table_logs["internal_temperature"]);
 						?>
 					</div>
 				</div>
@@ -155,7 +164,7 @@ $tableLogNames = array(
 				</div>
 				<div class="log_table">
 					<?php
-						makeTable($connection, $tableLogNames["pressure"]);
+						print($html_table_logs["pressure"]);
 					?>
 				</div>
 			</div>
@@ -178,7 +187,7 @@ $tableLogNames = array(
 				</div>
 				<div class="log_table">
 					<?php
-						makeTable($connection, $tableLogNames["altitude"]);
+						print($html_table_logs["altitude"]);
 					?>
 				</div>
 			</div>
@@ -201,7 +210,7 @@ $tableLogNames = array(
 				</div>
 				<div class="log_table">
 					<?php
-						makeTable($connection, $tableLogNames["humidity"]);
+						print($html_table_logs["humidity"]);
 					?>
 				</div>
 			</div>
