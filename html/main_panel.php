@@ -104,8 +104,12 @@ $tableLogNames = array(
 					</div>
 					<div class="log_table">
 						<?php
-							makeTable($connection, $tableLogNames["temperature"]);
+							$temp_log = makeTable($connection, $tableLogNames["temperature"]);		
 						?>
+						<script type="text/javascript">
+						var temp_log = <?php echo json_encode($temp_log, JSON_PRETTY_PRINT) ?>;
+						temp_log = JSON.stringify(temp_log[1].num);
+						</script>
 					</div>
 				</div>
 			</div>

@@ -18,12 +18,14 @@ function makeTable($connection, $tableName) {
 			// Print actual data
 			foreach($result as $row){
 				print " <tr>";
+				$returnArray[] = $row;
 				foreach ($row as $name=>$value){
 					print " <td>$value</td>";
 				}
 				print " </tr>";
 			}
 			print "</table>";
+			return $returnArray;
 		} catch(PDOException $e) {
 		 echo 'ERROR: ' . $e->getMessage();
 		}
