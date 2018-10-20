@@ -9,6 +9,7 @@ body
 	/* from: https://www.toptal.com/designers/subtlepatterns/ */
 	font-size: 20px;
 	font-family: sans-serif;
+	overflow-y: scroll;
 }
 
 #topbar
@@ -20,6 +21,37 @@ body
 	background-color: #303030;
 	font-size: 25px;
 	color: white;
+}
+
+.tooltip
+{
+	position: relative;
+	z-index: 20;
+}
+
+.tooltip span
+{
+	display: none;
+}
+
+.tooltip:hover
+{
+	z-index: 21;
+}
+
+.tooltip:hover span
+{
+	display: block;
+	width: 290px;
+	padding: 5px;
+	color: #FFF;
+	background: #535663;
+	text-decoration: none;
+	position: absolute;
+	border-radius: 6px;
+	margin-left: auto;
+	left: auto;
+	top: 25px;
 }
 
 .status
@@ -71,22 +103,6 @@ body
 	-moz-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
 	box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
 	font-size: 20px;
-}
-
-#register_hyperlink
-{
-	width: 300px;
-	padding: 0px 50px 50px 50px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: auto;
-	background-color: white;
-	-webkit-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
-	-moz-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
-	box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
-	font-weight: bold;
-	font-size: 15px;
-	text-align: left;
 }
 
 #panel_container

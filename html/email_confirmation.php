@@ -7,7 +7,7 @@
 
   $nickname = $_GET['username'];
   $code = $_GET['code'];
-  
+
   try {
      $connection = new mysqli($host, $db_user, $db_password, $db_name);
      if ($connection->connect_errno != 0) {
@@ -74,11 +74,8 @@ header("Pragma: no-cache");
 		<div class="status">
 			BalloonS!
 		</div>
+		<a class="button" id="logout" href="register.php">Go back to main page!</a>
 	</div>
-
-  <div id="register_hyperlink">
-      <br /><a href="index.php" style="text-decoration: none"><input type="submit" value="Go back to main page" /></a>
-  </div>
 
 	<div id="register_container">
     <?php
