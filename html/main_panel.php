@@ -38,7 +38,7 @@ foreach ($db_table_names as $log_name => $db_table_name){
 	var loc_log = <?php echo json_encode($array_table_logs["location"], JSON_PRETTY_PRINT) ?>;
 	var press_log = <?php echo json_encode($array_table_logs["pressure"], JSON_PRETTY_PRINT) ?>;
 	var alt_log = <?php echo json_encode($array_table_logs["altitude"], JSON_PRETTY_PRINT) ?>;
-	var hum_log = <?php echo json_encode($array_table_logs["humidity"], JSON_PRETTY_PRINT) ?>
+	var hum_log = <?php echo json_encode($array_table_logs["humidity"], JSON_PRETTY_PRINT) ?>;
 </script>
 
 <!DOCTYPE html>
@@ -49,6 +49,8 @@ foreach ($db_table_names as $log_name => $db_table_name){
 		<title>BalloonS - Control panel</title>
 		<link rel="stylesheet" href="style.css" type="text/css" />
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDC3AdKTRhuef-V14umy0kfEiieAi5RaFw"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+		<script src="chart.js"></script>
 
 		<?php
 			require_once('google_maps.php');
@@ -199,6 +201,10 @@ foreach ($db_table_names as $log_name => $db_table_name){
 			<div class="infosection">
 				<div class = "infosection_title">Humidity log</div>
 				<img class="chart" src="sensor_logs/hum_log.png">
+
+				<canvas id="hum_log_chart"></canvas>
+				<script>makeChart("hum_log_chart", hum_log)</script>
+
 				<div class="log_cont">
 					<a class="button" href="/sensor_logs/hum_log" download>Download log file</a>
 					<div class="textlog" id="hum_log">
