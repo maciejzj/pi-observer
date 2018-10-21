@@ -203,7 +203,7 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				<img class="chart" src="sensor_logs/hum_log.png">
 
 				<canvas id="hum_log_chart"></canvas>
-				<script>makeChart("hum_log_chart", hum_log)</script>
+				<script>makeChart("hum_log_chart", "Humidity", hum_log)</script>
 
 				<div class="log_cont">
 					<a class="button" href="/sensor_logs/hum_log" download>Download log file</a>
