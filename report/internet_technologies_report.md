@@ -385,3 +385,75 @@ If we keep the correct naming which is ensured by the associative array at the b
 
 Here\`s the generated chart:
 ![chart_example](https://i.imgur.com/tCvHGVi.png)
+
+Another feature we can now call finished is registration system. Inquisitive people can fill a form on the site, then administrator will receive an e-mail informing him about the request.
+Here is how the registration form looks right now:
+![alt text](https://i.imgur.com/BNeCa8d.png "registration_system_look")
+The small question marks next to "Nickname:" and "Password:" show requirements that have to be fulfilled after being hovered. The `.tooltip` class that provides showing that tooltips is made in CSS language.
+```css
+.tooltip
+{
+	position: relative;
+	z-index: 20;
+}
+
+.tooltip span
+{
+	display: none;
+}
+
+.tooltip:hover
+{
+	z-index: 21;
+}
+
+.tooltip:hover span
+{
+	display: block;
+	width: 290px;
+	padding: 5px;
+	color: #FFF;
+	background: #535663;
+	text-decoration: none;
+	position: absolute;
+	border-radius: 6px;
+	margin-left: auto;
+	left: auto;
+	top: 25px;
+}
+```
+And used in php file:
+```php
+<a href="#" class="tooltip"><img style="float:right" src="./data/img/question_mark.png" width="6%" height="6%"><span>3-24 characters long, only alphanumeric characters, username has to be unique</span></a>
+```
+
+Valid form checks:
+* length of nickname
+* if nickname is unique
+* if nickname has only alphanumeric characters
+* length of password
+* if password has at least one digit, one lowercase and one uppercase
+* compatibility of password typed two times
+* e-mail format
+* if e-mail is unique
+* if the checkbox with Terms of Use acceptation was marked
+* if the user is a human (Google reCAPTCHA)
+
+If the requirements are not fulfilled the info about it is being displayed under form inputs:
+![text alt](https://i.imgur.com/oHPUhd7.png "registration_system_look2")
+Nickname and e-mail address, when input correctly, are stored in `$_SESSION` variable so if new user does not fulfill correctly rest of the requirements, he does not have to type them again.
+```php
+<input type="text" name="nickname" placeholder="nickname" onfocus="this.placeholder=''" onblur="this.placeholder='nickname'" value="<?php echo $_SESSION['nickname']?>"/>
+```
+
+Every new user needs to be confirmed by one of administrators. It's provided by sending an activation link. 
+```php
+<?php
+$message = 'Confirm that $nickname with e-mail adress: $email is allowed to join.
+			Click the link:
+			http://localhost/email_confirmation.php?username='.$nickname.'&code='.$auth_code;
+			mail($admin_email,"$nickname email confimation",$message,"From: DoNotReply@TheBalloonS.com");
+?>
+```
+
+Activation link changes confirmation flag stored in database from `0` to `1` with query `UPDATE users SET confirmed='1' WHERE login='$nickname'`. Then site sends an e-mail to new user in which he/she is being informed about acceptance of his/her request.
