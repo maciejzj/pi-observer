@@ -2,7 +2,12 @@
 	session_start();
 	error_reporting( E_ALL );
   if (isset($_POST['nickname'])) {
-    $all_OK = true;
+
+		//remember data in form
+		$_SESSION['nickname'] = $_POST['nickname'];
+		$_SESSION['email'] = $_POST['email'];
+
+		$all_OK = true;
 
     //check Nickname
     $nickname = $_POST['nickname'];
@@ -52,14 +57,14 @@
       $_SESSION['e_checkbox_terms'] = 'Read and confirm <a href="terms.php">Terms of Use</a>!';
     }
 
-    /*TODO:check reCAPTCHA
+    //check reCAPTCHA
     $sekret = "6LfzRXUUAAAAAH9UDt3ZDGnjIUjYbKowljOollBJ";
-    $check = file_get_content('https://www.google.com/recaptcha/api/siteverify?secret='.$sekret.'&response='.$_POST['g-recaptcha-response']);
+    $check = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$sekret.'&response='.$_POST['g-recaptcha-response']);
     $response = json_decode($check);
     if($response->success==false) {
       $all_OK = false;
       $_SESSION['e_bot'] = 'Confirm that you are a human!';
-    }*/
+    }
 
     require_once "connect.php";
     mysqli_report(MYSQLI_REPORT_STRICT);
@@ -91,7 +96,8 @@
 
 				 //check ALL - add new user to database
 				 if($all_OK == true) {
-					 $auth_code = rand();
+					 $auth_code = rand(100000000, 999999000);
+
 					 if($connection->query("INSERT INTO users VALUES (NULL, '$nickname', '$passwd_hash', '$email', '0', '$auth_code')")) {
 						 $_SESSION['registation_successful'] = true;
 						 header('Location: welcome.php');
@@ -99,13 +105,12 @@
 						 throw new Exception($connection->error);
 					 }
 
-					 $message = '
-					 Confirm that $nickname with e-mail adress: $email is allowed to join.
+					 $message = 'Confirm that $nickname with e-mail adress: $email is allowed to join.
 					 Click the link:
-					 http://localhost/email_confirmation.php?username='.$nickname.'&code='.$auth_code.'
-					 ';
+					 http://localhost/email_confirmation.php?username='.$nickname.'&code='.$auth_code;
+
 					 /*TODO: sending e-mail confirmation to admin
-					 mail(vikinkpl@gmail.com,"$nickname email confimation",$message,"From: DoNotReply@The_BalloonS.com");*/
+					 mail(vikinkpl@gmail.com,"$nickname email confimation",$message,"From: DoNotReply@TheBalloonS.com");*/
 				 }
 
          $connection->close();
@@ -139,11 +144,8 @@ header("Pragma: no-cache");
 		<div class="status">
 			BalloonS!
 		</div>
+		<a class="button" id="logout" href="index.php">Abort!</a>
 	</div>
-
-  <div id="register_hyperlink">
-      <br /><a href="index.php" style="text-decoration: none"><input type="submit" value="Abort!" /></a>
-  </div>
 
 	<div id="register_container">
 		<form method="post">
@@ -153,8 +155,9 @@ header("Pragma: no-cache");
           unset($_SESSION['e_connection']);
         }
       ?>
-      Nickname (3-24 characters, only alphanumeric characters):<br />
-			<input type="text" name="nickname" placeholder="nickname" onfocus="this.placeholder=''" onblur="this.placeholder='nickname'"/> <br />
+<!source of question mark image: https://www.iconfinder.com/icons/134182/information_question_icon->
+      Nickname:<a href="#" class="tooltip"><img style="float:right" src="./data/img/question_mark.png" width="6%" height="6%"><span>3-24 characters long, only alphanumeric characters, username has to be unique</span></a><br />
+			<input type="text" name="nickname" placeholder="nickname" onfocus="this.placeholder=''" onblur="this.placeholder='nickname'" value="<?php echo $_SESSION['nickname']?>"/><br />
       <?php
         if(isset($_SESSION['e_nickname'])) {
           echo '<div class="error">'.$_SESSION['e_nickname'].'</div>';
@@ -162,9 +165,8 @@ header("Pragma: no-cache");
         }
       ?><br />
 
-<!TODO: info about requirements need to be visible after hovering over question mark>
-      Password (6-24 characters, minimum one capital letter, one lowercase and one digit):<br />
-      <input type="password" name="passwd" placeholder="password" onfocus="this.placeholder=''" onblur="this.placeholder='password'"/> <br />
+      Password:<a href="#" class="tooltip"><img style="float:right" src="./data/img/question_mark.png" width="6%" height="6%"><span>6-24 characters long, minimum one capital letter, one lowercase and one digit</span></a><br />
+			<input type="password" name="passwd" placeholder="password" onfocus="this.placeholder=''" onblur="this.placeholder='password'"/><br />
       <?php
         if(isset($_SESSION['e_passwd'])) {
           echo '<div class="error">'.$_SESSION['e_passwd'].'</div>';
@@ -181,7 +183,7 @@ header("Pragma: no-cache");
       ?><br />
 
       E-mail adress:
-      <input type="text" name="email" placeholder="e-mail" onfocus="this.placeholder=''" onblur="this.placeholder='e-mail'"/> <br />
+      <input type="text" name="email" placeholder="e-mail" onfocus="this.placeholder=''" onblur="this.placeholder='e-mail'" value="<?php echo $_SESSION['email']?>"/> <br />
       <?php
         if(isset($_SESSION['e_email'])) {
           echo '<div class="error">'.$_SESSION['e_email'].'</div>';
@@ -199,15 +201,15 @@ header("Pragma: no-cache");
         }
       ?><br />
 
-<!--TODO:recaptcha
-      <div class="g-recaptcha" data-sitekey="6LfzRXUUAAAAAFUE-IApgwaLIHdWXmJZAJcjdLvT"></div><br />
+
+      <div class="g-recaptcha" data-sitekey="6LfzRXUUAAAAAFUE-IApgwaLIHdWXmJZAJcjdLvT"></div>
       <?php
         if(isset($_SESSION['e_bot'])) {
           echo '<div class="error">'.$_SESSION['e_bot'].'</div>';
           unset($_SESSION['e_bot']);
         }
       ?><br />
--->
+
       <input type="submit" value="Sign up!" />
 		</form>
 	</div>

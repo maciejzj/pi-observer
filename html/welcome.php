@@ -29,10 +29,7 @@ header("Pragma: no-cache");
 		<div class="status">
 			BalloonS!
 		</div>
-	</div>
-
-	<div id="register_hyperlink">
-      <br /><a href="index.php" style="text-decoration: none"><input type="submit" value="Go back to main page" /></a>
+		<a class="button" id="logout" href="index.php">Go back to main page!</a>
 	</div>
 
 	<div id="register_container">
