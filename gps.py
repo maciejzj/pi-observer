@@ -31,13 +31,13 @@ class gps:
 					self._time = data[1][0:2] + ":" + data[1][2:4] + ":" + data[1][4:6]
 				else:
 					self._time = dt.datetime.now().strftime('[%H:%M:%S]')
-					self._status = "Corrupted data1"
+					self._status = "Corrupted data"
 			
 				# Latitude
 				if (is_number(data[3])):
 					self._latitude = data[3]
 				else:
-					self._status = "Corrupted data2"
+					self._status = "Corrupted data"
 				
 				# Latitude direction N/S
 				self._hemisphere_NS = data[4]
@@ -46,32 +46,30 @@ class gps:
 				if (is_number(data[5])):
 					self._longitude = data[5]
 				else:
-					self._status = "Corrupted data3"	
+					self._status = "Corrupted data"	
 
 				# Longitude direction W/E
 				self._hemisphere_WE = data[6]	
 				
 				# Velocity in knots
 				if (is_number(data[7])):
-					self._velocity = data[7]	
+					self._velocity = data[7]
 				else:
-					self._status = "Corrupted data4"
+					self._status = "Corrupted data"
 
 				# True course
-				print(gps_record, data[8])
-				print(is_number(data[8]))
 				if (is_number(data[8])):
 					self._course = data[8]
 				elif data[8] == '':
 					self._course = 0;
 				else:
-					self._status = "Corrupted data5"	
+					self._status = "Corrupted data"	
 				
 				# Date
 				if is_number(data[9][4:6]) and is_number(data[9][2:4]) and is_number(data[9][0:2]):
 					self._date = data[9][4:6] + "-" + data[9][2:4] + "-" + data[9][0:2]
 				else:
-					self._status = "Corrupted data6"	
+					self._status = "Corrupted data"	
 
 				if self._status == "Correct":
 					return 0
@@ -119,7 +117,6 @@ class gps:
 			lng_deg = self._longitude[:pos-2]
 			lng_mins = self._longitude[pos-2:pos] + self._longitude[pos+1:]
 			lng_mins = str(float(lng_mins) / 60.0)
-			print("DObrze")
 			
 			return {
 				'timestamp' : self.get_gps_time(),
@@ -129,7 +126,6 @@ class gps:
 				'velocity' : self._velocity,
 				'course' : self._course }
 		else:
-			print(self._status)
 			return {
 				'timestamp' : self._date + " " + self._time,
 				'status' : self._status,
