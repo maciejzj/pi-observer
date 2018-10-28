@@ -109,6 +109,10 @@ foreach ($db_table_names as $log_name => $db_table_name){
 			<div class="infosection">
 				<div class = "infosection_title">Temperature log</div>
 				<img class="chart" src="sensor_logs/temp_log.png">
+				
+				<canvas id="temp_log_chart"></canvas>
+				<script>makeDoubleChart("temp_log_chart", "External temperature", "Internal temperature", temp_log, int_temp_log)</script>
+				
 				<div class="log_cont">
 					<a class="button" href="/sensor_logs/temp_log" download>Download log file</a>
 					<div class="textlog" id="temp_log">
@@ -155,6 +159,10 @@ foreach ($db_table_names as $log_name => $db_table_name){
 			<div class="infosection">
 				<div class = "infosection_title">Pressure log</div>
 				<img class="chart" src="sensor_logs/press_log.png">
+				
+				<canvas id="press_log_chart"></canvas>
+				<script>makeChart("press_log_chart", "Pressure", press_log)</script>
+				
 				<div class="log_cont">
 					<a class="button" href="/sensor_logs/press_log" download>Download log file</a>
 					<div class="textlog" id="press_log">
@@ -178,6 +186,10 @@ foreach ($db_table_names as $log_name => $db_table_name){
 			<div class="infosection">
 				<div class = "infosection_title">Altitude log</div>
 				<img class="chart" src="sensor_logs/alt_log.png">
+				
+				<canvas id="alt_log_chart"></canvas>
+				<script>makeChart("alt_log_chart", "Altitude", alt_log)</script>
+				
 				<div class="log_cont">
 					<a class="button" href="/sensor_logs/alt_log" download>Download log file</a>
 					<div class="textlog" id="alt_log">
