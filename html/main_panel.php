@@ -53,13 +53,7 @@ foreach ($db_table_names as $log_name => $db_table_name){
 		<script src="chart.js"></script>
 		<script src="google_maps.js"></script>
 
-		<?php
-			require_once('google_maps.php');
-		?>
 		<script>var map;</script>
-		<script>makeGoogleMaps(loc_log)</script>
-		<script>google.maps.event.addDomListener(window, 'load', initialize);</script>
-
 	</head>
 	<body>
 		<div id="topbar">
@@ -87,6 +81,8 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				<div id = "map_canvas">
 					<div id = "map"></div>
 				</div>
+				<script>makeGoogleMaps(loc_log)</script>
+				
 				<div class="log_cont">
 					<a class="button" href="/sensor_logs/loc_log" download>Download log file</a>
 
