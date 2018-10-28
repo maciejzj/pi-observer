@@ -17,6 +17,8 @@ mydb = mysql.connector.connect(
 	database = "balloonS"
 )
 
+time_stamp = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
 for key in therm_addr.viewkeys() & therm_log_name.viewkeys():
 	with open(therm_addr[key], mode = "r") as therm:	
 		lines = therm.readlines()
@@ -24,8 +26,6 @@ for key in therm_addr.viewkeys() & therm_log_name.viewkeys():
 			match = re.search(r'(?<=t=)[0-9]*', line)
 			if(match):
 				temp = float(match.group()) / 1000
-
-	time_stamp = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 	
 	with open("/home/pi/balloonS/sensor_logs/" + therm_log_name[key], mode = "a+") as temp_log:	
 		temp_log.write(time_stamp + " t=" + str(temp) + "C\n")

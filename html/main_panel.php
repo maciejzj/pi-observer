@@ -88,16 +88,7 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				</div>
 				<div class="log_cont">
 					<a class="button" href="/sensor_logs/loc_log" download>Download log file</a>
-					<div class="textlog" id="loc_log">
-						<?php
-							$myfile = fopen("./sensor_logs/loc_log", "r") or die("Unable to open file!");
-							// Output one line until end-of-file
-							while(!feof($myfile)) {
-								echo fgets($myfile) . "<br>";
-							}
-							fclose($myfile);
-							?>
-					</div>
+
 					<div class="log_table">
 						<?php
 							print($html_table_logs["location"]);
@@ -108,19 +99,13 @@ foreach ($db_table_names as $log_name => $db_table_name){
 
 			<div class="infosection">
 				<div class = "infosection_title">Temperature log</div>
-				<img class="chart" src="sensor_logs/temp_log.png">
+				
+				<canvas id="temp_log_chart"></canvas>
+				<script>makeDoubleChart("temp_log_chart", "External temperature", "Internal temperature", temp_log, int_temp_log)</script>
+				
 				<div class="log_cont">
 					<a class="button" href="/sensor_logs/temp_log" download>Download log file</a>
-					<div class="textlog" id="temp_log">
-						<?php
-							$myfile = fopen("./sensor_logs/temp_log", "r") or die("Unable to open file!");
-							// Output one line until end-of-file
-							while(!feof($myfile)) {
-								echo fgets($myfile) . "<br>";
-							}
-							fclose($myfile);
-						?>
-					</div>
+
 					<div class="log_table">
 						<?php
 							print($html_table_logs["temperature"]);
@@ -131,19 +116,10 @@ foreach ($db_table_names as $log_name => $db_table_name){
 
 			<div class="infosection">
 				<div class = "infosection_title">Internal temperature log</div>
-				<img class="chart" src="sensor_logs/int_temp_log.png">
+
 				<div class="log_cont">
 					<a class="button" href="/sensor_logs/int_temp_log" download>Download log file</a>
-					<div class="textlog" id="int_temp_log">
-						<?php
-							$myfile = fopen("./sensor_logs/int_temp_log", "r") or die("Unable to open file!");
-							// Output one line until end-of-file
-							while(!feof($myfile)) {
-								echo fgets($myfile) . "<br>";
-							}
-							fclose($myfile);
-							?>
-					</div>
+					
 					<div class="log_table">
 						<?php
 							print($html_table_logs["internal_temperature"]);
@@ -154,19 +130,13 @@ foreach ($db_table_names as $log_name => $db_table_name){
 
 			<div class="infosection">
 				<div class = "infosection_title">Pressure log</div>
-				<img class="chart" src="sensor_logs/press_log.png">
+				
+				<canvas id="press_log_chart"></canvas>
+				<script>makeChart("press_log_chart", "Pressure", press_log)</script>
+				
 				<div class="log_cont">
 					<a class="button" href="/sensor_logs/press_log" download>Download log file</a>
-					<div class="textlog" id="press_log">
-						<?php
-							$myfile = fopen("./sensor_logs/press_log", "r") or die("Unable to open file!");
-							// Output one line until end-of-file
-							while(!feof($myfile)) {
-								echo fgets($myfile) . "<br>";
-							}
-							fclose($myfile);
-							?>
-					</div>
+
 				</div>
 				<div class="log_table">
 					<?php
@@ -177,19 +147,12 @@ foreach ($db_table_names as $log_name => $db_table_name){
 
 			<div class="infosection">
 				<div class = "infosection_title">Altitude log</div>
-				<img class="chart" src="sensor_logs/alt_log.png">
+				
+				<canvas id="alt_log_chart"></canvas>
+				<script>makeChart("alt_log_chart", "Altitude", alt_log)</script>
+				
 				<div class="log_cont">
 					<a class="button" href="/sensor_logs/alt_log" download>Download log file</a>
-					<div class="textlog" id="alt_log">
-						<?php
-							$myfile = fopen("./sensor_logs/alt_log", "r") or die("Unable to open file!");
-							// Output one line until end-of-file
-							while(!feof($myfile)) {
-								echo fgets($myfile) . "<br>";
-							}
-							fclose($myfile);
-							?>
-					</div>
 				</div>
 				<div class="log_table">
 					<?php
@@ -200,23 +163,12 @@ foreach ($db_table_names as $log_name => $db_table_name){
 
 			<div class="infosection">
 				<div class = "infosection_title">Humidity log</div>
-				<img class="chart" src="sensor_logs/hum_log.png">
 
 				<canvas id="hum_log_chart"></canvas>
 				<script>makeChart("hum_log_chart", "Humidity", hum_log)</script>
 
 				<div class="log_cont">
 					<a class="button" href="/sensor_logs/hum_log" download>Download log file</a>
-					<div class="textlog" id="hum_log">
-						<?php
-							$myfile = fopen("./sensor_logs/hum_log", "r") or die("Unable to open file!");
-							// Output one line until end-of-file
-							while(!feof($myfile)) {
-								echo fgets($myfile) . "<br>";
-							}
-							fclose($myfile);
-							?>
-					</div>
 				</div>
 				<div class="log_table">
 					<?php
