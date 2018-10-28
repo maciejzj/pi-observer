@@ -45,8 +45,8 @@ function drawChart(chartID, chartLabel, xData, yData) {
       datasets:[
         {
         label: chartLabel,
-        fill:false,
-        borderColor:'428bca',
+        fill:true,
+        borderColor:'#428bca',
         lineTension:0.2,
         data: yData}
       ],
@@ -60,7 +60,7 @@ function drawChart(chartID, chartLabel, xData, yData) {
       },
       elements: {
         point:{
-          radius: 0
+          radius: 2
         }
       },
       legend:{
@@ -69,10 +69,10 @@ function drawChart(chartID, chartLabel, xData, yData) {
       },
       layout:{
         padding:{
-          left:50,
-          right:50,
-          bottom:50,
-          top:50
+          left:10,
+          right:10,
+          bottom:10,
+          top:10
         }
       }
     }
@@ -91,13 +91,13 @@ function drawDoubleChart(chartID, chartLabel1, chartLabel2, xData, yData1, yData
         {
         label: chartLabel1,
         fill:false,
-        borderColor:'428bca',
+        borderColor:'#428bca',
         lineTension:0.2,
         data: yData1},
         {
         label: chartLabel2,
         fill:false,
-        borderColor:'cc2536',
+        borderColor:'#cc2536',
         lineTension:0.2,
         data: yData2}
       ],
@@ -112,7 +112,7 @@ function drawDoubleChart(chartID, chartLabel1, chartLabel2, xData, yData1, yData
       },
       elements: {
         point:{
-          radius: 0
+          radius: 2
         }
       },
       legend:{
@@ -121,10 +121,10 @@ function drawDoubleChart(chartID, chartLabel1, chartLabel2, xData, yData1, yData
       },
       layout:{
         padding:{
-          left:50,
-          right:50,
-          bottom:50,
-          top:50
+          left:10,
+          right:10,
+          bottom:10,
+          top:10
         }
       }
     }
