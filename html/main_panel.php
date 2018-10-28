@@ -51,12 +51,13 @@ foreach ($db_table_names as $log_name => $db_table_name){
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDC3AdKTRhuef-V14umy0kfEiieAi5RaFw"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 		<script src="chart.js"></script>
+		<script src="google_maps.js"></script>
 
 		<?php
 			require_once('google_maps.php');
 		?>
 		<script>var map;</script>
-		<script src="google_maps.js"></script>
+		<script>makeGoogleMaps(loc_log)</script>
 		<script>google.maps.event.addDomListener(window, 'load', initialize);</script>
 
 	</head>
