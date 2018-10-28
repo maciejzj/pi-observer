@@ -21,4 +21,4 @@ CREATE TABLE int_temp_log(num int NOT NULL AUTO_INCREMENT, log_time timestamp, l
 
 CREATE TABLE hum_log(num int NOT NULL AUTO_INCREMENT, log_time timestamp, log_val real, unit varchar(6), PRIMARY KEY (num));
 
-CREATE TABLE loc_log(num int NOT NULL AUTO_INCREMENT, log_time timestamp, latitude real, longitude real, velocity real, course real, PRIMARY KEY (num));
+CREATE TABLE loc_log(num int NOT NULL AUTO_INCREMENT, log_time timestamp, status varchar(20), latitude real, longitude real, velocity real, course real, PRIMARY KEY (num));
