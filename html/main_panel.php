@@ -47,7 +47,8 @@ foreach ($db_table_names as $log_name => $db_table_name){
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<title>BalloonS - Control panel</title>
-		<link rel="stylesheet" href="style.css" type="text/css" />
+		<link rel="stylesheet/less" type="text/css" href="styles.less">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDC3AdKTRhuef-V14umy0kfEiieAi5RaFw"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 		<script src="chart.js"></script>
@@ -86,11 +87,11 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				<div class="log_cont">
 					<a class="button" href="/sensor_logs/loc_log" download>Download log file</a>
 
-					<div class="log_table">
+<!-- 					<div class="log_table"> -->
 						<?php
 							print($html_table_logs["location"]);
 						?>
-					</div>
+<!-- 					</div> -->
 				</div>
 			</div>
 
@@ -103,11 +104,9 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				<div class="log_cont">
 					<a class="button" href="/sensor_logs/temp_log" download>Download log file</a>
 
-					<div class="log_table">
 						<?php
 							print($html_table_logs["temperature"]);
 						?>
-					</div>
 				</div>
 			</div>
 
@@ -116,12 +115,11 @@ foreach ($db_table_names as $log_name => $db_table_name){
 
 				<div class="log_cont">
 					<a class="button" href="/sensor_logs/int_temp_log" download>Download log file</a>
-					
-					<div class="log_table">
+
 						<?php
 							print($html_table_logs["internal_temperature"]);
 						?>
-					</div>
+
 				</div>
 			</div>
 
@@ -135,11 +133,9 @@ foreach ($db_table_names as $log_name => $db_table_name){
 					<a class="button" href="/sensor_logs/press_log" download>Download log file</a>
 
 				</div>
-				<div class="log_table">
 					<?php
 						print($html_table_logs["pressure"]);
 					?>
-				</div>
 			</div>
 
 			<div class="infosection">
@@ -151,11 +147,9 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				<div class="log_cont">
 					<a class="button" href="/sensor_logs/alt_log" download>Download log file</a>
 				</div>
-				<div class="log_table">
 					<?php
 						print($html_table_logs["altitude"]);
 					?>
-				</div>
 			</div>
 
 			<div class="infosection">
@@ -167,11 +161,11 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				<div class="log_cont">
 					<a class="button" href="/sensor_logs/hum_log" download>Download log file</a>
 				</div>
-				<div class="log_table">
+
 					<?php
 						print($html_table_logs["humidity"]);
 					?>
-				</div>
+
 			</div>
 
 		</div>

@@ -5,7 +5,8 @@ function makeTable($connection, $tableName) {
 	} else {
 		try {
 			$query = "SELECT * FROM " . $tableName;
-			$html_table_log = "<table>";
+			$html_table_log = "<table class = 'log_table' id = '$tableName" . "_table'>";
+			$html_table_log .= "<thead>";
 			$result = $connection->query($query);
 			// We want the first row for col names
 			$row = $result->fetch_assoc();
@@ -14,7 +15,8 @@ function makeTable($connection, $tableName) {
 				$html_table_log .= " <th>$field</th>";
 			}
 			$html_table_log .= " </tr>";
-
+			$html_table_log .= "</thead><tbody>";
+			
 			// Print actual data
 			foreach($result as $row){
 				$html_table_log .= " <tr>";
@@ -24,7 +26,7 @@ function makeTable($connection, $tableName) {
 				}
 				$html_table_log .= " </tr>";
 			}
-			$html_table_log .= "</table>";
+			$html_table_log .= "</tbody></table>";
 			return array($html_table_log, $array_table_log);
 		} catch(PDOException $e) {
 		 echo 'ERROR: ' . $e->getMessage();
