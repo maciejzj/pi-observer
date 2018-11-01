@@ -1,3 +1,17 @@
+@red_accent_color: #E2228C;
+@red_accent_color_light: #E1A8B4;
+@red_accent_color_dark: #BC0C5B;
+
+@blue_accent_color: #656DFF;
+@blue_accent_color_light: #EEEFFF;
+@blue_accent_color_dark: #393DFF;
+
+
+@dark_gray: #282828;
+@gray: #808080;
+@light_gray: #DDD;
+@lighter_gray: #EFEFEF;
+
 body
 {
 	height: 100%;
@@ -361,7 +375,7 @@ input:focus:-ms-input-placeholder
 		tr {
 			border-top-right-radius: 10px;
 			border-top-left-radius: 10px;
-			background-color: #6C7DDD;
+			background-color: @blue_accent_color;
 			display: block;
 			position: relative;
 		}
@@ -375,7 +389,7 @@ input:focus:-ms-input-placeholder
 		height: 300px;
 		
 		tr:nth-child(even) {
-			background-color: #edefff;
+			background-color: @blue_accent_color_light;
 		}
 		
 		tr:nth-child(odd) {

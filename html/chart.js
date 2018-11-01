@@ -46,7 +46,7 @@ function drawChart(chartID, chartLabel, xData, yData) {
         {
         label: chartLabel,
         fill:true,
-        borderColor:'#428bca',
+        borderColor:'#E2228C',
         lineTension:0.2,
         data: yData}
       ],
@@ -91,13 +91,13 @@ function drawDoubleChart(chartID, chartLabel1, chartLabel2, xData, yData1, yData
         {
         label: chartLabel1,
         fill:false,
-        borderColor:'#428bca',
+        borderColor:'#E2228C',
         lineTension:0.2,
         data: yData1},
         {
         label: chartLabel2,
         fill:false,
-        borderColor:'#cc2536',
+        borderColor:'#656DFF',
         lineTension:0.2,
         data: yData2}
       ],
