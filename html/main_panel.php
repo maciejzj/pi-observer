@@ -128,7 +128,7 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				<script>makeChart("alt_log_chart", "Altitude", alt_log)</script>
 
 				<?php
-					print($html_table_logs["location"]);
+					print($html_table_logs["altitude"]);
 				?>
 			</div>
 
@@ -139,7 +139,7 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				<script>makeChart("hum_log_chart", "Humidity", hum_log)</script>
 
 				<?php
-					print($html_table_logs["location"]);
+					print($html_table_logs["humidity"]);
 				?>
 			</div>
 
