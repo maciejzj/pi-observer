@@ -87,11 +87,9 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				<div class="log_cont">
 					<a class="button" href="/sensor_logs/loc_log" download>Download log file</a>
 
-<!-- 					<div class="log_table"> -->
 						<?php
 							print($html_table_logs["location"]);
 						?>
-<!-- 					</div> -->
 				</div>
 			</div>
 
