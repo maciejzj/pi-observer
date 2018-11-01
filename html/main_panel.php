@@ -83,14 +83,11 @@ foreach ($db_table_names as $log_name => $db_table_name){
 					<div id = "map"></div>
 				</div>
 				<script>makeGoogleMaps(loc_log)</script>
-				
-				<div class="log_cont">
-					<a class="button" href="/sensor_logs/loc_log" download>Download log file</a>
 
-						<?php
-							print($html_table_logs["location"]);
-						?>
-				</div>
+				<?php
+					print($html_table_logs["location"]);
+				?>
+
 			</div>
 
 			<div class="infosection">
@@ -98,27 +95,19 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				
 				<canvas id="temp_log_chart"></canvas>
 				<script>makeDoubleChart("temp_log_chart", "External temperature", "Internal temperature", temp_log, int_temp_log)</script>
-				
-				<div class="log_cont">
-					<a class="button" href="/sensor_logs/temp_log" download>Download log file</a>
 
-						<?php
-							print($html_table_logs["temperature"]);
-						?>
-				</div>
+				<?php
+					print($html_table_logs["temperature"]);
+				?>
+
 			</div>
 
 			<div class="infosection">
 				<div class = "infosection_title">Internal temperature log</div>
-
-				<div class="log_cont">
-					<a class="button" href="/sensor_logs/int_temp_log" download>Download log file</a>
-
-						<?php
-							print($html_table_logs["internal_temperature"]);
-						?>
-
-				</div>
+				
+				<?php
+					print($html_table_logs["internal_temperature"]);
+				?>
 			</div>
 
 			<div class="infosection">
@@ -126,14 +115,10 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				
 				<canvas id="press_log_chart"></canvas>
 				<script>makeChart("press_log_chart", "Pressure", press_log)</script>
-				
-				<div class="log_cont">
-					<a class="button" href="/sensor_logs/press_log" download>Download log file</a>
 
-				</div>
-					<?php
-						print($html_table_logs["pressure"]);
-					?>
+				<?php
+					print($html_table_logs["pressure"]);
+				?>
 			</div>
 
 			<div class="infosection">
@@ -141,13 +126,10 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				
 				<canvas id="alt_log_chart"></canvas>
 				<script>makeChart("alt_log_chart", "Altitude", alt_log)</script>
-				
-				<div class="log_cont">
-					<a class="button" href="/sensor_logs/alt_log" download>Download log file</a>
-				</div>
-					<?php
-						print($html_table_logs["altitude"]);
-					?>
+
+				<?php
+					print($html_table_logs["location"]);
+				?>
 			</div>
 
 			<div class="infosection">
@@ -156,14 +138,9 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				<canvas id="hum_log_chart"></canvas>
 				<script>makeChart("hum_log_chart", "Humidity", hum_log)</script>
 
-				<div class="log_cont">
-					<a class="button" href="/sensor_logs/hum_log" download>Download log file</a>
-				</div>
-
-					<?php
-						print($html_table_logs["humidity"]);
-					?>
-
+				<?php
+					print($html_table_logs["location"]);
+				?>
 			</div>
 
 		</div>
