@@ -74,7 +74,7 @@ foreach ($db_table_names as $log_name => $db_table_name){
 
 			<div class = "infosection">
 				<div class = "infosection_title">Camera live preview</div>
-				<img style="-webkit-user-select: none; display: block; margin-left: auto; margin-right: auto; margin-bottom: 20px; margin-top: 20px; cursor: zoom-in;" src="http://91.233.72.242:8081/0/" width="640" height="480">
+				<img id = "camera_stream" src="http://91.233.72.242:8081" width="640" height="480">
 			</div>
 
 			<div class = "infosection">
