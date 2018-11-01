@@ -93,7 +93,7 @@ foreach ($db_table_names as $log_name => $db_table_name){
 			<div class="infosection">
 				<div class = "infosection_title">Temperature log</div>
 				
-				<canvas id="temp_log_chart"></canvas>
+				<canvas class = "chart" id="temp_log_chart"></canvas>
 				<script>makeDoubleChart("temp_log_chart", "External temperature", "Internal temperature", temp_log, int_temp_log)</script>
 
 				<?php
@@ -113,7 +113,7 @@ foreach ($db_table_names as $log_name => $db_table_name){
 			<div class="infosection">
 				<div class = "infosection_title">Pressure log</div>
 				
-				<canvas id="press_log_chart"></canvas>
+				<canvas class = "chart" id="press_log_chart"></canvas>
 				<script>makeChart("press_log_chart", "Pressure", press_log)</script>
 
 				<?php
@@ -124,7 +124,7 @@ foreach ($db_table_names as $log_name => $db_table_name){
 			<div class="infosection">
 				<div class = "infosection_title">Altitude log</div>
 				
-				<canvas id="alt_log_chart"></canvas>
+				<canvas class = "chart" id="alt_log_chart"></canvas>
 				<script>makeChart("alt_log_chart", "Altitude", alt_log)</script>
 
 				<?php
@@ -135,7 +135,7 @@ foreach ($db_table_names as $log_name => $db_table_name){
 			<div class="infosection">
 				<div class = "infosection_title">Humidity log</div>
 
-				<canvas id="hum_log_chart"></canvas>
+				<canvas class = "chart" id="hum_log_chart"></canvas>
 				<script>makeChart("hum_log_chart", "Humidity", hum_log)</script>
 
 				<?php
