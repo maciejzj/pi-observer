@@ -3,7 +3,7 @@
 function extractData(data) {
   var dataArray = [];
   var timeArray = [];
-  
+
   for (var i = 0; i < data.length; i++) {
     dataArray.push(JSON.parse(data[i].log_val));
     timeArray.push(JSON.stringify(data[i].log_time).replace(/['"]+/g, ''));
@@ -24,7 +24,7 @@ function makeDoubleChart(chartID,
 
   [xData1, yData1] = extractData(log_data1);
   [xData2, yData2] = extractData(log_data2);
-  
+
   try {
     if (xData1.length != xData2.length) throw "Unequal number of datastamps"
     drawDoubleChart(chartID, chartLabel1, chartLabel2, xData1, yData1, yData2);
@@ -35,7 +35,7 @@ function makeDoubleChart(chartID,
 }
 
 function drawChart(chartID, chartLabel, xData, yData) {
-  
+
   const myChart = document.getElementById(chartID).getContext('2d');
 
   let chart1 = new Chart(myChart, {
@@ -52,6 +52,8 @@ function drawChart(chartID, chartLabel, xData, yData) {
       ],
     },
     options:{
+      responsive:true,
+      maintainAspectRatio: false,
       title:{
         display:true,
         text:(chartLabel + " log"),
@@ -80,7 +82,7 @@ function drawChart(chartID, chartLabel, xData, yData) {
 }
 
 function drawDoubleChart(chartID, chartLabel1, chartLabel2, xData, yData1, yData2) {
-  
+
   const myChart = document.getElementById(chartID).getContext('2d');
 
   let chart1 = new Chart(myChart, {
@@ -101,9 +103,11 @@ function drawDoubleChart(chartID, chartLabel1, chartLabel2, xData, yData1, yData
         lineTension:0.2,
         data: yData2}
       ],
-      
+
     },
     options:{
+      responsive:true,
+      maintainAspectRatio: false,
       title:{
         display:true,
         text:(chartLabel1 + " and " + chartLabel2 + " log"),

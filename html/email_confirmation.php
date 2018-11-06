@@ -66,7 +66,7 @@ header("Pragma: no-cache");
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>BaloonS - Confirmed</title>
 
-	<link rel="stylesheet" href="style.css" type="text/css" />
+  <link rel="stylesheet/less" type="text/css" href="styles.less">
 </head>
 
 <body>

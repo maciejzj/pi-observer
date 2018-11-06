@@ -135,9 +135,9 @@ header("Pragma: no-cache");
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>BaloonS - Registration</title>
 
-	<link rel="stylesheet" href="style.css" type="text/css" />
   <link rel="stylesheet/less" type="text/css" href="styles.less">
   <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <body>

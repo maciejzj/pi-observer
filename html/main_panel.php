@@ -26,7 +26,7 @@ $db_table_names = array(
 
 foreach ($db_table_names as $log_name => $db_table_name){
 	list($html_table_log, $array_table_log) = makeTable($connection, $db_table_name);
-	
+
 	$html_table_logs[$log_name] = $html_table_log;
 	$array_table_logs[$log_name] = $array_table_log;
 }
@@ -62,19 +62,21 @@ foreach ($db_table_names as $log_name => $db_table_name){
 		</div>
 		<div id="panel_container">
 			<div class = "infosection">
+				<div id="buttons_container">
 				<div class = "infosection_title">GPIO controls</div>
-				<?php
-					require_once('make_gpio_buttons.php');
-					make_gpio_buttons();
-				?>
-				<br>
-				<a class="button" href='http://192.168.1.110:8081/0/'>Camera control</a>
-				<a class="button" href='http://192.168.1.110:8080/0/action/snapshot'>Camera snapshot</a>
-			</div>
+					<?php
+						require_once('make_gpio_buttons.php');
+						make_gpio_buttons();
+					?>
+					<br>
+					<a class="button" href='http://192.168.1.110:8081/0/'>Camera control</a>
+					<a class="button" href='http://192.168.1.110:8080/0/action/snapshot'>Camera snapshot</a>
+				</div>
 
-			<div class = "infosection">
+				<div id="camera_stream_wrap">
 				<div class = "infosection_title">Camera live preview</div>
-				<img id = "camera_stream" src="http://91.233.72.242:8081" width="640" height="480">
+					<img id = "camera_stream" src="http://91.233.72.242:8081" width="640" height="480">
+				</div>
 			</div>
 
 			<div class = "infosection">
@@ -83,48 +85,51 @@ foreach ($db_table_names as $log_name => $db_table_name){
 					<div id = "map"></div>
 				</div>
 				<script>makeGoogleMaps(loc_log)</script>
-
-				<?php
-					print($html_table_logs["location"]);
-				?>
-
+				<div id="loc_table_wrap">
+					<?php
+						print($html_table_logs["location"]);
+					?>
+				</div>
 			</div>
 
 			<div class="infosection">
-				<div class = "infosection_title">Temperature log</div>
-				
-				<canvas class = "chart" id="temp_log_chart"></canvas>
+				<div class = "infosection_title">External temperature log</div>
+					<div  id="temp_log_chart_wrapper">
+						<canvas class = "chart_wrapper" id="temp_log_chart"></canvas>
+					</div>
 				<script>makeDoubleChart("temp_log_chart", "External temperature", "Internal temperature", temp_log, int_temp_log)</script>
 
 				<?php
 					print($html_table_logs["temperature"]);
 				?>
 
-			</div>
-
-			<div class="infosection">
-				<div class = "infosection_title">Internal temperature log</div>
-				
-				<?php
-					print($html_table_logs["internal_temperature"]);
-				?>
+				<div id="int_temp_log_table_wrap">
+					<div class = "infosection_title">Internal temperature log</div>
+					<?php
+						print($html_table_logs["internal_temperature"]);
+					?>
+				</div>
 			</div>
 
 			<div class="infosection">
 				<div class = "infosection_title">Pressure log</div>
-				
-				<canvas class = "chart" id="press_log_chart"></canvas>
+					<div  id="press_log_chart_wrapper">
+						<canvas class = "chart_wrapper" id="press_log_chart"></canvas>
+					</div>
 				<script>makeChart("press_log_chart", "Pressure", press_log)</script>
 
-				<?php
-					print($html_table_logs["pressure"]);
-				?>
+				<div id="press_log_table_wrapper">
+					<?php
+						print($html_table_logs["pressure"]);
+					?>
+				</div>
 			</div>
 
 			<div class="infosection">
 				<div class = "infosection_title">Altitude log</div>
-				
-				<canvas class = "chart" id="alt_log_chart"></canvas>
+					<div  id="alt_log_chart_wrapper">
+						<canvas class = "chart_wrapper" id="alt_log_chart"></canvas>
+					</div>
 				<script>makeChart("alt_log_chart", "Altitude", alt_log)</script>
 
 				<?php
@@ -134,8 +139,9 @@ foreach ($db_table_names as $log_name => $db_table_name){
 
 			<div class="infosection">
 				<div class = "infosection_title">Humidity log</div>
-
-				<canvas class = "chart" id="hum_log_chart"></canvas>
+					<div  id="hum_log_chart_wrapper">
+						<canvas class = "chart_wrapper" id="hum_log_chart"></canvas>
+					</div>
 				<script>makeChart("hum_log_chart", "Humidity", hum_log)</script>
 
 				<?php
