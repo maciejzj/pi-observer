@@ -59,7 +59,7 @@ foreach ($db_table_names as $log_name => $db_table_name){
 	<body>
 		<div id="topbar">
 			<?php echo "<div class='status'>Logged: ".$_SESSION['login'].'</div> <a class="button" id="logout" href="logout.php">logout</a>'; ?>
-			<br><hr>
+			<br><hr id = "topbar_separator">
 		</div>
 		<div id="panel_container">
 			<div class = "infosection">
