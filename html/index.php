@@ -29,9 +29,10 @@ header("Pragma: no-cache");
 		<div class="status">
 			BalloonS!
 		</div>
-		<a class="button" id="logout" href="register.php">Sign up!</a>
+		<a class="button" id="logout" href="register.php">register</a>
+		<br><hr>
 	</div>
-
+	
 	<div id="login_container">
 	Control panel login:<br />
 		<form action="login.php" method="post">
