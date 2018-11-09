@@ -91,50 +91,52 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				print($html_table_logs["location"]);
 			?>
 
-			<div class = "infosection_title">External temperature log</div>
-			<div class = "chart_wrapper">
-				<canvas class = "chart" id="temp_log_chart"></canvas>
-			</div>
-			<script>makeDoubleChart("temp_log_chart", "External temperature", "Internal temperature", temp_log, int_temp_log)</script>
+			<div class = "infosection">
+				<div class = "chart_wrapper">
+					<canvas class = "chart" id="temp_log_chart"></canvas>
+				</div>
+				<script>makeDoubleChart("temp_log_chart", "External temperature", "Internal temperature", temp_log, int_temp_log)</script>
 
-			<?php
-				print($html_table_logs["temperature"]);
-			?>
+				<?php
+					print($html_table_logs["temperature"]);
+				?>
+				<?php
+					print($html_table_logs["internal_temperature"]);
+				?>
+			</div>
 			
-			<div class = "infosection_title">Internal temperature log</div>
-			<?php
-				print($html_table_logs["internal_temperature"]);
-			?>
+			<div class = "infosection">
+				<div class = "chart_wrapper" id = "press_log_chart_wrapper">
+					<canvas class = "chart" id="press_log_chart"></canvas>
+				</div>
+				<script>makeChart("press_log_chart", "Pressure", press_log)</script>
 
-			<div class = "infosection_title">Pressure log</div>
-			<div class = "chart_wrapper">
-				<canvas class = "chart" id="press_log_chart"></canvas>
+				<?php
+					print($html_table_logs["pressure"]);
+				?>
 			</div>
-			<script>makeChart("press_log_chart", "Pressure", press_log)</script>
-
-			<?php
-				print($html_table_logs["pressure"]);
-			?>
-
-			<div class = "infosection_title">Altitude log</div>
-			<div class = "chart_wrapper">
-				<canvas class = "chart" id="alt_log_chart"></canvas>
+			
+			<div class = "infosection">
+				<?php
+					print($html_table_logs["altitude"]);
+				?>
+				
+				<div class = "chart_wrapper" id ="alt_log_chart_wrapper">
+					<canvas class = "chart" id="alt_log_chart"></canvas>
+				</div>
+				<script>makeChart("alt_log_chart", "Altitude", alt_log)</script>
 			</div>
-			<script>makeChart("alt_log_chart", "Altitude", alt_log)</script>
 
-			<?php
-				print($html_table_logs["altitude"]);
-			?>
+			<div class = "infosection">
+				<div class = "chart_wrapper" id = "hum_log_chart_wrapper">
+					<canvas class = "chart" id="hum_log_chart"></canvas>
+				</div>
+				<script>makeChart("hum_log_chart", "Humidity", hum_log)</script>
 
-			<div class = "infosection_title">Humidity log</div>
-			<div class = "chart_wrapper">
-				<canvas class = "chart" id="hum_log_chart"></canvas>
+				<?php
+					print($html_table_logs["humidity"]);
+				?>
 			</div>
-			<script>makeChart("hum_log_chart", "Humidity", hum_log)</script>
-
-			<?php
-				print($html_table_logs["humidity"]);
-			?>
 		</div>
 
 		<div id="footer">
