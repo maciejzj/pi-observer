@@ -67,14 +67,16 @@ foreach ($db_table_names as $log_name => $db_table_name){
 		</div>
 		
 		<div id = "control_panel_container">
-			<div class = "infosection_title">GPIO controls</div>
-			<?php
-				require_once('make_gpio_buttons.php');
-				make_gpio_buttons();
-			?>
-			<br>
-			<a class="button" href='http://192.168.1.110:8081/0/'>Camera control</a>
-			<a class="button" href='http://192.168.1.110:8080/0/action/snapshot'>Camera snapshot</a>
+			<div class = "infosection_title">GPIO controls</div>	
+			<div id = "gpio_buttons_wrapper">
+				<?php
+					require_once('make_gpio_buttons.php');
+					make_gpio_buttons();
+				?>
+				<br>
+				<a class="button" href='http://192.168.1.110:8081/0/'>Camera control</a>
+				<a class="button" href='http://192.168.1.110:8080/0/action/snapshot'>Camera snapshot</a>
+			</div>
 
 			<div class = "infosection_title">Camera live preview</div>
 			<img id = "camera_stream" src="http://91.233.72.242:8081">
