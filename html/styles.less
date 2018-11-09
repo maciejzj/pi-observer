@@ -305,7 +305,7 @@ input:focus:-ms-input-placeholder
 .infosection_title
 {
 	margin-bottom: 15px;
-	font-size: 28px;
+	font-size: 26px;
 	font-weight: bolder;
 }
 
@@ -389,6 +389,11 @@ input:focus:-ms-input-placeholder
 	box-shadow: 0px 10px 41px -11px rgba(0,0,0,0.68);
 }
 
+#temp_log_chart_wrapper
+{
+	height: 630px;
+}
+
 #press_log_chart_wrapper
 {
 	width: calc(100% - 566px);
@@ -469,6 +474,11 @@ input:focus:-ms-input-placeholder
 	}
 }
 
+#temp_tabs_stack {
+	margin-right: 50px;
+	float: left;
+}
+
 #loc_log_table {
 	td:nth-child(1), th:nth-child(1) { min-width: 80; }
 	td:nth-child(2), th:nth-child(2) { min-width: 160; }
@@ -480,6 +490,10 @@ input:focus:-ms-input-placeholder
 }
 
 #temp_log_table {
+	tbody{
+		height: 250px;
+	}
+	margin-bottom: 50px;
 	td:nth-child(1), th:nth-child(1) { min-width: 80; }
 	td:nth-child(2), th:nth-child(2) { min-width: 160; }
 	td:nth-child(3), th:nth-child(3) { min-width: 80; }
@@ -487,6 +501,9 @@ input:focus:-ms-input-placeholder
 }
 
 #int_temp_log_table {
+	tbody{
+		height: 250px;
+	}
 	td:nth-child(1), th:nth-child(1) { min-width: 80; }
 	td:nth-child(2), th:nth-child(2) { min-width: 160; }
 	td:nth-child(3), th:nth-child(3) { min-width: 80; }

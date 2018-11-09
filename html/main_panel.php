@@ -96,21 +96,25 @@ foreach ($db_table_names as $log_name => $db_table_name){
 			</div>
 			<hr><br>
 
-			<div class = "infosection_title">Data logs</div>
+			<div class = "infosection_title">Temperature log</div>
 			<div class = "infosection">
-				<div class = "chart_wrapper">
-					<canvas class = "chart" id="temp_log_chart"></canvas>
-				</div>
-				<script>makeDoubleChart("temp_log_chart", "External temperature", "Internal temperature", temp_log, int_temp_log)</script>
-
+				<div id = "temp_tabs_stack">
 				<?php
 					print($html_table_logs["temperature"]);
 				?>
 				<?php
 					print($html_table_logs["internal_temperature"]);
 				?>
-			</div>
+				</div>
 			
+				<div class = "chart_wrapper", id="temp_log_chart_wrapper">
+					<canvas class = "chart" id="temp_log_chart"></canvas>
+				</div>
+				<script>makeDoubleChart("temp_log_chart", "External temperature", "Internal temperature", temp_log, int_temp_log)</script>
+			</div>
+			<hr><br>
+
+			<div class = "infosection_title">Pressure log</div>
 			<div class = "infosection">
 				<div class = "chart_wrapper" id = "press_log_chart_wrapper">
 					<canvas class = "chart" id="press_log_chart"></canvas>
@@ -121,7 +125,9 @@ foreach ($db_table_names as $log_name => $db_table_name){
 					print($html_table_logs["pressure"]);
 				?>
 			</div>
-			
+			<hr><br>
+
+			<div class = "infosection_title">Altitude log</div>
 			<div class = "infosection">
 				<?php
 					print($html_table_logs["altitude"]);
@@ -132,7 +138,9 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				</div>
 				<script>makeChart("alt_log_chart", "Altitude", alt_log)</script>
 			</div>
+			<hr><br>
 
+			<div class = "infosection_title">Humidity log</div>
 			<div class = "infosection">
 				<div class = "chart_wrapper" id = "hum_log_chart_wrapper">
 					<canvas class = "chart" id="hum_log_chart"></canvas>
