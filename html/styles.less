@@ -30,16 +30,14 @@ body
 {
 	width: 100%;
 	height: 45px;
-	margin-bottom: 20px;
 	padding-top: 12px;
-	background-color: white;
-	font-size: 25px;
-	color: white;
 	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 999;
-	width: 100%;
+	background-color: white;
+	font-size: 25px;
+	color: white;
 }
 
 #description_container
@@ -55,7 +53,6 @@ body
 .color_emphasis_text
 {
 	color: @blue_accent_color;
-	font-weight: 600;
 }
 
 a, a.visited {
@@ -108,15 +105,13 @@ hr
 	height: 1.5px;
 	margin-top: 10px;
 	margin-bottom: 0px;
-	border: none;
 	background-color: @light_gray;
+	border: none;
 }
 
 #topbar_separator
 {
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-right: 15px;
+	margin: 15px 15px 0px;
 }
 
 #footer
@@ -238,8 +233,6 @@ hr
 
 .chart_wrapper
 {
-	max-width: 1100px;
-	width:auto;
 	min-height: 500px;
 	margin-right: 20px;
 	padding-left: 15px;
@@ -299,13 +292,13 @@ hr
 }
 
 #hum_log_chart_wrapper {
+	width: calc(100% - 476px) !important;
 	margin-left: 0px;
 	float: left;
+	margin-right: 60px;
 }
 
 #hum_log_chart {
-	max-width: 1128px;
-	margin-right: 93px;
 }
 
 .textlog
