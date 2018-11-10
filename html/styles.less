@@ -124,6 +124,7 @@ a.button, a.button:visited {
 	border-color: @red_accent_color;
 	cursor: pointer;
 	outline: none;
+	white-space:nowrap;
 	font-size: 22px;
 	letter-spacing: 1.25px;
 	font-weight: normal;
@@ -327,11 +328,18 @@ input:focus:-ms-input-placeholder
 	-webkit-box-shadow: 0px 10px 41px -11px rgba(0,0,0,0.68);
 	-moz-box-shadow: 0px 10px 41px -11px rgba(0,0,0,0.68);
 	box-shadow: 0px 10px 41px -11px rgba(0,0,0,0.68);
+	
+	@media (max-width: 1065px) {
+		width: calc(100% - 40px);
+		height: 300px;
+		float: none;
+		margin-bottom: 50px;
+	}
 }
 
 #map_canvas
 {
-	width: calc(100% - 670px);
+	width: calc(100% - 658px);
 	margin-right: 50px;
 	float: left;
 }
@@ -417,7 +425,6 @@ input:focus:-ms-input-placeholder
 #camera_stream
 {
 	width: 640px;
-	height: 480px;
 	display: block;
 	overflow: hidden;
 	border-radius: 10px;
@@ -425,6 +432,12 @@ input:focus:-ms-input-placeholder
 	-moz-box-shadow: 0px 10px 41px -11px rgba(0,0,0,0.68);
 	box-shadow: 0px 10px 41px -11px rgba(0,0,0,0.68);
 	-webkit-user-select: none;
+	
+	@media (max-width: 1065px) {
+		width: 100%;
+		margin-bottom: 50px;
+		float: none;
+	}
 }
 
 .log_table {
