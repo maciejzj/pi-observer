@@ -147,6 +147,7 @@ header("Pragma: no-cache");
 			BalloonS!
 		</div>
 		<a class="button" id="logout" href="index.php">Abort!</a>
+		<br><hr id = "topbar_separator">
 	</div>
 
 	<div id="register_container">

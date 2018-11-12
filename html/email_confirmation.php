@@ -37,7 +37,7 @@
           //TODO: sending e-mail to user
           //mail($email,"$nickname email confimation",$message,"From: DoNotReply@The_BalloonS.com");
 
-            $_SESSION['message'] = 'Username and code does match!<br />Registration of '.$nickname.' complete!';
+            $_SESSION['message'] = 'Username and code does match!<br />Registration of <span class="color_emphasis_text">'.$nickname.'</span> complete!';
 
           } else {
             $_SESSION['message'] = 'Username and code does not match!';
@@ -62,11 +62,13 @@ header("Pragma: no-cache");
 
 <!DOCTYPE HTML>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>BaloonS - Confirmed</title>
 
   <link rel="stylesheet/less" type="text/css" href="styles.less">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
 </head>
 
 <body>
@@ -75,9 +77,10 @@ header("Pragma: no-cache");
 			BalloonS!
 		</div>
 		<a class="button" id="logout" href="index.php">Go back to main page!</a>
+		<br><hr id = "topbar_separator">
 	</div>
 
-	<div id="register_container">
+	<div id="welcome_container">
     <?php
       if(isset($_SESSION['message'])) {
         echo $_SESSION['message'];

@@ -62,11 +62,11 @@ foreach ($db_table_names as $log_name => $db_table_name){
 			<?php echo "<div class='status'>Logged: ".$_SESSION['login'].'</div> <a class="button" id="logout" href="logout.php">logout</a>'; ?>
 			<br><hr id = "topbar_separator">
 		</div>
-		
+
 		<div id="description_container">
-			Welcome to the <span class="color_emphasis_text">control panel</span>, from here you can examine data logs, locate your balloon, watch live stream and access your GPIO. You can manually backup your <span class="color_emphasis_text">SQL logs</span> using <a href="https://www.monetdb.org/Documentation/UserGuide/DumpRestore">SQL dump</a>.
+			Welcome to the <span class="color_emphasis_text">control panel</span>, from here you can examine data logs, locate your balloon, watch live stream and access your GPIO. You can manually backup your <span class="color_emphasis_text">SQL logs</span> using <a target="_blank" rel="noopener noreferrer" href="https://www.monetdb.org/Documentation/UserGuide/DumpRestore">SQL dump</a>.
 		</div>
-		
+
 		<div id = "control_panel_container">
 			<div class = "infosection">
 				<div class = "infosection_title">Remote controls</div>
@@ -83,14 +83,14 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				<img id = "camera_stream" src="http://91.233.72.242:8081">
 			</div>
 			<hr><br>
-			
+
 			<div class = "infosection">
 				<div class = "infosection_title">Location</div>
 				<div id = "map_canvas">
 					<div id = "map"></div>
 				</div>
 				<script>makeGoogleMaps(loc_log)</script>
-						
+
 				<?php
 					print($html_table_logs["location"]);
 				?>
@@ -107,7 +107,7 @@ foreach ($db_table_names as $log_name => $db_table_name){
 					print($html_table_logs["internal_temperature"]);
 				?>
 				</div>
-			
+
 				<div class = "chart_wrapper", id="temp_log_chart_wrapper">
 					<canvas class = "chart" id="temp_log_chart"></canvas>
 				</div>
@@ -133,7 +133,7 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				<?php
 					print($html_table_logs["altitude"]);
 				?>
-				
+
 				<div class = "chart_wrapper" id ="alt_log_chart_wrapper">
 					<canvas class = "chart" id="alt_log_chart"></canvas>
 				</div>
@@ -158,7 +158,7 @@ foreach ($db_table_names as $log_name => $db_table_name){
 			Maciej Ziaja 2018, maciejzj@icloud.com <br/>
 			Maciej Cholewa 2018, maciej.cholewa@interia.pl
 		</div>
-		
+
 		<script src="gpio.js"></script>
 		<script>
 			var messageBody = document.querySelector('#temp_log');

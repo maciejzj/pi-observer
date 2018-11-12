@@ -33,14 +33,16 @@ header("Pragma: no-cache");
 		<a class="button" id="logout" href="register.php">register</a>
 		<br><hr id = "topbar_separator">
 	</div>
-	
-	<div id="description_container">
-		BalloonS is a <span class="color_emphasis_text">high-altitude atmospheric ballon</span> project. It provides logging services and remote access to aid gathering flight information and search after landing of the balloon. The system is based on <span class="color_emphasis_text">Raspberry Pi</span>. It is easy deployable and accessible, you can visit our <a href="https://github.com/MaciejZj/balloonS">GitHub</a> and download the project to lunch your own balloon.
-	</div>
-	
-	<div id="login_container">
+
+	<div id="login_container_title">
 	Control panel login<br>
-	<hr>
+	</div>
+
+	<div id="description_container_login">
+		BalloonS is a <span class="color_emphasis_text">high-altitude atmospheric ballon</span> project. It provides logging services and remote access to aid gathering flight information and search after landing of the balloon. The system is based on <span class="color_emphasis_text">Raspberry Pi</span>. It is easy deployable and accessible, you can visit our <a target="_blank" rel="noopener noreferrer" href="https://github.com/MaciejZj/balloonS">GitHub</a> and download the project to lunch your own balloon.
+	</div>
+
+	<div id="login_container">
 		<form action="login.php" method="post">
 			<input type="text" name="login" placeholder="login" onfocus="this.placeholder=''" onblur="this.placeholder='login'"/>
 			<input type="password" name="passwd" placeholder="password" onfocus="this.placeholder=''" onblur="this.placeholder='password'"/> <br />
