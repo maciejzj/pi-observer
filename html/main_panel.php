@@ -64,7 +64,7 @@ foreach ($db_table_names as $log_name => $db_table_name){
 		</div>
 
 		<div id="description_container">
-			Welcome to the <span class="color_emphasis_text">control panel</span>, from here you can examine data logs, locate your balloon, watch live stream and access your GPIO. You can manually backup your <span class="color_emphasis_text">SQL logs</span> using <a target="_blank" rel="noopener noreferrer" href="https://www.monetdb.org/Documentation/UserGuide/DumpRestore">SQL dump</a>.
+			Welcome to the <span class="color_emphasis_text">control panel</span>! Here you can examine data logs, locate your balloon, watch live stream and access your GPIO. You can also manually backup your <span class="color_emphasis_text">SQL logs</span> using <a target="_blank" rel="noopener noreferrer" href="https://www.monetdb.org/Documentation/UserGuide/DumpRestore">SQL dump</a>.
 		</div>
 
 		<div id = "control_panel_container">

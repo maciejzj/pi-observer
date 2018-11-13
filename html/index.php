@@ -36,7 +36,7 @@ header("Pragma: no-cache");
 
 
 	<div id="description_container">
-		BalloonS is a <span class="color_emphasis_text">high-altitude atmospheric ballon</span> project. It provides logging services and remote access to aid gathering flight information and search after landing of the balloon. The system is based on <span class="color_emphasis_text">Raspberry Pi</span>. It is easy deployable and accessible, you can visit our <a target="_blank" rel="noopener noreferrer" href="https://github.com/MaciejZj/balloonS">GitHub</a> and download the project to lunch your own balloon.
+		BalloonS is a <span class="color_emphasis_text">high-altitude atmospheric ballon</span> project. It provides logging services and remote access to aid gathering flight information and search after landing of the balloon. The system is based on <span class="color_emphasis_text">Raspberry Pi</span>. It is easy deployable and accessible, you can visit our <a target="_blank" rel="noopener noreferrer" href="https://github.com/MaciejZj/balloonS">GitHub</a> and download the project to launch your own balloon.
 	</div>
 
 	<div id="login_container">
