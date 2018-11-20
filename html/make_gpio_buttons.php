@@ -19,7 +19,7 @@ function make_gpio_buttons() {
 			//if off
 			if ($val_array[$i][0] == 0) {
 				if($i == 0){
-					echo ('<button class="butt" onclick="change_pin('.$i.')" id="button_'.$i.'">
+					echo ('<button id="button_0" class="butt" onclick="change_pin('.$i.')">
 					<svg width="100%" height="100%" viewBox="0 0 600 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
 	<g transform="matrix(6.16711,0,0,6.16711,63.6168,-43.4636)">
 			<text x="11px" y="96px" style="font-family:'.$arialbold.', '.$arial.', sans-serif;font-weight:700;font-size:19.458px;">LED</text>
@@ -41,7 +41,7 @@ function make_gpio_buttons() {
 </svg>
 						</button>');
 				} else if($i == 1) {
-					echo ('<button class="butt" id="button_'.$i.'" onclick="change_pin('.$i.')">
+					echo ('<button id="button_1" class="butt" onclick="change_pin('.$i.')" >
 					<svg width="100%" height="100%" viewBox="0 0 600 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:1.5;">
 
 	<g transform="matrix(7.01768,0,0,7.01768,-55.1942,-76.4625)">
