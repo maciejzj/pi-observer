@@ -14,30 +14,30 @@ var data = 0;
 	request.onreadystatechange = function() {
 		if (request.readyState == 4 && request.status == 200) {
 			data = request.responseText;
-			
+
 			if ( !(data.localeCompare("0")) ){
-				Buttons[pic].src = "data/img/idle/idle_"+pic+".png";
+				Buttons[pic].class = "butt";
 			}
 			else if ( !(data.localeCompare("1")) ) {
-				Buttons[pic].src = "data/img/active/active_"+pic+".png";
+				Buttons[pic].class = "butt2";
 			}
 			else if ( !(data.localeCompare("fail"))) {
 				alert ("Something went wrong!" );
-				return ("fail");			
+				return ("fail");
 			}
 			else {
 				alert ("Something went wrong!" );
-				return ("fail"); 
+				return ("fail");
 			}
 		}
 		else if (request.readyState == 4 && request.status == 500) {
 			alert ("server error");
 			return ("fail");
 		}
-		else if (request.readyState == 4 && request.status != 200 && request.status != 500 ) { 
+		else if (request.readyState == 4 && request.status != 200 && request.status != 500 ) {
 			alert ("Something went wrong!");
 			return ("fail"); }
-	}	
-	
+	}
+
 return 0;
 }

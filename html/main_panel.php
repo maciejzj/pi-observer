@@ -76,8 +76,8 @@ foreach ($db_table_names as $log_name => $db_table_name){
 						make_gpio_buttons();
 					?>
 					<br>
-					<a class="button" href='http://192.168.1.110:8081/0/'>Camera control</a>
-					<a class="button" href='http://192.168.1.110:8080/0/action/snapshot'>Camera snapshot</a>
+					<a class="button" id="cam_butt" href='http://192.168.1.110:8081/0/'>Camera control</a>
+					<a class="button" id="cam_butt" href='http://192.168.1.110:8080/0/action/snapshot'>Camera snapshot</a>
 				</div>
 
 				<img id = "camera_stream" src="http://91.233.72.242:8081">
