@@ -19,7 +19,7 @@ var data = 0;
 				Buttons[pic].classList.toggle('butt2');
 			}
 			else if ( !(data.localeCompare("1")) ) {
-				Buttons[pic].classList.toggle('butt2');
+				Buttons[pic].classList.toggle('butt');
 			}
 			else if ( !(data.localeCompare("fail"))) {
 				alert ("Something went wrong!" );
