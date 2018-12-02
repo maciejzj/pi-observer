@@ -16,10 +16,10 @@ var data = 0;
 			data = request.responseText;
 
 			if ( !(data.localeCompare("0")) ){
-				Buttons[pic].classList.toggle('butt');
+				Buttons[pic].classList.toggleClass('butt butt2');
 			}
 			else if ( !(data.localeCompare("1")) ) {
-				Buttons[pic].classList.toggle('butt2');
+				Buttons[pic].classList.toggleClass('butt butt2');
 			}
 			else if ( !(data.localeCompare("fail"))) {
 				alert ("Something went wrong!" );
