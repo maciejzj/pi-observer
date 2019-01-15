@@ -1,3 +1,4 @@
+/* CSS less variables for colors */
 @red_accent_color: #E2228C;
 @red_accent_color_light: #ffeff7;
 @red_accent_color_dark: #a51866;
@@ -5,7 +6,6 @@
 @blue_accent_color: #656DFF;
 @blue_accent_color_light: #EEEFFF;
 @blue_accent_color_dark: #393DFF;
-
 
 @dark_gray: #282828;
 @gray: #808080;
@@ -24,6 +24,7 @@ body
 	overflow-y: scroll;
 }
 
+/* This topbar sticks to the top of page */
 #topbar
 {
 	width: 100%;
@@ -38,6 +39,7 @@ body
 	color: white;
 }
 
+/* Part of topbar with info */
 .status
 {
 	float: left;
@@ -47,6 +49,7 @@ body
 	font-weight: bolder;
 }
 
+/* Stylise horiznontal rule */
 hr
 {
 	height: 1.5px;
@@ -56,11 +59,13 @@ hr
 	border: none;
 }
 
+/* Separator on the bottom of the topbar */
 #topbar_separator
 {
 	margin: 15px 15px 0px;
 }
 
+/* Hold site descripton */
 #description_container
 {
 	width: 90%;
@@ -74,6 +79,7 @@ hr
 	text-justify: inter-word;
 }
 
+/* Panel iwth login inputs */
 #login_container
 {
 	width: 300px;
@@ -91,6 +97,7 @@ hr
 	color: @blue_accent_color;
 }
 
+/* Hyperlinks */
 a, a.visited {
 	text-decoration: none;
 	color: @red_accent_color;
@@ -100,6 +107,7 @@ a:hover {
 	text-decoration: underline;
 }
 
+/* Tooltips for registration restrictions */
 .tooltip
 {
 	position: relative;
@@ -131,6 +139,7 @@ a:hover {
 	color: #FFF;
 }
 
+/* Stylise generic buttons */
 a.button, a.button:visited {
 	padding: 2px 10px;
 	background-color: @red_accent_color_light;
@@ -153,10 +162,12 @@ a.button:hover {
 	color: white;
 }
 
+/* Camera buttons */
  #cam_butt {
 	 margin-right: 15px;
  }
 
+/* GPIO buttons */
 .butt, .butt:visited {
 	padding: 2px 10px;
 	cursor: pointer;
@@ -211,6 +222,7 @@ a.button#logout {
 	margin-right: 15px;
 }
 
+/* Stylise forms inputs */
 input[type=text],
 input[type=password]
 {
@@ -353,6 +365,7 @@ input:focus:-ms-input-placeholder
 	text-align: center;
 }
 
+/* Main container for whole panel */
 #control_panel_container
 {
 	width: 90%;
@@ -363,11 +376,13 @@ input:focus:-ms-input-placeholder
 	background-color: white;
 }
 
+/* Hold a single section for one log/functionality */
 .infosection
 {
 	margin-bottom: 50px;
 }
 
+/* Title of infosetion */
 .infosection_title
 {
 	margin-bottom: 15px;
@@ -403,6 +418,7 @@ input:focus:-ms-input-placeholder
 	}
 }
 
+/* Map container */
 #map
 {
 	width: calc(100% - 658px);
@@ -422,6 +438,7 @@ input:focus:-ms-input-placeholder
 	}
 }
 
+/* Stylise parts/buttons inside of Google Maps */
 .gm-style
 {
 	overflow: hidden;
@@ -465,6 +482,7 @@ input:focus:-ms-input-placeholder
 	box-shadow: 0px 10px 41px -11px rgba(0,0,0,0.68);
 }
 
+/* Set size and dimnesions of each chart to layout them properly */
 #temp_log_chart_wrapper
 {
 	height: 630px;
@@ -505,6 +523,7 @@ input:focus:-ms-input-placeholder
 	}
 }
 
+/* Stylise container for motion camera livestream */
 #camera_stream
 {
 	width: 640px;
@@ -525,6 +544,7 @@ input:focus:-ms-input-placeholder
 	}
 }
 
+/* Stylise html log table, relies on less css */
 .log_table {
 	border-collapse: collapse;
 	border-radius: 10px;
@@ -532,6 +552,7 @@ input:focus:-ms-input-placeholder
 	-moz-box-shadow: 0px 10px 41px -11px rgba(0,0,0,0.68);
 	box-shadow: 0px 10px 41px -11px rgba(0,0,0,0.68);
 
+	/* Table header */
 	th, td {
 		padding: 7px;
 		text-align: center;
@@ -560,6 +581,7 @@ input:focus:-ms-input-placeholder
 		width: 100%;
 		height: calc(500px - 40px);
 
+		/* Distinguish even and odd rows */
 		tr:nth-child(even) {
 			background-color: @blue_accent_color_light;
 		}
@@ -570,6 +592,7 @@ input:focus:-ms-input-placeholder
 	}
 }
 
+/* Container for two temperature tables on top of each other */
 #temp_tabs_stack {
 	margin-right: 50px;
 	float: left;
@@ -581,6 +604,7 @@ input:focus:-ms-input-placeholder
 	}
 }
 
+/* Determine widths of columns of tables of each log */
 #loc_log_table {
 	td:nth-child(1), th:nth-child(1) { width: 50; }
 	td:nth-child(2), th:nth-child(2) { width: 100; }

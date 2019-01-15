@@ -22,7 +22,7 @@ for log_name, y_label in zip(log_names, y_labels):
 			line = logFile.readline()
 
 			# Find temperature value in line and append it to
-			# temperature array
+			# temperature array 
 			temp = re.search(r'(?<=[thpa]=)[0-9\.]*', line)
 			if(temp):
 				log_vals_y.append(float(temp.group()))

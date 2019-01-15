@@ -1,5 +1,9 @@
-//const myChart = document.getElementById('myChart').getContext('2d');
-
+/**
+ * Extracts logs data in form of arrays extracted from JSON sent by PHP.
+ *
+ * @param data JSON with logs data.
+ * @returns Array of arrays containing log times, and log values.
+ */
 function extractData(data) {
   var dataArray = [];
   var timeArray = [];
@@ -11,17 +15,37 @@ function extractData(data) {
   return [timeArray, dataArray];
 }
 
+/**
+ * Creates chart embedded on the website. Calls processes of data
+ * extraction and drawing of the chart.
+ *
+ * @param chartID Identifier of the div in which the chart will be placed.
+ * @param chartLabel String that will describe the chart in title.
+ * @param log_data JSON with log data.
+ */
 function makeChart(chartID, chartLabel, log_data) {
   [xData, yData] = extractData(log_data);
   drawChart(chartID, chartLabel, xData, yData);
 }
 
+/**
+ * Creates chart embedded on the website. Calls processes of data
+ * extraction and drawing of the chart. This function makes chart with two
+ * datasets.
+ *
+ * @param chartID Identifier of the div in which the chart will be placed.
+ * @param chartLabel1 String that will describe the chart in title for dataset 1.
+ * @param log_data1 JSON with log data for dataset 1.
+ * @param chartLabel2 String that will describe the chart in title for dataset 2.
+ * @param log_data2 JSON with log data for dataset 2.
+ */
 function makeDoubleChart(chartID,
                         chartLabel1,
                         chartLabel2,
                         log_data1,
                         log_data2) {
 
+  /* Extract data from JSON to arrays */
   [xData1, yData1] = extractData(log_data1);
   [xData2, yData2] = extractData(log_data2);
 
@@ -34,8 +58,17 @@ function makeDoubleChart(chartID,
     }
 }
 
+/**
+ * Draws chart on the website from dataset in given arrays.
+ *
+ * @param chartID Identifier of the div in which the chart will be placed.
+ * @param chartLabel String that will describe the chart in title.
+ * @param xData Array with data on x axis.
+ * @param yData Array with data on y axis.
+ */
 function drawChart(chartID, chartLabel, xData, yData) {
 
+  /* Get the div to draw chart in */
   const myChart = document.getElementById(chartID).getContext('2d');
 
   let chart1 = new Chart(myChart, {
@@ -81,6 +114,17 @@ function drawChart(chartID, chartLabel, xData, yData) {
   });
 }
 
+/**
+ * Draws chart on the website from dataset in given arrays, for two datasets.
+ *
+ * @param chartID Identifier of the div in which the chart will be placed.
+ * @param chartLabel1 String that will describe the chart in legend, for dataset 1.
+ * @param chartLabel1 String that will describe the chart in legend, for dataset 2.
+ * @param xData1 Array with data on x axis for dataset 1.
+ * @param yData1 Array with data on y axis for dataset 1.
+ * @param xData1 Array with data on x axis for dataset 2.
+ * @param yData1 Array with data on y axis for dataset 2.
+ */
 function drawDoubleChart(chartID, chartLabel1, chartLabel2, xData, yData1, yData2) {
 
   const myChart = document.getElementById(chartID).getContext('2d');
