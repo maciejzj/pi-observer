@@ -5,10 +5,11 @@
   require_once "connect.php";
   mysqli_report(MYSQLI_REPORT_STRICT);
 
-  $nickname = $_GET['username'];
-  $code = $_GET['code'];
+  $nickname = $_GET['username']; //get user nickname from confirm link
+  $code = $_GET['code']; //get confirmation code from confirm link
 
   try {
+	//connect to database
      $connection = new mysqli($host, $db_user, $db_password, $db_name);
      if ($connection->connect_errno != 0) {
        throw new Exception(mysqli_connect_erno());
@@ -19,12 +20,13 @@
 
 			 $nickname_count = $result->num_rows;
 			 if($nickname_count>0) {
-      	  //check auth code
+      	  //get auth code for user from database
           while($row = mysqli_fetch_assoc($result)) {
             $db_code = $row['confirm_code'];
             $email = $row['email'];
           }
 
+	  //check if code from link is correct
           if ($db_code == $code) {
             $result = $connection->query("UPDATE users SET confirmed='1' WHERE login='$nickname'");
      			  if(!$result) throw new Exception($connection->error);
@@ -81,7 +83,8 @@ header("Pragma: no-cache");
 	</div>
 
 	<div id="welcome_container">
-    <?php
+<?php
+//show message on screen
       if(isset($_SESSION['message'])) {
         echo $_SESSION['message'];
         unset($_SESSION['message']);

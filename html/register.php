@@ -159,6 +159,7 @@ header("Pragma: no-cache");
         }
       ?>
 <!source of question mark image: https://www.iconfinder.com/icons/134182/information_question_icon->
+<!below there is code for form to insert data>
       Nickname:<a href="#" class="tooltip"><img style="float:right" src="./data/img/question_mark.png" width="6%" height="6%"><span>3-24 characters long, only alphanumeric characters, username has to be unique</span></a><br />
 			<input type="text" name="nickname" placeholder="nickname" onfocus="this.placeholder=''" onblur="this.placeholder='nickname'" value="<?php echo $_SESSION['nickname']?>"/><br />
       <?php

@@ -34,7 +34,7 @@ header("Pragma: no-cache");
 		<a class="button" id="logout" href="index.php">Go back to main page!</a>
 		<br><hr id = "topbar_separator">
 	</div>
-
+<!show welcome info>
 	<div id="welcome_container">
 	Thank you for joining us!<br />
   You will receive an e-mail after our team accepts your request!

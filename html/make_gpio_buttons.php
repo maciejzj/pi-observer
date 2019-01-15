@@ -11,14 +11,12 @@ function make_gpio_buttons() {
 			system("gpio mode ".$pinout_array[$i]." out");
 			exec ("gpio read ".$pinout_array[$i], $val_array[$i], $return);
 		}
-		//for loop to read the value
 		$i = 0;
 		$arialbold = 'Arial-BoldMT';
 		$arial = 'Arial';
 		for ($i = 0; $i < 2; $i++) {
-			//if off
 			if ($val_array[$i][0] == 0) {
-				if($i == 0){
+				if($i == 0){ //here button svgs are inserted
 					echo ('<button id="button_0" class="butt" onclick="change_pin('.$i.')">
 					<svg width="100%" height="100%" viewBox="0 0 600 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
 	<g transform="matrix(6.16711,0,0,6.16711,63.6168,-43.4636)">
