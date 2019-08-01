@@ -8,3 +8,5 @@ sensor_logs/
 
 # Ignore tmp dir
 tmp*
+*DS_*
+
