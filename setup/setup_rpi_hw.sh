@@ -25,14 +25,5 @@ function setup_i2c()
 	else
 	  echo -e "dtparam=i2c_arm=on" >> /boot/config.txt
 	fi
-	 
-	# Install i2c-tools
-	echo -e "${BLUE}==> Install i2c-tools${NOCOLOR}"
-	if hash i2cget 2>/dev/null; then
-	  echo -e "${RED}Seems i2c-tools is installed already, skip this step.${NOCOLOR}"
-	else
-	  apt-get install -y i2c-tools
-	fi
-	echo -e "${GREEN}Done, i2c is set up${NOCOLOR}"
 }
 
