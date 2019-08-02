@@ -34,3 +34,17 @@ function setup_hum_sensor()
 	rm -rf am2320
 }
 
+function setup_one_wire()
+{
+	if grep -q "dtoverlay=w1-gpio,gpiopin=4" /boot/config.txt; then
+	  echo -e "${RED}Seems 1 wire parameter already set, skip this step.${NOCOLOR}"
+	else
+	  echo -e "dtoverlay=w1-gpio,gpiopin=4" >> /boot/config.txt
+	fi
+
+	if grep -q "dtoverlay=w1-gpio,gpiopin=17" /boot/config.txt; then
+	  echo -e "${RED}Seems 1 wire parameter already set, skip this step.${NOCOLOR}"
+	else
+	  echo -e "dtoverlay=w1-gpio,gpiopin=17" >> /boot/config.txt
+	fi
+}

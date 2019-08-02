@@ -26,6 +26,7 @@ echo -e "${GREEN}Python modules installation done${NOCOLOR}"
 # Enable i2c bus on Rpi
 echo -e "${BLUE}==> Setting up hardware buses${NOCOLOR}"
 setup_i2c
+setup_one_wire
 setup_hum_sensor
 echo -e "${GREEN}Hardware setup done${NOCOLOR}"
 
