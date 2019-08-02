@@ -27,3 +27,10 @@ function setup_i2c()
 	fi
 }
 
+function setup_hum_sensor()
+{
+	git clone -q https://github.com/Gozem/am2320.git
+	head -n -5 am2320/am2320.py > /usr/lib/python3.7/am2320.py
+	rm -rf am2320
+}
+

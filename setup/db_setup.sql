@@ -1,9 +1,6 @@
-USE mysql;
-UPDATE user SET password=PASSWORD('piobserverroot') WHERE User='root' AND Host = 'localhost';
-FLUSH PRIVILEGES;
-
 DROP DATABASE IF EXISTS pi_observer_users;
 CREATE DATABASE IF NOT EXISTS pi_observer_users;
+
 USE pi_observer_users;
 
 CREATE TABLE users(
@@ -12,30 +9,39 @@ CREATE TABLE users(
 
 DROP DATABASE IF EXISTS pi_observer_data_logs;
 CREATE DATABASE IF NOT EXISTS pi_observer_data_logs;
+
 USE pi_observer_data_logs;
 
 CREATE TABLE press_log(
-	num int NOT NULL AUTO_INCREMENT, log_time timestamp,
-	log_val real, unit varchar(6), PRIMARY KEY (num));
+	num int NOT NULL AUTO_INCREMENT, time timestamp,
+	value real, unit varchar(6), PRIMARY KEY (num));
 
 CREATE TABLE alt_log(
-	num int NOT NULL AUTO_INCREMENT, log_time timestamp,
-	log_val real, unit varchar(6), PRIMARY KEY (num));
+	num int NOT NULL AUTO_INCREMENT, time timestamp,
+	value real, unit varchar(6), PRIMARY KEY (num));
 
 CREATE TABLE temp_log(
-	num int NOT NULL AUTO_INCREMENT, log_time timestamp,
-	log_val real, unit varchar(6), PRIMARY KEY (num));
+	num int NOT NULL AUTO_INCREMENT, time timestamp,
+	value real, unit varchar(6), PRIMARY KEY (num));
 
 CREATE TABLE int_temp_log(
-	num int NOT NULL AUTO_INCREMENT, log_time timestamp,
-	log_val real, unit varchar(6), PRIMARY KEY (num));
+	num int NOT NULL AUTO_INCREMENT, time timestamp,
+	value real, unit varchar(6), PRIMARY KEY (num));
 
 CREATE TABLE hum_log(
-	num int NOT NULL AUTO_INCREMENT, log_time timestamp,
-	log_val real, unit varchar(6), PRIMARY KEY (num));
+	num int NOT NULL AUTO_INCREMENT, time timestamp,
+	value real, unit varchar(6), PRIMARY KEY (num));
 
 CREATE TABLE loc_log(
-	num int NOT NULL AUTO_INCREMENT, log_time timestamp,
+	num int NOT NULL AUTO_INCREMENT, time timestamp,
 	status varchar(20), latitude real, longitude real,
 	velocity real, course real, PRIMARY KEY (num));
+
+USE mysql;
+CREATE USER IF NOT EXISTS 'pi_observer_root'@'localhost' IDENTIFIED BY 'piobserverroot';
+GRANT ALL PRIVILEGES ON pi_observer_users.* 
+	TO 'pi_observer_root'@'localhost' IDENTIFIED BY 'piobserverroot';
+GRANT ALL PRIVILEGES ON pi_observer_data_logs.* 
+	TO 'pi_observer_root'@'localhost' IDENTIFIED BY 'piobserverroot';
+FLUSH PRIVILEGES;
 

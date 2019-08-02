@@ -11,12 +11,6 @@ if [ "$(id -u)" != 0 ]; then
   exit 1
 fi
 	 
-# Load setup functions
-. ./setup/setup_rpi_hw.sh
-
-# Enable i2c bus on Rpi
-setup_i2c
-
 # Install apt apps from pkglist 
 echo -e "${BLUE}==> Installing apt packages${NOCOLOR}"
 sudo apt -y install `cat setup/pkglist`
@@ -26,8 +20,20 @@ echo -e "${GREEN}Apt packages installation done${NOCOLOR}"
 echo -e "${BLUE}==> Installing python modules${NOCOLOR}"
 pip3 install -r setup/requirements.txt
 echo -e "${GREEN}Python modules installation done${NOCOLOR}"
+# Load setup functions
+. ./setup/setup_rpi_hw.sh
+
+# Enable i2c bus on Rpi
+echo -e "${BLUE}==> Setting up hardware buses${NOCOLOR}"
+setup_i2c
+setup_hum_sensor
+echo -e "${GREEN}Hardware setup done${NOCOLOR}"
 
 echo -e "${BLUE}==> Setting up database${NOCOLOR}"
 mysql --user=root < setup/db_setup.sql
 echo -e "${GREEN}Database setup done${NOCOLOR}"
 
+# Create directories
+echo -e "${BLUE}==> Setting up required directories${NOCOLOR}"
+[ ! -d /var/log/pi_observer ] && mkdir /var/log/pi_observer
+echo -e "${GREEN}Setup done${NOCOLOR}"

@@ -1,2 +1,5 @@
 mysql-connector-python
+board
+adafruit-blinka
+adafruit-circuitpython-am2320
 
