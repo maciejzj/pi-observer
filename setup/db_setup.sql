@@ -38,7 +38,8 @@ CREATE TABLE loc_log(
 	velocity real, course real, PRIMARY KEY (num));
 
 USE mysql;
-CREATE USER IF NOT EXISTS 'pi_observer_root'@'localhost' IDENTIFIED BY 'piobserverroot';
+CREATE USER IF NOT EXISTS 'pi_observer_root'@'localhost'
+	IDENTIFIED BY 'piobserverroot';
 GRANT ALL PRIVILEGES ON pi_observer_users.* 
 	TO 'pi_observer_root'@'localhost' IDENTIFIED BY 'piobserverroot';
 GRANT ALL PRIVILEGES ON pi_observer_data_logs.* 
