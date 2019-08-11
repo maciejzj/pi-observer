@@ -15,12 +15,10 @@ class gps:
 		got_record = False
 		for _ in range(50):
 			gps_record = self.__ser.readline().decode('UTF-8')
-			#print(gps_record)
 			if gps_record[0:6] == "$GPRMC":
 				got_record = True
 				break
 
-		print(gps_record)
 		if got_record == True:
 			data = gps_record.split(",")
 			if data[2] == 'A':

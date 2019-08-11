@@ -12,8 +12,6 @@ mydb = mysql.connector.connect(
 	database = "pi_observer_data_logs"
 )
 
-print(record)
-
 mycursor = mydb.cursor()
 sql = "INSERT INTO loc_log(time, status, latitude, longitude, velocity, course) VALUES (%s, %s, %s, %s, %s, %s)"
 val = (record['timestamp'], record['status'], record['latitude'], record['longitude'], record['velocity'], record['course'])
