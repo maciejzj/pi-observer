@@ -28,6 +28,7 @@ echo -e "${BLUE}==> Setting up hardware buses${NOCOLOR}"
 setup_i2c
 setup_one_wire
 setup_hum_sensor
+setup_rtc
 echo -e "${GREEN}Hardware setup done${NOCOLOR}"
 
 echo -e "${BLUE}==> Setting up database${NOCOLOR}"
@@ -38,3 +39,7 @@ echo -e "${GREEN}Database setup done${NOCOLOR}"
 echo -e "${BLUE}==> Setting up required directories${NOCOLOR}"
 [ ! -d /var/log/pi_observer ] && mkdir /var/log/pi_observer
 echo -e "${GREEN}Setup done${NOCOLOR}"
+
+# Install system scripts
+install ./scripts/* /usr/bin
+

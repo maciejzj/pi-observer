@@ -48,3 +48,14 @@ function setup_one_wire()
 	  echo -e "dtoverlay=w1-gpio,gpiopin=17" >> /boot/config.txt
 	fi
 }
+
+function setup_rtc()
+{
+	if grep -q "rtc-ds1307" /etc/modules; then
+	  echo -e "${RED}Seems rtc-ds1307 module already exists, skip this step.${NOCOLOR}"
+	else
+	  echo -e "rtc-ds1307" >> /etc/modules
+	fi
+	sed -ie '/if \[ -e \/run\/systemd\/system \] ; then/,+2 s/^/#/' /lib/udev/hwclock-set
+}
+
