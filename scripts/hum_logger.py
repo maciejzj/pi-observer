@@ -22,7 +22,7 @@ mydb = mysql.connector.connect(
 # Write to log database.
 mycursor = mydb.cursor()
 sql = "INSERT INTO hum_log(time, value, unit) VALUES (%s, %s, %s)"
-val = (time_stamp, str(humidity), "%")
+val = (time_stamp, humidity, "%")
 mycursor.execute(sql, val)
 mydb.commit()
 
