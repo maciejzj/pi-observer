@@ -1,4 +1,3 @@
-#!/usr/bin/python
 import serial
 import var
 import datetime as dt
@@ -9,18 +8,20 @@ class gps:
 		# Initializes serial connection for gps communication
 		try:
 			self.__ser = serial.Serial(port)
-		except Exception, e:
-			sys.exit("Can not connect with GPS using uart" + str(e))
+		except Exception as e:
+                        sys.exit("Can not connect with GPS using uart: " + str(e))
 		
 	def get_record(self):
-		# For 50 times tries to read GPRMC record from gps	
+		# For 50 times tries to read GPRMC record from gps in form of strings
 		got_record = False
 		for _ in range(50):
-			gps_record = self.__ser.readline()
+			gps_record = self.__ser.readline().decode('UTF-8')
+			#print(gps_record)
 			if gps_record[0:6] == "$GPRMC":
 				got_record = True
 				break
 
+		print(gps_record)
 		if got_record == True:
 			data = gps_record.split(",")
 			if data[2] == 'A':
@@ -111,20 +112,20 @@ class gps:
 			pos = self._latitude.find('.')
 			lat_deg = self._latitude[:pos-2]
 			lat_mins = self._latitude[pos-2:pos] + self._latitude[pos+1:]
-			lat_mins = str(float(lat_mins) / 60.0)
+			lat_mins = str(round(float(lat_mins) / 60.0))
 
 			pos = self._longitude.find('.')
 			lng_deg = self._longitude[:pos-2]
 			lng_mins = self._longitude[pos-2:pos] + self._longitude[pos+1:]
-			lng_mins = str(float(lng_mins) / 60.0)
-			
+			lng_mins = str(round(float(lng_mins) / 60.0))
+
 			return {
 				'timestamp' : self.get_gps_time(),
 				'status' : self._status,
-				'latitude' : hemi_NE_sign + lat_deg + "." + lat_mins,
-				'longitude' : hemi_WE_sign + lng_deg + "." + lng_mins,
-				'velocity' : self._velocity,
-				'course' : self._course }
+				'latitude' : float(hemi_NE_sign + lat_deg + "." + lat_mins),
+				'longitude' : float(hemi_WE_sign + lng_deg + "." + lng_mins),
+				'velocity' : float(self._velocity),
+				'course' : float(self._course) }
 		else:
 			return {
 				'timestamp' : self._date + " " + self._time,
@@ -154,3 +155,4 @@ def is_number(s):
 		return True
 	except ValueError:
 		return False
+
