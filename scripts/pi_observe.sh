@@ -4,14 +4,14 @@ if [ "$(id -u)" != 0 ]; then
 	exit 1
 fi
 
-if grep -q "pi_observe" /etc/rc.local; then
-	sed -ri '/exit 0/i\/usr/bin/pi_observe' /etc/rc.local
+if ! grep -q "pi_observe" /etc/rc.local; then
+	sed -ri '/^exit 0/i\/usr/bin/pi_observe.sh' /etc/rc.local
 fi
 
 echo "ds1307 0x68" > /sys/class/i2c-adapter/i2c-1/new_device 2> /dev/null
 /usr/bin/set_time_gps.py
 
-if [[ $? == "0" ]]; then
+if [ $? == "0" ]; then
 	echo "`date`: time set from GPS" >> /home/pi/rtc_log
 	hwclock -w
 else
