@@ -1,5 +1,4 @@
 import serial
-import var
 import datetime as dt
 import sys
 
