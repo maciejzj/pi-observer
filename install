@@ -41,5 +41,5 @@ echo -e "${BLUE}==> Setting up required directories${NOCOLOR}"
 echo -e "${GREEN}Setup done${NOCOLOR}"
 
 # Install system scripts
-install ./scripts/* /usr/bin
+install ./scripts/* /usr/local/bin
 
