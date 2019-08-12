@@ -34,7 +34,7 @@ for key in therm_addr.keys() & therm_log_name.keys():
     # Write log to txt file
     with open("/var/log/pi_observer/" + therm_log_name[key], \
               mode = "a+") as temp_log:
-            temp_log.write(time_stamp + " t=" + str(temp) + "C\n")
+            temp_log.write("[" + time_stamp + "] " + " t=" + str(temp) + "C\n")
 
             
     # Write log to database

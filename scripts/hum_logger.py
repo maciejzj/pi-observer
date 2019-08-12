@@ -10,7 +10,7 @@ _, humidity = hum_sensor.readSensor()
 # Write to log text file.
 with open("/var/log/pi_observer/hum_log", mode = "a+") as hum_log:	
           time_stamp = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-          hum_log.write(time_stamp + " h=" + str(humidity) + "%\n")
+          hum_log.write("[" + time_stamp + "] " + " h=" + str(humidity) + "%\n")
 	
 mydb = mysql.connector.connect(
     host = "localhost",
