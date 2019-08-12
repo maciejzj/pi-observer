@@ -12,10 +12,10 @@ echo "ds1307 0x68" > /sys/class/i2c-adapter/i2c-1/new_device 2> /dev/null
 /usr/bin/set_time_gps.py
 
 if [ $? == "0" ]; then
-	echo "`date`: time set from GPS" >> /home/pi/rtc_log
+	echo "`date`: time set from GPS" >> /var/log/pi_observer/rtc_log
 	hwclock -w
 else
-	echo "`date`: time set from RTC" >> /home/pi/rtc_log
+	echo "`date`: time set from RTC" >> /var/log/pi_observer/rtc_log
 	hwclock -s
 fi
 
