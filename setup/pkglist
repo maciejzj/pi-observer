@@ -3,4 +3,5 @@ i2c-tools
 mariadb-server
 mariadb-client
 python3-pip
+libatlas3-base
 

@@ -3,8 +3,6 @@
 
 function setup_i2c()
 {
-	# Enable I2C on Raspberry Pi
-	echo -e "${BLUE}==> Enabling I2C${NOCOLOR}"
 	if grep -q "i2c-bcm2708" /etc/modules; then
 	  echo -e "${RED}Seems i2c-bcm2708 module already exists, skip this step.${NOCOLOR}"
 	else

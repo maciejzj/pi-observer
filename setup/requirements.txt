@@ -1,4 +1,5 @@
 mysql-connector-python
 RPi.bme280
 pyserial
+matplotlib
 
