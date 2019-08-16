@@ -17,20 +17,20 @@ function start()
 		hwclock -s
 	fi
 
-	if ! crontab -l | grep -q "temp_logger.py"; then
-		(echo '* * * * * temp_logger.py'; crontab -l) | crontab -
+	if ! crontab -u root -l | grep -q "temp_logger.py"; then
+		(echo '* * * * * /usr/local/bin/temp_logger.py'; crontab -u root -l) | crontab -u root -
 	fi
-	if ! crontab -l | grep -q "press_alt_logger.py"; then
-		(echo '* * * * * press_alt_logger.py'; crontab -l) | crontab -
+	if ! crontab -u root -l | grep -q "press_alt_logger.py"; then
+		(echo '* * * * * /usr/local/bin/press_alt_logger.py'; crontab -u root -l) | crontab -u root -
 	fi
-	if ! crontab -l | grep -q "hum_logger.py"; then
-		(echo '* * * * * hum_logger.py'; crontab -l) | crontab -
+	if ! crontab -u root -l | grep -q "hum_logger.py"; then
+		(echo '* * * * * /usr/local/bin/hum_logger.py'; crontab -u root -l) | crontab -u root -
 	fi
-	if ! crontab -l | grep -q "location_logger.py"; then
-		(echo '* * * * * location_logger.py'; crontab -l) | crontab -
+	if ! crontab -u root -l | grep -q "location_logger.py"; then
+		(echo '* * * * * /usr/local/bin/location_logger.py'; crontab -u root -l) | crontab -u root -
 	fi
-	if ! crontab -l | grep -q "chart_drawer.py"; then
-		(echo '*/30 * * * * chart_drawer.py'; crontab -l) | crontab -
+	if ! crontab -u root -l | grep -q "chart_drawer.py"; then
+		(echo '*/30 * * * * /usr/local/bin/chart_drawer.py'; crontab -u root -l) | crontab -u root -
 	fi
 }
 
@@ -38,11 +38,11 @@ function stop()
 {
 	sed -i '/pi_observe/d' /etc/rc.local
 
-	crontab -l | grep -v 'temp_logger.py' | crontab
-	crontab -l | grep -v 'press_alt_logger.py' | crontab
-	crontab -l | grep -v 'hum_logger.py' | crontab
-	crontab -l | grep -v 'location_logger.py' | crontab
-	crontab -l | grep -v 'chart_drawer.py' | crontab
+	crontab -u root -l | grep -v 'temp_logger.py' | crontab -u root -
+	crontab -u root -l | grep -v 'press_alt_logger.py' | crontab -u root -
+	crontab -u root -l | grep -v 'hum_logger.py' | crontab -u root -
+	crontab -u root -l | grep -v 'location_logger.py' | crontab -u root -
+	crontab -u root -l | grep -v 'chart_drawer.py' | crontab -u root -
 }
 
 if [ "$(id -u)" != 0 ]; then
