@@ -4,4 +4,11 @@ mariadb-server
 mariadb-client
 python3-pip
 libatlas3-base
+apache2
+php
+php7.3-cgi
+php7.3-mysql
+php-mbstring
+php-mysql
+libapache2-mod-php
 

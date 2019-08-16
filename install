@@ -22,6 +22,7 @@ pip3 install -r setup/requirements.txt
 echo -e "${GREEN}Python modules installation done${NOCOLOR}"
 # Load setup functions
 . ./setup/setup_rpi_hw.sh
+. ./setup/setup_rpi_sw.sh
 
 # Enable i2c bus on Rpi
 echo -e "${BLUE}==> Setting up hardware buses${NOCOLOR}"
@@ -31,8 +32,9 @@ setup_hum_sensor
 setup_rtc
 echo -e "${GREEN}Hardware setup done${NOCOLOR}"
 
-echo -e "${BLUE}==> Setting up database${NOCOLOR}"
+echo -e "${BLUE}==> Setting up web server and database${NOCOLOR}"
 mysql --user=root < setup/db_setup.sql
+setup_webserver
 echo -e "${GREEN}Database setup done${NOCOLOR}"
 
 # Create directories
