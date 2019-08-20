@@ -42,4 +42,5 @@ var data = 0;
 	}
 
 return 0;
+}
 
