@@ -32,6 +32,8 @@ function start()
 	if ! crontab -u root -l | grep -q "chart_drawer.py"; then
 		(echo '*/30 * * * * /usr/local/bin/chart_drawer.py'; crontab -u root -l) | crontab -u root -
 	fi
+	
+	systemctl start motion.service
 }
 
 function stop()
@@ -43,6 +45,8 @@ function stop()
 	crontab -u root -l | grep -v 'hum_logger.py' | crontab -u root -
 	crontab -u root -l | grep -v 'location_logger.py' | crontab -u root -
 	crontab -u root -l | grep -v 'chart_drawer.py' | crontab -u root -
+
+	systemctl stop motion.service
 }
 
 if [ "$(id -u)" != 0 ]; then

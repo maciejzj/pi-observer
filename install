@@ -31,6 +31,7 @@ setup_one_wire
 setup_hum_sensor
 setup_rtc
 setup_gpio
+setup_camera
 echo -e "${GREEN}Hardware setup done${NOCOLOR}"
 
 echo -e "${BLUE}==> Setting up web server and database${NOCOLOR}"

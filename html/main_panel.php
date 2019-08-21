@@ -92,13 +92,13 @@ foreach ($db_table_names as $log_name => $db_table_name){
 						make_gpio_buttons();
 					?>
 					<br>
-					<!-- Embed motion stream buttons -->
-					<a class="button" id="cam_butt" href='http://192.168.1.110:8081/0/'>Camera control</a>
-					<a class="button" id="cam_butt" href='http://192.168.1.110:8080/0/action/snapshot'>Camera snapshot</a>
 				</div>
-				
-				<!-- Embed motion stream buttons -->
-				<img id = "camera_stream" src="http://91.233.72.242:8081">
+
+				<!-- Embed motion stream -->
+				<?php
+					$ip_server = $_SERVER['SERVER_ADDR'];
+					echo '<img id = "camera_stream" src="http://' . $ip_server . ':8081">';
+				?>
 			</div>
 			<hr><br>
 
