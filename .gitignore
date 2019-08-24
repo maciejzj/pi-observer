@@ -10,3 +10,7 @@ sensor_logs/
 tmp*
 *DS_*
 
+# Eagle backup files
+*.s#*
+*.b#*
+
