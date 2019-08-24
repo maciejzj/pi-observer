@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="dots" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -7812,14 +7812,14 @@ DIN A5, landscape with doc field</description>
 <part name="U1" library="SparkFun-Sensors" deviceset="DS18B20" device=""/>
 <part name="U2" library="SparkFun-Sensors" deviceset="DS18B20" device=""/>
 <part name="Q1" library="transistor-npn" library_urn="urn:adsk.eagle:library:398" deviceset="BC548*" device="" package3d_urn="urn:adsk.eagle:package:28989/2" technology="B"/>
-<part name="LED1" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="5MM" package3d_urn="urn:adsk.eagle:package:15799/2"/>
-<part name="LED2" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="5MM" package3d_urn="urn:adsk.eagle:package:15799/2"/>
-<part name="R1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2"/>
-<part name="R2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2"/>
-<part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2"/>
-<part name="R4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2"/>
-<part name="R5" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2"/>
-<part name="R6" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2"/>
+<part name="LED1" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="5MM" package3d_urn="urn:adsk.eagle:package:15799/2" value="RED"/>
+<part name="LED2" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="5MM" package3d_urn="urn:adsk.eagle:package:15799/2" value="GREEN"/>
+<part name="R1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2" value="180"/>
+<part name="R2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2" value="150"/>
+<part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2" value="1k"/>
+<part name="R4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2" value="4k7"/>
+<part name="R5" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2" value="4k7"/>
+<part name="R6" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2" value="150"/>
 <part name="X1" library="raspberrypi_bastelstube_v13" deviceset="RASPI_GPIO_B+#" device="_PIN"/>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="P+1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
@@ -7830,9 +7830,9 @@ DIN A5, landscape with doc field</description>
 <part name="GND3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="SV1" library="con-lsta" library_urn="urn:adsk.eagle:library:161" deviceset="FE05-1" device="" package3d_urn="urn:adsk.eagle:package:8190/1"/>
-<part name="SV2" library="con-lsta" library_urn="urn:adsk.eagle:library:161" deviceset="FE05-1" device="" package3d_urn="urn:adsk.eagle:package:8190/1"/>
-<part name="SV3" library="con-lsta" library_urn="urn:adsk.eagle:library:161" deviceset="FE06-1" device="" package3d_urn="urn:adsk.eagle:package:8191/1"/>
-<part name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X5" device="" package3d_urn="urn:adsk.eagle:package:22469/2"/>
+<part name="SV2" library="con-lsta" library_urn="urn:adsk.eagle:library:161" deviceset="FE05-1" device="" package3d_urn="urn:adsk.eagle:package:8190/1" value="HUMIDITY"/>
+<part name="SV3" library="con-lsta" library_urn="urn:adsk.eagle:library:161" deviceset="FE06-1" device="" package3d_urn="urn:adsk.eagle:package:8191/1" value="PRESSURE"/>
+<part name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X5" device="" package3d_urn="urn:adsk.eagle:package:22469/2" value="RTC"/>
 <part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -7842,6 +7842,8 @@ DIN A5, landscape with doc field</description>
 <sheets>
 <sheet>
 <plain>
+<text x="140.716" y="20.574" size="2.1844" layer="94">Maciej Ziaja</text>
+<text x="87.122" y="6.604" size="1.9304" layer="94">https://github.com/MaciejZj/Pi-Observer</text>
 </plain>
 <instances>
 <instance part="SG1" gate="1" x="104.14" y="63.5" smashed="yes">
@@ -7857,8 +7859,8 @@ DIN A5, landscape with doc field</description>
 <attribute name="VALUE" x="154.94" y="96.266" size="1.778" layer="96" font="vector" align="top-left"/>
 </instance>
 <instance part="Q1" gate="G$1" x="116.84" y="45.72" smashed="yes">
-<attribute name="NAME" x="106.68" y="60.96" size="1.778" layer="95"/>
-<attribute name="VALUE" x="106.68" y="50.8" size="1.778" layer="96"/>
+<attribute name="NAME" x="121.92" y="40.64" size="1.778" layer="95"/>
+<attribute name="VALUE" x="121.92" y="48.26" size="1.778" layer="96"/>
 </instance>
 <instance part="LED1" gate="G$1" x="104.14" y="76.2" smashed="yes" rot="R90">
 <attribute name="NAME" x="108.712" y="79.756" size="1.778" layer="95" rot="R180"/>
@@ -7917,9 +7919,9 @@ DIN A5, landscape with doc field</description>
 <instance part="GND4" gate="1" x="63.5" y="33.02" smashed="yes">
 <attribute name="VALUE" x="60.96" y="30.48" size="1.778" layer="96"/>
 </instance>
-<instance part="SV1" gate="G$1" x="33.02" y="15.24" smashed="yes">
-<attribute name="VALUE" x="31.75" y="5.08" size="1.778" layer="96"/>
-<attribute name="NAME" x="31.75" y="23.622" size="1.778" layer="95"/>
+<instance part="SV1" gate="G$1" x="35.56" y="17.78" smashed="yes">
+<attribute name="VALUE" x="34.29" y="7.62" size="1.778" layer="96"/>
+<attribute name="NAME" x="34.29" y="26.162" size="1.778" layer="95"/>
 </instance>
 <instance part="SV2" gate="G$1" x="137.16" y="40.64" smashed="yes">
 <attribute name="VALUE" x="135.89" y="30.48" size="1.778" layer="96"/>
@@ -7946,7 +7948,7 @@ DIN A5, landscape with doc field</description>
 <attribute name="VALUE" x="81.28" y="78.74" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="FRAME1" gate="G$1" x="0" y="0" smashed="yes">
-<attribute name="DRAWING_NAME" x="140.97" y="15.24" size="2.54" layer="94"/>
+<attribute name="DRAWING_NAME" x="140.97" y="15.24" size="1.9304" layer="94"/>
 <attribute name="LAST_DATE_TIME" x="140.97" y="10.16" size="2.286" layer="94"/>
 <attribute name="SHEET" x="154.305" y="5.08" size="2.54" layer="94"/>
 </instance>
@@ -7964,7 +7966,7 @@ DIN A5, landscape with doc field</description>
 </bus>
 <bus name="UART:+3V3,GND,RX,TX">
 <segment>
-<wire x1="50.8" y1="10.16" x2="50.8" y2="25.4" width="0.762" layer="92"/>
+<wire x1="53.34" y1="12.7" x2="53.34" y2="27.94" width="0.762" layer="92"/>
 </segment>
 </bus>
 </busses>
@@ -8103,8 +8105,8 @@ DIN A5, landscape with doc field</description>
 </segment>
 <segment>
 <pinref part="SV1" gate="G$1" pin="2"/>
-<wire x1="40.64" y1="12.7" x2="50.8" y2="12.7" width="0.1524" layer="91"/>
-<label x="43.18" y="12.7" size="1.778" layer="95"/>
+<wire x1="43.18" y1="15.24" x2="53.34" y2="15.24" width="0.1524" layer="91"/>
+<label x="45.72" y="15.24" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -8126,17 +8128,6 @@ DIN A5, landscape with doc field</description>
 <pinref part="R3" gate="G$1" pin="2"/>
 <pinref part="Q1" gate="G$1" pin="B"/>
 <wire x1="109.22" y1="45.72" x2="114.3" y2="45.72" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="GPIO21" class="0">
-<segment>
-<pinref part="R3" gate="G$1" pin="1"/>
-<wire x1="99.06" y1="45.72" x2="83.82" y2="45.72" width="0.1524" layer="91"/>
-<label x="83.82" y="45.72" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="X1" gate="G$1" pin="GPIO21"/>
-<wire x1="30.48" y1="60.96" x2="25.4" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="+5V" class="0">
@@ -8216,8 +8207,8 @@ DIN A5, landscape with doc field</description>
 </segment>
 <segment>
 <pinref part="SV1" gate="G$1" pin="1"/>
-<wire x1="40.64" y1="10.16" x2="50.8" y2="10.16" width="0.1524" layer="91"/>
-<label x="43.18" y="10.16" size="1.778" layer="95"/>
+<wire x1="43.18" y1="12.7" x2="53.34" y2="12.7" width="0.1524" layer="91"/>
+<label x="45.72" y="12.7" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GPIO17" class="0">
@@ -8233,6 +8224,7 @@ DIN A5, landscape with doc field</description>
 <segment>
 <pinref part="X1" gate="G$1" pin="GPIO17"/>
 <wire x1="30.48" y1="104.14" x2="25.4" y2="104.14" width="0.1524" layer="91"/>
+<label x="20.32" y="104.14" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$9" class="0">
@@ -8242,21 +8234,11 @@ DIN A5, landscape with doc field</description>
 <wire x1="48.26" y1="40.64" x2="50.8" y2="40.64" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="GPIO20" class="0">
-<segment>
-<pinref part="R6" gate="G$1" pin="1"/>
-<wire x1="38.1" y1="40.64" x2="27.94" y2="40.64" width="0.1524" layer="91"/>
-<label x="27.94" y="40.64" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="X1" gate="G$1" pin="GPIO20"/>
-<wire x1="30.48" y1="63.5" x2="25.4" y2="63.5" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="GPIO04" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="GPIO04"/>
 <wire x1="30.48" y1="86.36" x2="25.4" y2="86.36" width="0.1524" layer="91"/>
+<label x="20.32" y="86.36" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$1" pin="DQ"/>
@@ -8271,43 +8253,73 @@ DIN A5, landscape with doc field</description>
 <net name="RX" class="0">
 <segment>
 <pinref part="SV1" gate="G$1" pin="3"/>
-<wire x1="40.64" y1="15.24" x2="50.8" y2="15.24" width="0.1524" layer="91"/>
-<label x="43.18" y="15.24" size="1.778" layer="95"/>
+<wire x1="43.18" y1="17.78" x2="53.34" y2="17.78" width="0.1524" layer="91"/>
+<label x="45.72" y="17.78" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="X1" gate="G$1" pin="RXD"/>
 <wire x1="60.96" y1="86.36" x2="66.04" y2="86.36" width="0.1524" layer="91"/>
+<label x="63.5" y="86.36" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="TX" class="0">
 <segment>
 <pinref part="SV1" gate="G$1" pin="4"/>
-<wire x1="40.64" y1="17.78" x2="50.8" y2="17.78" width="0.1524" layer="91"/>
-<label x="43.18" y="17.78" size="1.778" layer="95"/>
+<wire x1="43.18" y1="20.32" x2="53.34" y2="20.32" width="0.1524" layer="91"/>
+<label x="45.72" y="20.32" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="X1" gate="G$1" pin="TXD"/>
 <wire x1="60.96" y1="88.9" x2="66.04" y2="88.9" width="0.1524" layer="91"/>
+<label x="63.5" y="88.9" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIO22" class="0">
+<segment>
+<pinref part="X1" gate="G$1" pin="GPIO22"/>
+<wire x1="30.48" y1="96.52" x2="25.4" y2="96.52" width="0.1524" layer="91"/>
+<label x="20.32" y="96.52" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="R3" gate="G$1" pin="1"/>
+<wire x1="99.06" y1="45.72" x2="83.82" y2="45.72" width="0.1524" layer="91"/>
+<label x="83.82" y="45.72" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="GPIO27" class="0">
+<segment>
+<pinref part="X1" gate="G$1" pin="GPIO27"/>
+<wire x1="30.48" y1="99.06" x2="25.4" y2="99.06" width="0.1524" layer="91"/>
+<label x="20.32" y="99.06" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="R6" gate="G$1" pin="1"/>
+<wire x1="38.1" y1="40.64" x2="27.94" y2="40.64" width="0.1524" layer="91"/>
+<label x="27.94" y="40.64" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
 </sheet>
 </sheets>
 <errors>
-<approved hash="104,1,101.6,99.06,U1,VDD,+5V,,,"/>
-<approved hash="104,1,144.78,99.06,U2,VDD,+5V,,,"/>
-<approved hash="104,1,35.56,104.14,X1,5V0A,+5V,,,"/>
-<approved hash="104,1,48.26,104.14,X1,3V3A,+3V3,,,"/>
-<approved hash="104,1,58.42,68.58,X1,GND_A,GND,,,"/>
-<approved hash="104,1,38.1,104.14,X1,5V0B,+5V,,,"/>
-<approved hash="104,1,50.8,104.14,X1,3V3B,+3V3,,,"/>
-<approved hash="104,1,58.42,66.04,X1,GND_B,GND,,,"/>
-<approved hash="104,1,58.42,63.5,X1,GND_C,GND,,,"/>
-<approved hash="104,1,58.42,60.96,X1,GND_D,GND,,,"/>
-<approved hash="104,1,58.42,58.42,X1,GND_E,GND,,,"/>
-<approved hash="104,1,58.42,55.88,X1,GND_F,GND,,,"/>
-<approved hash="104,1,58.42,53.34,X1,GND_G,GND,,,"/>
-<approved hash="104,1,58.42,50.8,X1,GND_H,GND,,,"/>
+<approved hash="104,1,101.6,109.22,U1,VDD,+5V,,,"/>
+<approved hash="104,1,152.4,109.22,U2,VDD,+5V,,,"/>
+<approved hash="104,1,38.1,116.84,X1,5V0A,+5V,,,"/>
+<approved hash="104,1,50.8,116.84,X1,3V3A,+3V3,,,"/>
+<approved hash="104,1,60.96,81.28,X1,GND_A,GND,,,"/>
+<approved hash="104,1,40.64,116.84,X1,5V0B,+5V,,,"/>
+<approved hash="104,1,53.34,116.84,X1,3V3B,+3V3,,,"/>
+<approved hash="104,1,60.96,78.74,X1,GND_B,GND,,,"/>
+<approved hash="104,1,60.96,76.2,X1,GND_C,GND,,,"/>
+<approved hash="104,1,60.96,73.66,X1,GND_D,GND,,,"/>
+<approved hash="104,1,60.96,71.12,X1,GND_E,GND,,,"/>
+<approved hash="104,1,60.96,68.58,X1,GND_F,GND,,,"/>
+<approved hash="104,1,60.96,66.04,X1,GND_G,GND,,,"/>
+<approved hash="104,1,60.96,63.5,X1,GND_H,GND,,,"/>
+<approved hash="113,1,40.5977,19.3396,SV1,,,,,"/>
+<approved hash="113,1,142.198,42.1996,SV2,,,,,"/>
+<approved hash="113,1,142.198,68.8696,SV3,,,,,"/>
+<approved hash="113,1,167.877,54.8361,JP1,,,,,"/>
 </errors>
 </schematic>
 </drawing>
