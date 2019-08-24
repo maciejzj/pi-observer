@@ -13,6 +13,8 @@ fi
 	 
 # Install apt apps from pkglist 
 echo -e "${BLUE}==> Installing apt packages${NOCOLOR}"
+sudo apt update
+sudo apt upgrade
 sudo apt -y install `cat setup/pkglist`
 echo -e "${GREEN}Apt packages installation done${NOCOLOR}"
 
