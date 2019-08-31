@@ -26,7 +26,7 @@ header("Pragma: no-cache");
 	<!-- Compatibility -->
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<title>BaloonS - High-altitude balloon</title>
+	<title>Pi-Observer</title>
 
 	<!-- Link css file and css less framework -->
 	<link rel="stylesheet/less" type="text/css" href="styles.less">
@@ -37,7 +37,7 @@ header("Pragma: no-cache");
 	<!-- Topbar -->
 	<div id="topbar">
 		<div class="status">
-			BalloonS!
+			Pi-Observer!
 		</div>
 		<!-- Register button on topbar -->
 		<a class="button" id="logout" href="register.php">register</a>
@@ -46,7 +46,7 @@ header("Pragma: no-cache");
 
 	<!-- Description -->
 	<div id="description_container">
-		BalloonS is a <span class="color_emphasis_text">high-altitude atmospheric ballon</span> project. It provides logging services and remote access to aid gathering flight information and search after landing of the balloon. The system is based on <span class="color_emphasis_text">Raspberry Pi</span>. It is easy deployable and accessible, you can visit our <a target="_blank" rel="noopener noreferrer" href="https://github.com/MaciejZj/balloonS">GitHub</a> and download the project to launch your own balloon.
+		Pi-Observer is a <span class="color_emphasis_text">universal data logger and remote access</span> project. It can be mounted on any mobile or stationary system. The project is based on <span class="color_emphasis_text">Raspberry Pi</span>. It is easy to deploy and use, you can visit the project's <a target="_blank" rel="noopener noreferrer" href="https://github.com/MaciejZj/Pi-Observer">GitHub</a> site and install it on your own Raspberry Pi.
 	</div>
 
 	<!-- Login pane with sign in inputs -->

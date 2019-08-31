@@ -56,7 +56,7 @@ foreach ($db_table_names as $log_name => $db_table_name){
 		<!-- Compatibility -->
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<title>BalloonS - Control panel</title>
+		<title>Pi-Observer - Control panel</title>
 		<!-- Link css file, css less framework and libraries -->
 		<link rel="stylesheet/less" type="text/css" href="styles.less">
 		<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
@@ -78,7 +78,7 @@ foreach ($db_table_names as $log_name => $db_table_name){
 
 		<!-- Description -->
 		<div id="description_container">
-			Welcome to the <span class="color_emphasis_text">control panel</span>! Here you can examine data logs, locate your balloon, watch live stream and access your GPIO. You can also manually backup your <span class="color_emphasis_text">SQL logs</span> using <a target="_blank" rel="noopener noreferrer" href="https://www.monetdb.org/Documentation/UserGuide/DumpRestore">SQL dump</a>.
+			Welcome to the <span class="color_emphasis_text">control panel</span>! Here you can examine data logs, locate your devive, watch live stream and access your GPIO. You can also visit project's <a href=https://github.com/MaciejZj/Pi-Observer>GitHub</a> repo.
 		</div>
 
 		<!-- Remote controls panel -->

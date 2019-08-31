@@ -144,7 +144,7 @@ header("Pragma: no-cache");
 <body>
 	<div id="topbar">
 		<div class="status">
-			BalloonS!
+			Pi-Observer!
 		</div>
 		<a class="button" id="logout" href="index.php">Abort!</a>
 		<br><hr id = "topbar_separator">
