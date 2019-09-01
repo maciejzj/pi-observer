@@ -211,3 +211,4 @@ foreach ($db_table_names as $log_name => $db_table_name){
 		<script src="gpio.js"></script>
 	</body>
 </html>
+

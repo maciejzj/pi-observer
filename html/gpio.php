@@ -1,16 +1,16 @@
 <?php
-//Thanks to: TheFreeElectron 2015,
+// Thanks to: TheFreeElectron 2015,
 // http://www.instructables.com/member/TheFreeElectron/
 if (isset($_GET["pic"])) {
-	/* Strip tags form pic button identifier */
+	// Strip tags form pic button identifier
 	$pic = strip_tags($_GET["pic"]);
 	
-	/* If pic has correct format, must indicate number of button */
+	// If pic has correct format, must indicate number of button
 	if ( (is_numeric($pic)) && ($pic >= 0) ) {
 		require_once "gpio_pinout.php";	
-		/* Initialise pin */
+		// Initialise pin
 		system("gpio mode ".$pinout_array[$pic]." out");
-		/* Read initial status of pin */
+		// Read initial status of pin
 		exec ("gpio read ".$pinout_array[$pic], $status, $return );
 
 		if ($status[0] == "0" ) { $status[0] = "1"; }

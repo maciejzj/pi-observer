@@ -81,3 +81,4 @@ function initialize(timeData, latData, lngData) {
 	/* Set trigger event for resizing */
 	google.maps.event.trigger(map, 'resize');
 }
+
