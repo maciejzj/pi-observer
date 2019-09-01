@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	error_reporting( E_ALL );
-	if (!isset($_SESSION['registation_successful']))	{
+	if (!isset($_SESSION['registation_successful'])) {
 		header('Location: index.php');
 		exit();
 	} else {
@@ -36,10 +36,10 @@ header("Pragma: no-cache");
 		<a class="button" id="logout" href="index.php">Go back to main page!</a>
 		<br><hr id = "topbar_separator">
 	</div>
-<!show welcome info>
+<!--show welcome info-->
 	<div id="welcome_container">
-	Thank you for joining us!<br />
-  You will receive an e-mail after our team accepts your request!
+	Thank you for joining u!<br/>
+	You can log into your account.
 	</div>
 
 	<div id="footer">
