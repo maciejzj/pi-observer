@@ -1,5 +1,6 @@
 <?php
-//Thanks to: TheFreeElectron 2015, http://www.instructables.com/member/TheFreeElectron/
+//Thanks to: TheFreeElectron 2015,
+// http://www.instructables.com/member/TheFreeElectron/
 if (isset($_GET["pic"])) {
 	/* Strip tags form pic button identifier */
 	$pic = strip_tags($_GET["pic"]);

@@ -30,11 +30,13 @@ error_reporting( E_ALL );
 				$row = $rezultat->fetch_assoc();
 				$confirmed = $row['confirmed'];
 				if($confirmed=='0') { //if no do not log user in
-					$_SESSION['error'] = '<div class="error">Wait for confirmation!</div>';
+					$_SESSION['error'] =
+						'<div class="error">Wait for confirmation!</div>';
 					header('Location: index.php');
 				} else { //else check if password is correct
 
-					if (password_verify($passwd, $row['pass'])) { //log user in if password is correct
+					if (password_verify($passwd, $row['pass'])) { 
+						//log user in if password is correct
 						$_SESSION['logged'] = true;
 						$_SESSION['id'] = $row['id'];
 						$_SESSION['login'] = $row['login'];
@@ -45,12 +47,14 @@ error_reporting( E_ALL );
 						header('Location: main_panel.php');
 					}
 					else {
-						$_SESSION['error'] = '<div class="error">Invalid credentials!</div>';
+						$_SESSION['error'] = 
+							'<div class="error">Invalid credentials!</div>';
 						header('Location: index.php');
 					}
 				}
 			} else {
-				$_SESSION['error'] = '<div class="error">Invalid credentials!</div>';
+				$_SESSION['error'] = 
+					'<div class="error">Invalid credentials!</div>';
 				header('Location: index.php');
 			}
 		}

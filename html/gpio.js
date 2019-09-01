@@ -1,6 +1,6 @@
 //Thanks to: http://www.instructables.com/member/TheFreeElectron/
 
-//variables to  store buttons
+// Variables to  store buttons
 var button_0 = document.getElementById("button_0");
 var button_1 = document.getElementById("button_1");
 
@@ -16,7 +16,8 @@ var data = 0;
 	request.onreadystatechange = function() {
 		if (request.readyState == 4 && request.status == 200) {
 			data = request.responseText;
-		//switching between button classes to indicate what is the current state of LED or buzzer
+		// Switching between button classes to indicate
+		// what is the current state of LED or buzzer
 			if ( !(data.localeCompare("0")) ){
 				Buttons[pic].classList.toggleClass('butt butt2');
 			}
@@ -36,11 +37,11 @@ var data = 0;
 			alert ("server error");
 			return ("fail");
 		}
-		else if (request.readyState == 4 && request.status != 200 && request.status != 500 ) {
+		else if (request.readyState == 4 && 
+		         request.status != 200 && 
+		         request.status != 500 ) {
 			alert ("Something went wrong!");
 			return ("fail"); }
 	}
-
 return 0;
 }
-

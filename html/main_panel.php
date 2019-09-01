@@ -31,7 +31,8 @@ $db_table_names = array(
 
 /* For each log in names of logs make a html and extract data in array. */
 foreach ($db_table_names as $log_name => $db_table_name){
-	list($html_table_log, $array_table_log) = makeTable($connection, $db_table_name);
+	list($html_table_log, $array_table_log) = 
+		makeTable($connection, $db_table_name);
 
 	$html_table_logs[$log_name] = $html_table_log;
 	$array_table_logs[$log_name] = $array_table_log;
@@ -40,12 +41,18 @@ foreach ($db_table_names as $log_name => $db_table_name){
 
 <script type="text/javascript">
 	/* Extract JSON data for every log sent by PHP */
-	var temp_log = <?php echo json_encode($array_table_logs["temperature"], JSON_PRETTY_PRINT) ?>;
-	var int_temp_log = <?php echo json_encode($array_table_logs["internal_temperature"], JSON_PRETTY_PRINT) ?>;
-	var loc_log = <?php echo json_encode($array_table_logs["location"], JSON_PRETTY_PRINT) ?>;
-	var press_log = <?php echo json_encode($array_table_logs["pressure"], JSON_PRETTY_PRINT) ?>;
-	var alt_log = <?php echo json_encode($array_table_logs["altitude"], JSON_PRETTY_PRINT) ?>;
-	var hum_log = <?php echo json_encode($array_table_logs["humidity"], JSON_PRETTY_PRINT) ?>;
+	var temp_log = <?php echo json_encode(
+		$array_table_logs["temperature"], JSON_PRETTY_PRINT) ?>;
+	var int_temp_log = <?php echo json_encode(
+		$array_table_logs["internal_temperature"], JSON_PRETTY_PRINT) ?>;
+	var loc_log = <?php echo json_encode(
+		$array_table_logs["location"], JSON_PRETTY_PRINT) ?>;
+	var press_log = <?php echo json_encode(
+		$array_table_logs["pressure"], JSON_PRETTY_PRINT) ?>;
+	var alt_log = <?php echo json_encode(
+		$array_table_logs["altitude"], JSON_PRETTY_PRINT) ?>;
+	var hum_log = <?php echo json_encode(
+		$array_table_logs["humidity"], JSON_PRETTY_PRINT) ?>;
 </script>
 
 <!DOCTYPE html>
@@ -59,9 +66,15 @@ foreach ($db_table_names as $log_name => $db_table_name){
 		<title>Pi-Observer - Control panel</title>
 		<!-- Link css file, css less framework and libraries -->
 		<link rel="stylesheet/less" type="text/css" href="styles.less">
-		<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDC3AdKTRhuef-V14umy0kfEiieAi5RaFw"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+		<script src=
+			"//cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" >
+		</script>
+		<script src=
+			"https://maps.googleapis.com/maps/api/js?key=AIzaSyDC3AdKTRhuef-V14umy0kfEiieAi5RaFw">
+		</script>
+		<script src=
+			"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js">
+		</script>
 		<script src="chart.js"></script>
 		<script src="google_maps.js"></script>
 
@@ -72,13 +85,19 @@ foreach ($db_table_names as $log_name => $db_table_name){
 		<!-- Topbar -->
 		<div id="topbar">
 			<!-- Logout button on topbar -->
-			<?php echo "<div class='status'>Logged: ".$_SESSION['login'].'</div> <a class="button" id="logout" href="logout.php">logout</a>'; ?>
+			<?php echo 
+			"<div class='status'>Logged: ".$_SESSION['login'].'</div>
+			<a class="button" id="logout" href="logout.php">logout</a>'; ?>
 			<br><hr id = "topbar_separator">
 		</div>
 
 		<!-- Description -->
 		<div id="description_container">
-			Welcome to the <span class="color_emphasis_text">control panel</span>! Here you can examine data logs, locate your devive, watch live stream and access your GPIO. You can also visit project's <a href=https://github.com/MaciejZj/Pi-Observer>GitHub</a> repo.
+			Welcome to the 
+			<span class="color_emphasis_text">control panel</span>! 
+			Here you can examine data logs, locate your devive,
+			watch live stream and access your GPIO. You can also visit project's
+			<a href=https://github.com/MaciejZj/Pi-Observer>GitHub</a> repo.
 		</div>
 
 		<!-- Remote controls panel -->
@@ -97,7 +116,8 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				<!-- Embed motion stream -->
 				<?php
 					$ip_server = $_SERVER['SERVER_ADDR'];
-					echo '<img id = "camera_stream" src="http://' . $ip_server . ':8081">';
+					echo '<img id = "camera_stream"
+						src="http://' . $ip_server . ':8081">';
 				?>
 			</div>
 			<hr><br>
@@ -133,7 +153,12 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				<div class = "chart_wrapper", id="temp_log_chart_wrapper">
 					<canvas class = "chart" id="temp_log_chart"></canvas>
 				</div>
-				<script>makeDoubleChart("temp_log_chart", "External temperature", "Internal temperature", temp_log, int_temp_log)</script>
+				<script>makeDoubleChart("temp_log_chart",
+				                        "External temperature",
+				                        "Internal temperature",
+				                        temp_log, 
+				                        int_temp_log)
+				</script>
 			</div>
 			<hr><br>
 
@@ -142,7 +167,9 @@ foreach ($db_table_names as $log_name => $db_table_name){
 				<div class = "chart_wrapper" id = "press_log_chart_wrapper">
 					<canvas class = "chart" id="press_log_chart"></canvas>
 				</div>
-				<script>makeChart("press_log_chart", "Pressure", press_log)</script>
+				<script>
+					makeChart("press_log_chart", "Pressure", press_log)
+				</script>
 
 				<?php
 					print($html_table_logs["pressure"]);

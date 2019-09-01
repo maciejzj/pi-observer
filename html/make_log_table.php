@@ -14,7 +14,8 @@ function makeTable($connection, $tableName) {
 		try {
 			// Make query to get while log table.
 			$query = "SELECT * FROM " . $tableName;
-			$html_table_log = "<table class = 'log_table' id = '$tableName" . "_table'>";
+			$html_table_log =
+				"<table class = 'log_table' id = '$tableName" . "_table'>";
 			$html_table_log .= "<thead>";
 			$result = $connection->query($query);
 			// We want the first row for col names.

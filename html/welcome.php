@@ -23,7 +23,9 @@ header("Pragma: no-cache");
 	<title>BaloonS - Welcome</title>
 
 	<link rel="stylesheet/less" type="text/css" href="styles.less">
-	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
+	<script src=
+		"//cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js">
+	</script>
 </head>
 
 <body>
@@ -40,10 +42,9 @@ header("Pragma: no-cache");
   You will receive an e-mail after our team accepts your request!
 	</div>
 
-
 	<div id="footer">
-		Maciej Ziaja 2018, maciejzj@icloud.com <br/>
-		Maciej Cholewa 2018, maciej.cholewa@interia.pl
+		Maciej Ziaja 2019, maciejzj@icloud.com <br/>
+		Maciej Cholewa 2019, maciej.cholewa@interia.pl
 	</div>
 </body>
 </html>

@@ -64,12 +64,14 @@ function initialize(timeData, latData, lngData) {
 		});
 
 		/* Create timestamp string for marker label */
-		var content = "<b>" + timeData[i] + "</b>" + " (" + markerLat + ", " + markerLng + ")";
+		var content = "<b>" + timeData[i] + "</b>" + " (" +
+			markerLat + ", " + markerLng + ")";
 		var infowindow = new google.maps.InfoWindow()
 		/* Add lister for maker clikc, it will invoke marker label with
 		 * the timestamp.
 		 */
-		google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+		google.maps.event.addListener(marker,'click', (
+			function(marker,content,infowindow){ 
 			return function() {
 				infowindow.setContent(content);
 				infowindow.open(map,marker);

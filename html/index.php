@@ -30,7 +30,9 @@ header("Pragma: no-cache");
 
 	<!-- Link css file and css less framework -->
 	<link rel="stylesheet/less" type="text/css" href="styles.less">
-	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
+	<script 
+		src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" >
+	</script>
 </head>
 
 <body>
@@ -46,7 +48,16 @@ header("Pragma: no-cache");
 
 	<!-- Description -->
 	<div id="description_container">
-		Pi-Observer is a <span class="color_emphasis_text">universal data logger and remote access</span> project. It can be mounted on any mobile or stationary system. The project is based on <span class="color_emphasis_text">Raspberry Pi</span>. It is easy to deploy and use, you can visit the project's <a target="_blank" rel="noopener noreferrer" href="https://github.com/MaciejZj/Pi-Observer">GitHub</a> site and install it on your own Raspberry Pi.
+		Pi-Observer is a <span class="color_emphasis_text">
+		universal data logger and remote access</span> project.
+		It can be mounted on any mobile or stationary system.
+		The project is based on
+		<span class="color_emphasis_text">Raspberry Pi</span>.
+		It is easy to deploy and use, you can visit the project's
+		<a target="_blank" rel="noopener noreferrer" 
+			href="https://github.com/MaciejZj/Pi-Observer">GitHub
+		</a>
+		site and install it on your own Raspberry Pi.
 	</div>
 
 	<!-- Login pane with sign in inputs -->
@@ -54,10 +65,20 @@ header("Pragma: no-cache");
 	Control panel login<br>
 	<hr>
 		<form action="login.php" method="post">
-			<input type="text" name="login" placeholder="login" onfocus="this.placeholder=''" onblur="this.placeholder='login'"/>
-			<input type="password" name="passwd" placeholder="password" onfocus="this.placeholder=''" onblur="this.placeholder='password'"/> <br />
+			<input type="text" name="login" 
+				placeholder="login"
+				onfocus="this.placeholder=''"
+				onblur="this.placeholder='login'"/>
+			<input type="password" name="passwd"
+				placeholder="password"
+				onfocus="this.placeholder=''"
+				onblur="this.placeholder='password'"/>
+			<br/>
 			<?php
-				if(isset($_SESSION['error']))	echo $_SESSION['error'];
+				if(isset($_SESSION['error']))
+				{
+					echo $_SESSION['error'];
+				}
 			?>
 			<input type="submit" value="Log in" />
 		</form>
