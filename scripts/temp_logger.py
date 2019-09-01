@@ -30,13 +30,12 @@ for key in therm_addr.keys() & therm_log_name.keys():
             match = re.search(r'(?<=t=)[0-9]*', line)
             if(match):
                 temp = float(match.group()) / 1000
-    
+
     # Write log to txt file
     with open("/var/log/pi_observer/" + therm_log_name[key], \
-              mode = "a+") as temp_log:
-            temp_log.write("[" + time_stamp + "] " + " t=" + str(temp) + "C\n")
+            mode = "a+") as temp_log:
+        temp_log.write("[" + time_stamp + "] " + " t=" + str(temp) + "C\n")
 
-            
     # Write log to database
     mycursor = mydb.cursor()
     sql = "INSERT INTO " + therm_log_name[key] \
@@ -44,4 +43,3 @@ for key in therm_addr.keys() & therm_log_name.keys():
     val = (time_stamp, temp, "C")
     mycursor.execute(sql, val)
     mydb.commit()
-
