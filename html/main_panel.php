@@ -87,7 +87,7 @@ foreach ($db_table_names as $log_name => $db_table_name){
 			<!-- Logout button on topbar -->
 			<?php echo 
 			"<div class='status'>Logged: ".$_SESSION['login'].'</div>
-			<a class="button" id="logout" href="logout.php">logout</a>'; ?>
+			<a class="button" id="logout" href="logout.php">Logout</a>'; ?>
 			<br><hr id = "topbar_separator">
 		</div>
 

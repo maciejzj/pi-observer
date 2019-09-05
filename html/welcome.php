@@ -38,7 +38,7 @@ header("Pragma: no-cache");
 	</div>
 <!--show welcome info-->
 	<div id="welcome_container">
-	Thank you for joining u!<br/>
+	Thank you for joining us!<br/>
 	You can log into your account.
 	</div>
 
