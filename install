@@ -48,3 +48,6 @@ echo -e "${GREEN}Setup done${NOCOLOR}"
 # Install system scripts
 install ./scripts/* /usr/local/bin
 
+read -p "Do you wish to reboot now? [Y/n]" -n 1 -s ans && echo
+[ "${ans}" != "n" ] && reboot
+

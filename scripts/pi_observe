@@ -17,6 +17,9 @@ function start()
 		hwclock -s
 	fi
 
+	# Needed to silence error out for empty cron
+	crontab -u root -l 2> /dev/null | crontab -u root -
+
 	if ! crontab -u root -l | grep -q "temp_logger.py"; then
 		(echo '* * * * * /usr/local/bin/temp_logger.py'; crontab -u root -l) | crontab -u root -
 	fi
