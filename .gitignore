@@ -14,3 +14,6 @@ tmp*
 *.s#*
 *.b#*
 
+.gitsecret/keys/random_seed
+!*.secret
+html/recaptchakey.php

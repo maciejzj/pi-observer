@@ -60,9 +60,9 @@
 			}
 
 		// Check reCAPTCHA
-		$secret = "6LdwB7YUAAAAAAuI1DlxyRVR99f9L3h_ix2cz13D";
+		require_once "recaptchakey.php";
 		$check = file_get_contents(
-			'https://www.google.com/recaptcha/api/siteverify?secret=' .
+			'https://www.google.com/recaptcha/api/siteverify?secret='.
 			$secret.'&response='.$_POST['g-recaptcha-response']);
 		$response = json_decode($check);
 		if($response->success==false) {
@@ -232,7 +232,7 @@ header("Pragma: no-cache");
 			?><br />
 
 			<div class="g-recaptcha"
-				data-sitekey="6LdwB7YUAAAAAL5XAJUR0bRIimo812j8BhiHCaiS">
+				data-sitekey="6Lfl1rYUAAAAALs3Iw6wnjKYvpAZYeHKMdAohZSE">
 			</div>
 			<?php
 				if(isset($_SESSION['e_bot'])) {
