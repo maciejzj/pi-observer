@@ -33,7 +33,7 @@ header("Pragma: no-cache");
 		<div class="status">
 			Pi-Observer!
 		</div>
-		<a class="button" id="logout" href="index.php">Go back to main page!</a>
+		<a class="button" id="logout" href="index.php">Sign in</a>
 		<br><hr id = "topbar_separator">
 	</div>
 <!--show welcome info-->

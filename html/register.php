@@ -153,7 +153,7 @@ header("Pragma: no-cache");
 		<div class="status">
 			Pi-Observer!
 		</div>
-		<a class="button" id="logout" href="index.php">cancel</a>
+		<a class="button" id="logout" href="index.php">Cancel</a>
 		<br><hr id = "topbar_separator">
 	</div>
 
@@ -241,7 +241,7 @@ header("Pragma: no-cache");
 				}
 			?><br />
 
-			<input type="submit" value="Sign up!" />
+			<input type="submit" value="Sign up" />
 		</form>
 	</div>
 

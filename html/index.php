@@ -42,7 +42,7 @@ header("Pragma: no-cache");
 			Pi-Observer!
 		</div>
 		<!-- Register button on topbar -->
-		<a class="button" id="logout" href="register.php">register</a>
+		<a class="button" id="logout" href="register.php">Register</a>
 		<br><hr id = "topbar_separator">
 	</div>
 
@@ -80,7 +80,7 @@ header("Pragma: no-cache");
 					echo $_SESSION['error'];
 				}
 			?>
-			<input type="submit" value="Log in" />
+			<input type="submit" value="Sign in" />
 		</form>
 	</div>
 
