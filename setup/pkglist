@@ -12,4 +12,5 @@ php-mbstring
 php-mysql
 libapache2-mod-php
 motion
+wiringpi
 

@@ -13,8 +13,8 @@ fi
 	 
 # Install apt apps from pkglist 
 echo -e "${BLUE}==> Installing apt packages${NOCOLOR}"
-sudo apt update
-sudo apt upgrade
+sudo apt -y update
+sudo apt -y upgrade
 sudo apt -y install `cat setup/pkglist`
 echo -e "${GREEN}Apt packages installation done${NOCOLOR}"
 
@@ -32,7 +32,6 @@ setup_i2c
 setup_one_wire
 setup_hum_sensor
 setup_rtc
-setup_gpio
 setup_camera
 echo -e "${GREEN}Hardware setup done${NOCOLOR}"
 

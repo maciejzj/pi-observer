@@ -58,12 +58,6 @@ function setup_rtc()
 	sed -ie '/if \[ -e \/run\/systemd\/system \] ; then/,+2 s/^/#/' /lib/udev/hwclock-set
 }
 
-function setup_gpio()
-{
-	wget -q https://unicorn.drogon.net/wiringpi-2.46-1.deb -P /tmp
-	sudo dpkg -i /tmp/wiringpi-2.46-1.deb > /dev/null
-}
-
 function setup_camera()
 {
 	if grep -q "start_x=1" /boot/config.txt; then
