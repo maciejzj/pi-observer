@@ -21,21 +21,31 @@ function start()
 	crontab -u root -l 2> /dev/null | crontab -u root -
 
 	if ! crontab -u root -l | grep -q "temp_logger.py"; then
-		(echo '* * * * * /usr/local/bin/temp_logger.py'; crontab -u root -l) | crontab -u root -
+		(echo '* * * * * /usr/local/bin/temp_logger.py'; crontab -u root -l) |
+		crontab -u root -
 	fi
 	if ! crontab -u root -l | grep -q "press_alt_logger.py"; then
-		(echo '* * * * * /usr/local/bin/press_alt_logger.py'; crontab -u root -l) | crontab -u root -
+		(echo '* * * * * /usr/local/bin/press_alt_logger.py'; crontab -u root -l) |
+		crontab -u root -
 	fi
 	if ! crontab -u root -l | grep -q "hum_logger.py"; then
-		(echo '* * * * * /usr/local/bin/hum_logger.py'; crontab -u root -l) | crontab -u root -
+		(echo '* * * * * /usr/local/bin/hum_logger.py'; crontab -u root -l) |
+		crontab -u root -
 	fi
 	if ! crontab -u root -l | grep -q "location_logger.py"; then
-		(echo '* * * * * /usr/local/bin/location_logger.py'; crontab -u root -l) | crontab -u root -
+		(echo '* * * * * /usr/local/bin/location_logger.py'; crontab -u root -l) |
+		crontab -u root -
 	fi
 	if ! crontab -u root -l | grep -q "chart_drawer.py"; then
-		(echo '*/30 * * * * /usr/local/bin/chart_drawer.py'; crontab -u root -l) | crontab -u root -
+		(echo '*/30 * * * * /usr/local/bin/chart_drawer.py'; crontab -u root -l) |
+		crontab -u root -
 	fi
-	
+
+	if ! crontab -u root -l | grep -q "pi_observe cleanup"; then
+		(echo '0 0 * * 0 /usr/local/bin/pi_observe cleanup'; crontab -u root -l) |
+		crontab -u root -
+	fi
+
 	systemctl start motion.service
 }
 
@@ -48,8 +58,28 @@ function stop()
 	crontab -u root -l | grep -v 'hum_logger.py' | crontab -u root -
 	crontab -u root -l | grep -v 'location_logger.py' | crontab -u root -
 	crontab -u root -l | grep -v 'chart_drawer.py' | crontab -u root -
+	crontab -u root -l | grep -v 'pi_observe cleanup' | crontab -u root -
 
 	systemctl stop motion.service
+}
+
+function cleanup()
+{
+	find /var/lib/motion/ -type f -mtime +7 -execdir rm {} \;
+
+	mysql -D pi_observer_data_logs -e "
+	DELETE FROM press_log
+	WHERE time < (DATE_SUB(NOW(), INTERVAL 1 WEEK));
+	DELETE FROM alt_log
+	WHERE time < (DATE_SUB(NOW(), INTERVAL 1 WEEK));
+	DELETE FROM temp_log
+	WHERE time < (DATE_SUB(NOW(), INTERVAL 1 WEEK));
+	DELETE FROM int_temp_log
+	WHERE time < (DATE_SUB(NOW(), INTERVAL 1 WEEK));
+	DELETE FROM hum_log
+	WHERE time < (DATE_SUB(NOW(), INTERVAL 1 WEEK));
+	DELETE FROM loc_log
+	WHERE time < (DATE_SUB(NOW(), INTERVAL 1 WEEK));"
 }
 
 if [ "$(id -u)" != 0 ]; then
@@ -60,6 +90,10 @@ fi
 case $1 in
 	stop)
 		stop
+		exit
+		;;
+	cleanup)
+		cleanup
 		exit
 		;;
 	*)

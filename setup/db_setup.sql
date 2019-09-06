@@ -4,8 +4,9 @@ CREATE DATABASE IF NOT EXISTS pi_observer_users;
 USE pi_observer_users;
 
 CREATE TABLE users(
-	id int NOT NULL AUTO_INCREMENT, login varchar(25) NOT NULL, pass varchar(255) NOT NULL,
-   	email varchar(255) NOT NULL, confirmed int(11), confirm_code int(11), PRIMARY KEY(id));
+	id int NOT NULL AUTO_INCREMENT, login varchar(25) NOT NULL,
+	pass varchar(255) NOT NULL, email varchar(255) NOT NULL,
+	confirmed int(11), confirm_code int(11), PRIMARY KEY(id));
 
 DROP DATABASE IF EXISTS pi_observer_data_logs;
 CREATE DATABASE IF NOT EXISTS pi_observer_data_logs;
