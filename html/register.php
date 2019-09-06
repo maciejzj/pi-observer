@@ -104,12 +104,10 @@
 
 				// Check ALL - add new user to database
 				if($all_OK == true) {
-					$auth_code = rand(100000000, 999999000);
-
 					if($connection->query(
 						"INSERT INTO users VALUES (
 							NULL, '$nickname', '$passwd_hash',
-							'$email', '1', '$auth_code')")) {
+							'$email', '1')")) {
 						$_SESSION['registation_successful'] = true;
 						header('Location: welcome.php');
 					} else {

@@ -25,15 +25,14 @@ error_reporting( E_ALL );
 		mysqli_real_escape_string($connection, $login)))) {
 			$usr_count = $rezultat->num_rows;
 			if($usr_count > 0) {
-				// Check if user is confirmed by admin
+				// Check if user account is active
 				$row = $rezultat->fetch_assoc();
-				$confirmed = $row['confirmed'];
-				if($confirmed=='0') { // If no do not log user in
+				$active = $row['active'];
+				if($active == '0') { // If no do not log user in
 					$_SESSION['error'] =
 						'<div class="error">Wait for confirmation!</div>';
 					header('Location: index.php');
 				} else { // Else check if password is correct
-
 					if (password_verify($passwd, $row['pass'])) { 
 						// Log user in if password is correct
 						$_SESSION['logged'] = true;
