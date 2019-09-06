@@ -83,7 +83,7 @@ function cleanup()
 }
 
 if [ "$(id -u)" != 0 ]; then
-	echo "Start script must be run with root permissions" 
+	echo "Must be run with root permissions" 
 	exit 1
 fi
 
