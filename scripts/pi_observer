@@ -2,8 +2,8 @@
 
 function start()
 {
-	if ! grep -q "pi_observe" /etc/rc.local; then
-		sed -ri '/^exit 0/i\/usr/local/bin/pi_observe' /etc/rc.local
+	if ! grep -q "pi_observer" /etc/rc.local; then
+		sed -ri '/^exit 0/i\/usr/local/bin/pi_observer' /etc/rc.local
 	fi
 
 	echo "ds1307 0x68" > /sys/class/i2c-adapter/i2c-1/new_device 2> /dev/null
@@ -41,8 +41,8 @@ function start()
 		crontab -u root -
 	fi
 
-	if ! crontab -u root -l | grep -q "pi_observe cleanup"; then
-		(echo '0 0 * * 0 /usr/local/bin/pi_observe cleanup'; crontab -u root -l) |
+	if ! crontab -u root -l | grep -q "pi_observer cleanup"; then
+		(echo '0 0 * * 0 /usr/local/bin/pi_observer cleanup'; crontab -u root -l) |
 		crontab -u root -
 	fi
 
@@ -51,14 +51,14 @@ function start()
 
 function stop()
 {
-	sed -i '/pi_observe/d' /etc/rc.local
+	sed -i '/pi_observer/d' /etc/rc.local
 
 	crontab -u root -l | grep -v 'temp_logger.py' | crontab -u root -
 	crontab -u root -l | grep -v 'press_alt_logger.py' | crontab -u root -
 	crontab -u root -l | grep -v 'hum_logger.py' | crontab -u root -
 	crontab -u root -l | grep -v 'location_logger.py' | crontab -u root -
 	crontab -u root -l | grep -v 'chart_drawer.py' | crontab -u root -
-	crontab -u root -l | grep -v 'pi_observe cleanup' | crontab -u root -
+	crontab -u root -l | grep -v 'pi_observer cleanup' | crontab -u root -
 
 	systemctl stop motion.service
 }
