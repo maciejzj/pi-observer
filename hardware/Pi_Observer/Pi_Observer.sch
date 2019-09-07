@@ -7847,6 +7847,7 @@ DIN A5, landscape with doc field</description>
 <text x="87.122" y="14.224" size="1.9304" layer="94">Sensor board for RaspberryPi based
 universal data logger and remote
 accesss project.</text>
+<text x="172.72" y="5.08" size="2.1844" layer="94">A5</text>
 </plain>
 <instances>
 <instance part="SG1" gate="1" x="104.14" y="63.5" smashed="yes">
