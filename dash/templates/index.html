@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<head>
-   <title>Dashboard control</title>
-</head>
+{% extends "base.html" %}
 
-<body>
-   <div>
-      <img src="http://192.168.1.110:8081/">
-   </div>
-
+{% block content %}
    <div>
       {% for pin in pins %}
       {{ pins[pin].name }}
@@ -18,5 +11,7 @@
       {% endif %}
       {% endfor %}
    </div>
-</body>
-</html>
+   <div>
+      <img src="http://192.168.1.110:8081/">
+   </div>
+{% endblock %}
