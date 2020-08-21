@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+   <title>Dashboard control</title>
+</head>
+
+<body>
+   <div>
+      <img src="http://192.168.1.110:8081/">
+   </div>
+
+   <div>
+      {% for pin in pins %}
+      {{ pins[pin].name }}
+      {% if pins[pin].state == true %}
+         <a href="/{{pin}}/off" role="button">Turn off</a>
+      {% else %}
+         <a href="/{{pin}}/on" role="button">Turn on</a>
+      {% endif %}
+      {% endfor %}
+   </div>
+</body>
+</html>
