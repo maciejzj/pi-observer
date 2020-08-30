@@ -1,19 +1,23 @@
-<html>
+<!doctype html>
+<html lang="en">
     <head>
-      <title>Pi Observer</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+        <title>Pi Observer</title>
     </head>
     <body>
-        <div>
-            Header
-            <a href="{{ url_for('index') }}">Home</a>
-            {% if current_user.is_anonymous %}
-            <a href="{{ url_for('login') }}">Login</a>
-            {% else %}
-            User: {{ current_user.username }}
-            <a href="{{ url_for('logout') }}">Logout</a>
-            {% endif %}
-        </div>
-        <hr>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="navbar-nav">
+                <a class="navbar-brand">Pi Observer</a>
+                <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                {% if not current_user.is_anonymous %}
+                <a class="nav-link float-right" href="{{ url_for('logout') }}">Logout</a>
+                {% endif %}
+            </div>
+        </nav>
         {% block content %}{% endblock %}
     </body>
 </html>

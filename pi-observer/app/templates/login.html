@@ -1,25 +1,34 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Sign In</h1>
-    <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
-            {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}<br>
-            {% for error in form.password.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p>{{ form.submit() }}</p>
-    </form>
-    <p><a href="{{ url_for('register') }}">Sign up</a></p>
+
+<div class="card col-md-4 mx-auto mt-5">
+    <article class="card-body">
+        <a href="{{ url_for('register') }}" class="float-right btn btn-outline-primary">Sign up</a>
+        <h4 class="card-title mb-4 mt-1">Sign in</h4>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.username.label }}
+                {{ form.username(size=32, class="form-control") }}
+                {% for error in form.username.errors %}
+                <div class="alert alert-danger mt-3" role="alert">[{{ error }}]</div>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.password.label }}
+                {{ form.password(size=32, class="form-control") }}
+                {% for error in form.password.errors %}
+                <div class="alert alert-danger mt-3" role="alert">[{{ error }}]</div>
+                {% endfor %}
+            </div>
+            <div class="form-check">
+                {{ form.remember_me(class="form-check-input") }} {{ form.remember_me.label }}
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </form>
+    </article>
+</div>
 {% endblock %}
