@@ -31,6 +31,7 @@ def wrap_in_card(div, card_title):
     )
     return card
 
+
 def make_graph_bundled_tables(dfs, labels):
     fig = go.Figure()
     for df, label in zip(dfs, labels):

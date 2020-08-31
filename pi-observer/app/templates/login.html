@@ -2,7 +2,14 @@
 
 {% block content %}
 
-<div class="card col-md-4 mx-auto mt-5">
+<div class="container">
+
+<div class="alert alert-primary" role="alert">
+    You can view <a href="{{ url_for('/dash/') }}" class="alert-link">public dashboard</a>
+    without logging in.
+</div>
+
+<div class="card">
     <article class="card-body">
         <a href="{{ url_for('register') }}" class="float-right btn btn-outline-primary">Sign up</a>
         <h4 class="card-title mb-4 mt-1">Sign in</h4>
@@ -30,5 +37,7 @@
             </div>
         </form>
     </article>
+</div>
+
 </div>
 {% endblock %}

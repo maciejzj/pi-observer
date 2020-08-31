@@ -3,7 +3,7 @@ from flask_login import current_user, login_required, login_user, logout_user
 from werkzeug.urls import url_parse
 import RPi.GPIO as GPIO
 
-from app import app, db
+from app import app, db, dash_app
 from app.forms import LoginForm, RegistrationForm
 from app.models import User
 
@@ -88,3 +88,9 @@ def action(change_pin, action):
       'pins' : pins
    }
    return render_template('index.html', **template_data)
+
+
+@login_required
+@app.route('/dash')
+def my_dash_app():
+    return dash_app.index()
