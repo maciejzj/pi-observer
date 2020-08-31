@@ -15,13 +15,28 @@ def load_data(db_connection, table_names):
 
 
 def make_layout(data):
-    return html.Div(children=[
-        wrap_in_card(make_map_table_pair(data['loc_log']), 'Location log'),
-        wrap_in_card(make_graph_bundled_tables([data['temp_log'], data['int_temp_log']],
-                                               ['internal', 'external']), 'Temperature log'),
-        wrap_in_card(make_graph_table_pair(data['press_log']), 'Pressure log'),
-        wrap_in_card(make_graph_table_pair(data['alt_log']), 'Altitude log'),
-        wrap_in_card(make_graph_table_pair(data['hum_log']), 'Humidity log'),
+    labels = ('Temperature', 'Pressure', 'Altitude', 'Humidity')
+    logs = [
+        make_graph_bundled_tables([data['temp_log'], data['int_temp_log']],
+                                  ['internal', 'external']),
+        make_graph_table_pair(data['press_log']),
+        make_graph_table_pair(data['alt_log']),
+        make_graph_table_pair(data['hum_log']),
+    ]
+    tabs = [dbc.Tab(wrap_in_card(log), label=label) for log, label in zip(logs, labels)]
+    tab_bar = dbc.Tabs(tabs)
+
+    return html.Div(className="container", children=[
+        dbc.Alert('Welcome to logs dashboard', color='primary', style={'margin-top': '2rem'}),
+        dbc.Card(
+            [
+                dbc.CardHeader(html.H4('Location log', style={'margin': '0'})),
+                dbc.CardBody([make_map_table_pair(data['loc_log'])]),
+            ],
+            style={'margin-top': '1rem', 'margin-bottom': '1rem'}
+        ),
+        html.H4('Sensor logs'),
+        tab_bar
     ])
 
 

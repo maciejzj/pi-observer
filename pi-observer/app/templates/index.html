@@ -6,9 +6,10 @@ function resizeIframe(obj) {
  obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
 }
 </script>
-<div class="container">
+<div class="container mt-3">
    <div class="alert alert-primary" role="alert">
-      Logged as: {{ current_user.username }}
+      Logged as: {{ current_user.username }},
+      you can go to <a href="{{ url_for('/dash/') }}" class="alert-link">dashboard</a>.
    </div>
    <div class="row">
    <div class="col-md-5">

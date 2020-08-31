@@ -21,13 +21,12 @@ def make_table(df):
     return table
 
 
-def wrap_in_card(div, card_title):
+def wrap_in_card(div):
     card = dbc.Card(
         [
-            dbc.CardHeader(card_title),
             dbc.CardBody([div]),
         ],
-        style={'margin-top': '3rem'}
+        style={'margin-top': '1rem', 'margin-bottom': '1rem'}
     )
     return card
 
