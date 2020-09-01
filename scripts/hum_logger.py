@@ -17,7 +17,7 @@ def read_hum():
     return humidity
 
 
-def insert_hum_to_db(hum, table_name):
+def insert_hum_to_db(hum):
     ''' Insert humidity readout to database. '''
     mydb = mysql.connector.connect(
         host='localhost',
@@ -29,7 +29,7 @@ def insert_hum_to_db(hum, table_name):
     time_stamp = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
     mycursor = mydb.cursor()
-    sql = 'INSERT INTO ' + table_name + '(time, value, unit) VALUES (%s, %s, %s)'
+    sql = 'INSERT INTO hum_log(time, value, unit) VALUES (%s, %s, %s)'
     val = (time_stamp, hum, '%')
     mycursor.execute(sql, val)
     mydb.commit()
@@ -38,7 +38,7 @@ def insert_hum_to_db(hum, table_name):
 def log_hum():
     ''' Read and log humidity. '''
     hum = read_hum()
-    insert_hum_to_db(hum, 'hum_log')
+    insert_hum_to_db(hum)
 
 
 if __name__ == '__main__':
