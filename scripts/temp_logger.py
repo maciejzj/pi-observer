@@ -1,45 +1,81 @@
-#!/usr/bin/python3.7
-import sys
-import re
-import mysql.connector
+#!/usr/bin/env python3
+
+'''
+Read temperature from 1-Wire based thermometers and log readouts to database
+'''
+
 import datetime as dt
+import re
 
-# Linux devices files name in dict.
-therm_dev_name = {'ext' : "28-000005945f57", 'int' : "28-00000a418b77"}
-therm_addr = {'ext' : "/sys/bus/w1/devices/" + therm_dev_name['ext'] + "/w1_slave",
-              "int" : "/sys/bus/w1/devices/" + therm_dev_name['int'] + "/w1_slave"}
+import mysql.connector
 
-# Names for database tables
-therm_log_name = {'ext': "temp_log", 'int': "int_temp_log"}
 
-mydb = mysql.connector.connect(
-    host = "localhost",
-    user = "pi_observer_root",
-    passwd = "piobserverroot",
-    database = "pi_observer_data_logs")
+def dev_path_from_dev_name(dev_names):
+    '''
+    Build one 1-Wire Linux device driver file paths from device names.
+    Takes a dictionary with arbitary chosen nicknames as keys and device names
+    as values.
+    '''
+    dev_paths = {}
+    for dev_nickname in dev_names:
+        dev_paths[dev_nickname] = \
+            '/sys/bus/w1/devices/' + dev_names[dev_nickname] + '/w1_slave'
 
-# Get timestamp
-time_stamp = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    return dev_paths
 
-# Iterate through therms addresses and dev names simultaneously.
-for key in therm_addr.keys() & therm_log_name.keys():
-    with open(therm_addr[key], mode = "r") as therm:
-        lines = therm.readlines()
-        # Read the Linux device file and find temp value line with regex.
-        for line in lines:
-            match = re.search(r'(?<=t=)[0-9]*', line)
-            if(match):
-                temp = float(match.group()) / 1000
 
-    # Write log to txt file
-    with open("/var/log/pi_observer/" + therm_log_name[key], \
-            mode = "a+") as temp_log:
-        temp_log.write("[" + time_stamp + "] " + " t=" + str(temp) + "C\n")
+def read_temp(therm_devs):
+    '''
+    Read temperature from 1-Wire Linux device.
+    Takes a dictionary with arbitary chosen nicknames as keys and device driver
+    paths as values.
+    '''
+    temps = {}
+    for dev_nickname in therm_devs:
+        with open(therm_devs[dev_nickname], mode='r') as therm:
+            lines = therm.readlines()
+            for line in lines:
+                match = re.search(r'(?<=t=)[0-9]*', line)
+                if match:
+                    temp = float(match.group()) / 1000
+                    temps[dev_nickname] = temp
+                    break
+    return temps
 
-    # Write log to database
-    mycursor = mydb.cursor()
-    sql = "INSERT INTO " + therm_log_name[key] \
-        + "(time, value, unit) VALUES (%s, %s, %s)"
-    val = (time_stamp, temp, "C")
-    mycursor.execute(sql, val)
-    mydb.commit()
+
+def insert_temp_to_db(temps, temp_db_table_names):
+    '''
+    Insert temperature to logs database.
+    Takes two dictionaries wirh arbitrary chosen nicknames as keys, first dict
+    with temperatures as values and second as table names for each nickname.
+    '''
+    mydb = mysql.connector.connect(
+        host='localhost',
+        user='pi_observer_root',
+        passwd='piobserverroot',
+        database='pi_observer_data_logs'
+    )
+
+    time_stamp = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    for therm_nickname in temps.keys() & temp_db_table_names.keys():
+        mycursor = mydb.cursor()
+        sql = 'INSERT INTO ' + temp_db_table_names[therm_nickname] \
+            + '(time, value, unit) VALUES (%s, %s, %s)'
+        vals = (time_stamp, temps[therm_nickname], 'C')
+        mycursor.execute(sql, vals)
+        mydb.commit()
+
+
+def log_temp():
+    ''' Read and log temperature form external and internal thermometers'''
+    therm_dev_names = {'ext': '28-000005945f57', 'int': '28-00000a418b77'}
+    therm_dev_paths = dev_path_from_dev_name(therm_dev_names)
+    temps = read_temp(therm_dev_paths)
+
+    temp_db_table_names = {'ext': 'temp_log', 'int': 'int_temp_log'}
+    insert_temp_to_db(temps, temp_db_table_names)
+
+
+if __name__ == '__main__':
+    log_temp()
