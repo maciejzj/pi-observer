@@ -15,7 +15,7 @@
                     {{ form.username(size=32, class="form-control") }}
                     {% for error in form.username.errors %}
                         <div class="alert alert-danger mt-3" role="alert">
-                            [{{ error }}]
+                            {{ error }}
                         </div>
                     {% endfor %}
                 </div>
@@ -25,7 +25,7 @@
                     {{ form.email(size=64, class="form-control") }}
                     {% for error in form.email.errors %}
                         <div class="alert alert-danger mt-3" role="alert">
-                            [{{ error }}]
+                            {{ error }}
                         </div>
                     {% endfor %}
                 </div>
@@ -35,7 +35,7 @@
                     {{ form.password(size=32, class="form-control") }}
                     {% for error in form.password.errors %}
                         <div class="alert alert-danger mt-3" role="alert">
-                            [{{ error }}]
+                            {{ error }}
                         </div>
                     {% endfor %}
                 </div>
@@ -45,7 +45,7 @@
                     {{ form.password2(size=32, class="form-control") }}
                     {% for error in form.password2.errors %}
                         <div class="alert alert-danger mt-3" role="alert">
-                            [{{ error }}]
+                            {{ error }}
                         </div>
                     {% endfor %}
                 </div>
