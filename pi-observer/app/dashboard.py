@@ -27,13 +27,13 @@ def make_layout(data):
     tab_bar = dbc.Tabs(tabs)
 
     return html.Div(className="container", children=[
-        dbc.Alert('Welcome to logs dashboard', color='primary', style={'margin-top': '2rem'}),
+        dbc.Alert('Welcome to the logs dashboard.', color='primary', className='mt-3'),
         dbc.Card(
             [
                 dbc.CardHeader(html.H4('Location log', style={'margin': '0'})),
                 dbc.CardBody([make_map_table_pair(data['loc_log'])]),
             ],
-            style={'margin-top': '1rem', 'margin-bottom': '1rem'}
+            className="my-3"
         ),
         html.H4('Sensor logs'),
         tab_bar
@@ -41,7 +41,7 @@ def make_layout(data):
 
 
 def make_dash(server):
-    external_stylesheets = [ dbc.themes.BOOTSTRAP]
+    external_stylesheets = [dbc.themes.BOOTSTRAP]
     app = dash.Dash(
         __name__,
         server=server,

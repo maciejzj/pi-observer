@@ -12,7 +12,7 @@ GPIO.setmode(GPIO.BCM)
 
 pins = {
    22 : {'name' : 'Buzzer', 'state' : GPIO.LOW},
-   27 : {'name' : 'led', 'state' : GPIO.LOW}
+   27 : {'name' : 'LED', 'state' : GPIO.LOW}
 }
 
 for pin in pins:
