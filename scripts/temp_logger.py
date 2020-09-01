@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 '''
-Read temperature from 1-Wire based thermometers and log readouts to database
+Read temperature from 1-Wire based thermometers and log readouts to database.
 '''
 
 import datetime as dt
@@ -68,7 +68,7 @@ def insert_temp_to_db(temps, temp_db_table_names):
 
 
 def log_temp():
-    ''' Read and log temperature form external and internal thermometers'''
+    ''' Read and log temperature form external and internal thermometers. '''
     therm_dev_names = {'ext': '28-000005945f57', 'int': '28-00000a418b77'}
     therm_dev_paths = dev_path_from_dev_name(therm_dev_names)
     temps = read_temp(therm_dev_paths)
