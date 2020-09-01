@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-3">
+
+    <div class="alert alert-primary col-md-5 mx-auto" role="alert">
+        You can view the
+        <a
+            href="{{ url_for('/dash/') }}"
+            class="alert-link"
+            >
+            public dashboard
+        </a>
+            without logging in.
+    </div>
+
+    <div class="card col-md-5 mx-auto">
+        <div class="card-body">
+            <a
+                href="{{ url_for('register') }}"
+                class="float-right btn btn-outline-primary"
+                >
+                Sign up
+            </a>
+
+                <h4 class="card-title mt-1 mb-4">
+                    Sign in
+                </h4>
+                <form action="" method="post" novalidate>
+                    {{ form.hidden_tag() }}
+
+                    <div class="form-group">
+                        {{ form.username.label }}
+                        {{ form.username(size=32, class="form-control") }}
+                        {% for error in form.username.errors %}
+                            <div class="alert alert-danger mt-3" role="alert">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.password.label }}
+                        {{ form.password(size=32, class="form-control") }}
+                        {% for error in form.password.errors %}
+                            <div class="alert alert-danger mt-3" role="alert">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-check">
+                        {{ form.remember_me(class="form-check-input") }}
+                        {{ form.remember_me.label }}
+                    </div>
+
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-danger mt-3" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+
+                </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
